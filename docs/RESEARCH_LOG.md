@@ -23,3 +23,23 @@
 - Population analysis
 - Torsional analysis
 
+
+## Entry 2
+
+# Goal: Add basin clustering analysis
+
+# What I tried:
+Replacing unique_conformers initialization with basin compilation logic (based on RMSD)
+Takes ‘template’ molecules and groups based on other conformers’ similarities to them, then evaluates total populations of each basin group
+# Problems:
+None
+# Decisions:
+Decided to keep unique conformer list to maintain functionality of entropy calculations and following implementations
+# Observations:
+Flexible molecules have more basins with relatively lower populations (not a new observation, but proven by testing current iteration of implementation) 
+# Questions:
+
+# Next Steps:
+Torsion analysis
+Migrate to separate file function framework
+Solvent interaction additions
