@@ -1,3 +1,3 @@
-- [ ] Implement basin clustering
-- [ ] Add torsional analysis
+- [x] Implement basin clustering
+- [x] Add torsional analysis
 - [ ] Compare vacuum vs water

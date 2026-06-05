@@ -64,3 +64,28 @@ Addresses that we know that solvent polarity leads to different conformer dynami
 
 ## Next Steps:
 Torsional analysis
+
+
+
+# Entry 4
+## Goal(s): Implement torsional analysis
+
+## What I tried:
+Torsion assignment algorithm, identifying ‘important’ torsions (via find_heavy_atom_torsions()) for molecule and evaluating torsion angles at those bonds for each basin representative conformer
+
+Visualization: plotted angle distributions for each important torsion
+## Problems:
+
+## Decisions:
+Left torsion naming as a coded system, but looking to implement classification later (backbone, functional group, etc.)
+## Observations:
+Testing with butyl butyrate (CCCC(=O)OCCCC) in vacuum (no solvents implemented yet), torsion angle distribution across each important torsion remains varied in spread
+- Ex. torsion_3_2_3_5_6 demonstrates low/no flexibility in vacuum, with all angles across basins being equivalent (180°=-180°); meanwhile, torsion_4_3_5_6_7 demonstrates higher variability, indicating a more flexible bond
+
+![torsion distribution graphs for butyl butyrate](data\figures\image.png)
+
+## Questions:
+
+## Next Steps:
+Solvent environment addition
+Outsource notebook to structured system with API implementation; analysis begins
