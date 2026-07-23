@@ -82,7 +82,7 @@ Left torsion naming as a coded system, but looking to implement classification l
 Testing with butyl butyrate (CCCC(=O)OCCCC) in vacuum (no solvents implemented yet), torsion angle distribution across each important torsion remains varied in spread
 - Ex. torsion_3_2_3_5_6 demonstrates low/no flexibility in vacuum, with all angles across basins being equivalent (180°=-180°); meanwhile, torsion_4_3_5_6_7 demonstrates higher variability, indicating a more flexible bond
 
-![torsion distribution graphs for butyl butyrate](data\figures\image.png)
+![torsion distribution graphs for butyl butyrate](../data/figures/image.png)
 
 ## Questions:
 

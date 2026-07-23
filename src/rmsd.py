@@ -1,2 +1,0 @@
-"""RMSD calculation utilities."""
-

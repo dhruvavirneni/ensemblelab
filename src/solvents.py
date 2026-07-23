@@ -1,2 +1,0 @@
-"""Solvent model configuration utilities."""
-
