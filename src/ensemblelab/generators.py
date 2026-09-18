@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from collections.abc import Sequence
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import TYPE_CHECKING, Any
 
 import numpy as np
@@ -32,6 +32,7 @@ class Conformer:
     energy_unit: str | None = None
     optimization_method: str | None = None
     optimization_converged: bool | None = None
+    _molecule: Chem.Mol | None = field(default=None, repr=False, compare=False, hash=False)
 
     def show(self) -> None:
         """Display a concise, human-readable conformer summary."""
