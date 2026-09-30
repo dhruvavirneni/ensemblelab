@@ -6,4 +6,4 @@ __pycache__/
 .vscode/
 docs\RESEARCH_LOG.md
 .vscode\settings.json
-tests/*
+tests\test_package_imports.py
