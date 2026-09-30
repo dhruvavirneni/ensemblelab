@@ -34,6 +34,12 @@ class Conformer:
     optimization_converged: bool | None = None
     _molecule: Chem.Mol | None = field(default=None, repr=False, compare=False, hash=False)
 
+    def get_mol(self) -> Chem.Mol:
+        """Return the RDKit molecule owning this conformer."""
+        if self._molecule is None:
+            raise ValueError(f"Conformer {self.id} is not attached to a molecule.")
+        return self._molecule
+
     def show(self) -> None:
         """Display a concise, human-readable conformer summary."""
         from .display.summaries import conformer_summary
@@ -89,7 +95,6 @@ class Ensemble:
         """
         return generate(smiles, n_confs=n_confs)
 
-    @classmethod
     def get_mol(self) -> Chem.Mol:
         """Return the RDKit molecule associated with this ensemble."""
         return self.molecule
