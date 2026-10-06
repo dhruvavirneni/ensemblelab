@@ -1,6 +1,5 @@
 from ..generators import Ensemble, Conformer
 import ase.visualize
-import nglview
 
 # include link to ASE view() in documentation...outline viewing methods in docs though
 # viewer options include ase.gui and ngl for now
@@ -17,7 +16,3 @@ def view(conformer: Conformer, viewer: str = "ase") -> None:
 
     atoms = conformer.atoms
     ase.visualize.view(atoms=atoms, viewer=viewer)
-
-    
-
-    

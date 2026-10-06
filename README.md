@@ -18,20 +18,29 @@ pytest
 
 ## Current API
 
-The package currently provides conformer generation, single-stage optimization, and hierarchical optimization. Import the public functions directly from `ensemblelab`:
+The package currently provides conformer generation, single-stage optimization, filtering, and RMSD-based analysis. Import the public functions directly from `ensemblelab`:
 
 ```python
-from ensemblelab import generate, optimize, hierarchical_optimize
+from ensemblelab import Ensemble, generate
+from ensemblelab.optimizers import BaseOptimizer, MMFFOptimizer, GFN2xTBOptimizer, HierarchicalOptimizer
+from ensemblelab.analysis.rmsd import rmsd_matrix, rmsd_heatmap
 ```
 
+## Documentation
 
-
+- [Generation](docs/generation.md): conformer generation, `Conformer`, `Ensemble`, and `generate()`
+- [Optimization](docs/optimization.md): optimizer backends and optimization provenance
+- [Filtering](docs/filtering.md): energy, population, and RMSD-based filtering workflows
+- [Analysis](docs/analysis.md): geometric analysis, RMSD matrix, and heatmap utilities
+- [Display](docs/display.md): ensemble/conformer display and inspection helpers
 
 ## Modules
 
-- **Generate:** reproducible, unoptimized conformer ensembles with aligned RDKit and ASE representations.
-- **Optimize:** single-stage and hierarchical conformer refinement.
+- **Generate:** implemented and documented.
+- **Optimize:** implemented and documented.
+- **Filter:** implemented and documented.
+- **Analysis:** implemented for RMSD-based geometry analysis and documented.
+- **Display:** implemented and documented for inspection summaries.
 - **Descriptors:** in progress.
-- **Filter:** in progress.
 - **Clustering:** in progress.
 - **Utils:** in progress.

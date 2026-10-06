@@ -3,8 +3,8 @@
 from __future__ import annotations
 
 from collections.abc import Sequence
-from dataclasses import dataclass
-from typing import Any
+from dataclasses import dataclass, field
+from typing import TYPE_CHECKING, Any
 
 import numpy as np
 from ase import Atoms
@@ -12,12 +12,9 @@ from rdkit import Chem, rdBase
 from rdkit.Chem import AllChem
 
 from .filters import BaseFilter, CompositeFilter, PopulationFilter
-from .optimizers import (
-    BaseOptimizer,
-    GFN2xTBOptimizer,
-    HierarchicalOptimizer,
-    MMFFOptimizer,
-)
+
+if TYPE_CHECKING:
+    from .optimizers import BaseOptimizer
 
 
 @dataclass(slots=True)
@@ -35,20 +32,24 @@ class Conformer:
     energy_unit: str | None = None
     optimization_method: str | None = None
     optimization_converged: bool | None = None
+    _molecule: Chem.Mol | None = field(default=None, repr=False, compare=False, hash=False)
+
+    def get_mol(self) -> Chem.Mol:
+        """Return the RDKit molecule owning this conformer."""
+        if self._molecule is None:
+            raise ValueError(f"Conformer {self.id} is not attached to a molecule.")
+        return self._molecule
 
     def show(self) -> None:
-        """Display a concise, human-readable conformer summary.
-
-        This inspection method only renders stored conformer data; it does not
-        perform an optimization or any other calculation.
-        """
+        """Display a concise, human-readable conformer summary."""
         from .display.summaries import conformer_summary
 
         print(conformer_summary(self))
+
 # generation history generator helper
 def _generation_history(
     smiles: str,
-    molecule: Chem.Mol,
+    canonical_smiles: str,
     n_requested: int,
     n_generated: int,
 ) -> dict[str, Any]:
@@ -58,15 +59,13 @@ def _generation_history(
         "process": "generation",
         "method": "rdkit.ETKDGv3",
         "requested_smiles": smiles,
-        "canonical_smiles": Chem.MolToSmiles(
-            Chem.RemoveHs(molecule),
-            canonical=True,
-        ),
+        "canonical_smiles": canonical_smiles,
         "n_requested": n_requested,
         "n_generated": n_generated,
         "random_seed": 42,
         "rdkit_version": rdBase.rdkitVersion,
     }
+
 
 @dataclass(slots=True)
 class Ensemble:
@@ -95,6 +94,10 @@ class Ensemble:
         methods.
         """
         return generate(smiles, n_confs=n_confs)
+
+    def get_mol(self) -> Chem.Mol:
+        """Return the RDKit molecule associated with this ensemble."""
+        return self.molecule
 
     @property
     def conformer_ids(self) -> tuple[int, ...]:
@@ -152,6 +155,8 @@ def generate(smiles: str, n_confs: int = 25) -> Ensemble:
         raise ValueError(f"Could not parse SMILES: {smiles!r}")
     molecule = Chem.AddHs(molecule)
 
+    canonical_smiles = Chem.MolToSmiles(Chem.RemoveHs(molecule), canonical=True)
+
     params = AllChem.ETKDGv3()
     params.randomSeed = 42
     conformer_ids = tuple(
@@ -173,6 +178,7 @@ def generate(smiles: str, n_confs: int = 25) -> Ensemble:
                     molecule.GetConformer(conformer_id).GetPositions(), dtype=float
                 ).copy(),
             ),
+            _molecule=molecule,
         )
         for conformer_id in conformer_ids
     )
@@ -182,14 +188,16 @@ def generate(smiles: str, n_confs: int = 25) -> Ensemble:
     "energy_status": "uncomputed",
     "energy_unit": None,
     "rdkit_version": rdBase.rdkitVersion,
+    "canonical_smiles": canonical_smiles,
     "history": [
         _generation_history(
             smiles,
-            molecule,
+            canonical_smiles,
             n_confs,
             len(conformers),
-        )
-    ],}
+            )
+        ],
+    }
     return Ensemble(
         smiles=smiles,
         molecule=molecule,
@@ -208,6 +216,13 @@ def setup(
     target_conformers: int | None = None,
 ) -> Ensemble:
     """Quick generation, optimization, and filtration for a new Ensemble."""
+
+    from .optimizers import (
+        BaseOptimizer,
+        GFN2xTBOptimizer,
+        HierarchicalOptimizer,
+        MMFFOptimizer,
+    )
 
     # Validate all inputs before beginning computational work.
     if not isinstance(molecule, (str, Atoms)):

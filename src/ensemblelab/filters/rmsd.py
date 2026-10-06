@@ -1,9 +1,14 @@
+from __future__ import annotations
+
 from dataclasses import dataclass
+from typing import TYPE_CHECKING
 
 from rdkit.Chem import rdMolAlign
 
 from ensemblelab.filters.base import BaseFilter
-from ensemblelab.generators import Ensemble
+
+if TYPE_CHECKING:
+    from ensemblelab.generators import Ensemble
 
 
 @dataclass(frozen=True, slots=True)

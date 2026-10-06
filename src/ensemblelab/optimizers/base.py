@@ -60,6 +60,7 @@ class BaseOptimizer(ABC):
                 Conformer(
                     id=conformer.id,
                     atoms=atoms,
+                    _molecule=optimized_molecule,
                     energy=energy,
                     energy_unit="kcal/mol",
                     optimization_method=self.method,

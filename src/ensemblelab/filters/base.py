@@ -5,7 +5,8 @@ from collections.abc import Sequence
 from copy import deepcopy
 from typing import TYPE_CHECKING, Any
 
-from ensemblelab.generators import Ensemble
+if TYPE_CHECKING:
+    from ensemblelab.generators import Ensemble
 
 # prevents the circular import at runtime
 if TYPE_CHECKING:

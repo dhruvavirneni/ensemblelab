@@ -3,7 +3,7 @@
 /AGENTS.md
 __pycache__/
 .aider*
-tests\notebook.ipynb
 .vscode/
 docs\RESEARCH_LOG.md
 .vscode\settings.json
+tests\test_package_imports.py

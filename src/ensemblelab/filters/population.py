@@ -1,9 +1,14 @@
+from __future__ import annotations
+
 # population filtration via boltzmann distribution
 import math
 from dataclasses import dataclass
+from typing import TYPE_CHECKING
 
 from ensemblelab.filters.base import BaseFilter
-from ensemblelab.generators import Ensemble
+
+if TYPE_CHECKING:
+    from ensemblelab.generators import Ensemble
 
 """
 Boltzmann population filter
