@@ -1,6 +1,15 @@
-# ensemblelab
+# EnsembleLab
 
 `ensemblelab` is an open source Python library for quantitative analysis of molecular conformational ensembles. It provides functionality for ensemble analysis (basin visualization, RMSD heatmapping, etc.) with simple object-based workflows.
+
+## The Focus
+**How many conformers are enough?**
+
+Computational conformer generation often requires choosing a sampling size in advance. EnsembleLab is being developed to investigate how sampling size affects ensemble level structural and energetic properties, with the eventual goal of developing adaptive methods for choosing an appropriate sampling size for a given molecule.
+
+**Current work**
+
+EnsembleLab currently provides tools for conformer generation, optimization, filtering, RMSD analysis, torsional analysis, clustering, and molecular descriptors. These components form the foundation for studying convergence of conformational ensembles as sampling size increases.
 
 ## Install for development
 
@@ -28,11 +37,9 @@ from ensemblelab.analysis.rmsd import rmsd_matrix, rmsd_heatmap
 
 ## Documentation
 
-- [Generation](docs/generation.md): conformer generation, `Conformer`, `Ensemble`, and `generate()`
-- [Optimization](docs/optimization.md): optimizer backends and optimization provenance
-- [Filtering](docs/filtering.md): energy, population, and RMSD-based filtering workflows
-- [Analysis](docs/analysis.md): geometric analysis, RMSD matrix, and heatmap utilities
-- [Display](docs/display.md): ensemble/conformer display and inspection helpers
+[Visit the wiki!](https://github.com/dhruvavirneni/ensemblelab/wiki)
+
+You can also find updated drafts of documentation in /docs, where docs will be pushed during development. The wiki will receive periodic batch updates.
 
 ## Modules
 
@@ -42,5 +49,5 @@ from ensemblelab.analysis.rmsd import rmsd_matrix, rmsd_heatmap
 - **Analysis:** implemented for RMSD-based geometry analysis and documented.
 - **Display:** implemented and documented for inspection summaries.
 - **Descriptors:** in progress.
-- **Clustering:** in progress.
+- **Clustering:** initial functionality complete.
 - **Utils:** in progress.
