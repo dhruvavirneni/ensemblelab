@@ -1,10 +1,12 @@
+from collections.abc import Iterable
 from dataclasses import dataclass
 
 import numpy as np
-from ase import Atoms
-from rdkit import Chem, rdBase
-from rdkit.Chem import AllChem
-from ensemblelab.generators import Conformer, Ensemble
+from rdkit import Chem
+from rdkit.Chem import rdMolTransforms
+
+from ensemblelab.generators import Ensemble
+
 
 @dataclass
 class Torsion:
@@ -12,11 +14,13 @@ class Torsion:
 
     atom_indices: tuple[int, int, int, int]
     central_bond: tuple[int, int] | None = None
+
     def __post_init__(self):
         if len(self.atom_indices) != 4:
             raise ValueError("Torsion must be defined by exactly four atom indices.")
 
-def find_heavy_atom_torsions(mol: Ensemble) -> dict:
+
+def find_heavy_atom_torsions(mol: Ensemble) -> dict[str, Torsion]:
     mol = mol.get_mol()
     torsions = {}
 
@@ -57,26 +61,25 @@ def find_heavy_atom_torsions(mol: Ensemble) -> dict:
     return torsions
 
 
-"""
-IMPLEMENT TORSION DEFINITIONS PROPERLY
-manually override this later with chemically meaningful names:
-torsion_definitions = {
-    "backbone_1": (0, 1, 2, 3),
-    "backbone_2": (1, 2, 3, 4),
-}
 
-if "torsion_definitions" not in globals() or not torsion_definitions:
-    torsion_definitions = find_heavy_atom_torsions(m    ol)"""
-
-
-
-def torsion_angles(ensemble: Ensemble, torsions: Sequence[Torsion] | None = None) -> np.ndarray:
+def torsion_angles(
+    ensemble: Ensemble, torsions: Iterable[Torsion] | None = None
+) -> np.ndarray:
     """Compute torsion angle matrix for an Ensemble.
     Returns a 2d numpy array of shape (n_torsions, n_conformers) where each row corresponds to a torsion and each column corresponds to a conformer.
     """
     if torsions is None:
         torsions = find_heavy_atom_torsions(ensemble).values()
-    result = np.zeros((len(ensemble.conformers), len(torsions)), dtype=float)
+    torsions = tuple(torsions)
+    result = np.zeros((len(torsions), len(ensemble.conformers)), dtype=float)
+
+    for conformer_index, conformer in enumerate(ensemble.conformers):
+        rdkit_conformer = ensemble.rdkit_conformer(conformer.id)
+        for torsion_index, torsion in enumerate(torsions):
+            result[torsion_index, conformer_index] = rdMolTransforms.GetDihedralDeg(
+                rdkit_conformer, *torsion.atom_indices
+            )
+
+    return result
     
-        
-    
+

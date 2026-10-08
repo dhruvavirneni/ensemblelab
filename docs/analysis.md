@@ -1,12 +1,35 @@
 # Analysis
 
 ## Overview
-Analysis helpers inspect geometric similarity between conformers in an `Ensemble`. The current implementation is focused on conformer-to-conformer RMSD and is defined in `ensemblelab.analysis.rmsd`. These routines read structure data without mutating the input ensemble, and they use the RDKit conformer geometry already stored on the ensemble's molecule.
+Analysis helpers inspect geometric similarity and conformational basins in an `Ensemble`. RMSD routines are defined in `ensemblelab.analysis.rmsd`; basin routines are defined in `ensemblelab.analysis.clusters`. They use RDKit conformer geometry stored on the ensemble's molecule and accept `Conformer` objects rather than notebook-specific dictionaries. Basin calculations leave the source ensemble unchanged.
 
 ## Functions
 - **rmsd:** compute the best-fit RMSD between two conformers.
 - **rmsd_matrix:** compute the symmetric pairwise RMSD matrix for an ensemble or a selected conformer subset.
 - **rmsd_heatmap:** plot and return a pairwise RMSD heatmap for visualization.
+- **cluster_basins:** group conformers by RMSD to each basin's representative.
+- **basin_rmsd_matrix:** return pairwise RMSD data ordered by basin membership.
+- **basin_entropy:** calculate the Shannon entropy of basin populations.
+- **plot_basin_analysis:** plot basin occupancy and the basin-ordered RMSD matrix.
+
+### Basin Analysis
+`cluster_basins` uses a greedy representative-based RMSD threshold (0.75 Å by default) and returns `Basin` values containing the representative and member `Conformer` objects. When every selected conformer has an energy in kcal/mol, basin populations are calculated from Boltzmann weights and normalized over the selected conformers. For unoptimized ensembles, clustering still works and population and entropy results are `None`.
+
+```python
+from ensemblelab.analysis.clusters import (
+    basin_entropy,
+    basin_rmsd_matrix,
+    cluster_basins,
+    plot_basin_analysis,
+)
+
+basins = cluster_basins(ensemble, rmsd_threshold=0.75, temperature=298.15)
+matrix, conformer_ids, basin_ids = basin_rmsd_matrix(ensemble, basins)
+entropy = basin_entropy(basins)
+figure, axes = plot_basin_analysis(ensemble, basins, show=False)
+```
+
+Plotting requires Matplotlib; it is imported only when `plot_basin_analysis` is called.
 
 
 ### `rmsd`
