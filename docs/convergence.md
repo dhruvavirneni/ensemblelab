@@ -1,4 +1,4 @@
-# Analysis
+# Convergence
 * incomplete documentation section...just contains rough notes
 
 ## Central question: How does increasing conformer sampling affect the structural and energetic characterization of a molecule, and how can those changes help determine optimized conformer sampling sizes in ensemble analysis?
@@ -37,3 +37,49 @@ For each sampling size, I will calculate metrics such as minimum energy, pairwis
  6. train ML model with generated dataset of multiple molecules, having run this analysis
  7. test ML model, using molecule input and other quick molecular metrics like logP, etc. etc. as parameters and outputting optimal n (sample size) for effectively using this molecule for ensemble analysis
  8. maybe build a web app interface or something that maintains records of ML analyses conducted and runs new ones to output n if an inputted molecule hasn't been analyzed by anyone yet (much later)
+
+# Ensemble-wide analysis modules (to be tracked by convergenced analysis)
+## Conformer Energies
+
+### Metric identity and scope
+
+* **Metric:** Per-conformer relative energy and ensemble energy distribution/statistics.
+* **Implementation:** `ensemblelab.convergence.energies.analyze_energies`.
+* **Scope:** One supplied `Ensemble`, or an ordered subset of its conformers. This function analyzes energies only; it does not calculate Boltzmann populations, entropy, cluster statistics, plots, or convergence criteria.
+* **Purpose in convergence runs:** Re-run the analysis on successive ensemble prefixes or subsets to obtain comparable minimum-energy and distribution summaries. A stable minimum is only one convergence signal and does not establish adequate conformational-space coverage.
+
+### Inputs and reproducibility
+
+* `ensemble` (required): Existing `Ensemble` object. By default, all conformers are analyzed in `ensemble.conformers` order.
+* `conformers` (optional): Ordered sequence of the identical `Conformer` objects in that ensemble. It enables subset or prefix calculations without copying energy arrays. Duplicate IDs or objects not owned by the ensemble raise `ValueError`.
+* Conformer IDs come from `Conformer.id`. `conformer_index` is the zero-based position in the full source ensemble, including for subset analysis.
+* No parallel explicit energy sequence is accepted, so there is no separate energy-array length to reconcile.
+* Analysis is read-only and performs no rounding. Run, molecule, sampling-size, optimizer, and configuration identifiers remain experiment-layer metadata.
+
+### Definitions and statistical convention
+
+For each valid conformer $i$, relative energy is calculated against the minimum valid energy in the analyzed records:
+
+$$\Delta E_i = E_i - \min_j(E_j)$$
+
+The result includes minimum, maximum, range, arithmetic mean, median, population standard deviation, mean relative energy, and median relative energy. The population standard deviation uses denominator $n$ (equivalent to `statistics.pstdev`); it is zero for one valid energy. Equal energies therefore have zero relative energy and zero range.
+
+### Units and energy validity
+
+* Energies and energy-derived statistics are in **kcal/mol**, the unit assigned by EnsembleLab's optimization backends.
+* Finite numeric energies must explicitly declare `energy_unit` as `kcal/mol` (case and whitespace normalized). Unit conversion is not performed. A finite energy with a missing or unsupported unit raises `ValueError`, preventing unitless or mixed-unit calculations.
+* `None`, non-numeric, and non-finite values are retained as the original per-conformer `energy`, marked `energy_valid=False`, assigned `relative_energy=None`, counted in `n_invalid_energies`, and excluded from all statistics.
+* If no energies are valid, statistics are `None`. For an empty ensemble, records are empty, both energy counts are zero, and statistics are `None`.
+
+### Output schema
+
+The function returns a dictionary with two keys:
+
+* `conformers`: ordered list of records with `conformer_id`, `conformer_index`, original `energy`, `relative_energy`, and `energy_valid`.
+* `summary`: one record with `n_conformers`, `n_valid_energies`, `n_invalid_energies`, `energy_min`, `energy_max`, `energy_range`, `energy_mean`, `energy_median`, `energy_std`, `relative_energy_mean`, `relative_energy_median`, and `energy_units`.
+
+The lists and mappings are DataFrame/CSV-compatible. Missing values remain `None` in Python and serialize as blank CSV fields; `energy_valid` and the invalid count distinguish these from numeric zero. Preserve the conformer records as the detailed table and the summary as a separate ensemble-level row/table when aggregating datasets.
+
+### Known limits
+
+Only explicitly declared kcal/mol energies are analyzed. Other units require a deliberate, documented conversion layer before calling this function. This module makes no claim that the minimum energy, or any other single metric, demonstrates sufficient sampling.
