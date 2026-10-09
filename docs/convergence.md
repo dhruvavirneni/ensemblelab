@@ -83,3 +83,45 @@ The lists and mappings are DataFrame/CSV-compatible. Missing values remain `None
 ### Known limits
 
 Only explicitly declared kcal/mol energies are analyzed. Other units require a deliberate, documented conversion layer before calling this function. This module makes no claim that the minimum energy, or any other single metric, demonstrates sufficient sampling.
+
+## Reusable Metric Specification: Boltzmann Conformer Populations
+
+### Metric identity and scope
+
+* **Metric:** Energy-derived conformer weights, normalized populations, population entropy, and conformer-level effective ensemble size.
+* **Implementation:** `ensemblelab.analysis.populations.analyze_populations`, re-exported from `ensemblelab.convergence.populations`.
+* **Scope:** One `Ensemble`, or an optional ordered subset of its conformers. This does not calculate cluster-level populations, geometry, torsions, or convergence criteria.
+* **Interpretation:** These are Boltzmann estimates from the supplied conformer energies, not necessarily experimentally accurate solution populations. Effective size counts weighted conformer records, not distinct structural states.
+
+### Inputs and reproducibility
+
+* `ensemble` (required): Existing `Ensemble`; source conformer order and IDs are preserved.
+* `temperature` (optional): Positive finite temperature in kelvin; defaults to **298.15 K**, matching the existing clustering convention. The actual value is always returned as `temperature_K`.
+* `conformers` (optional keyword): Ordered subset of the identical conformer objects held by the ensemble. Source indices refer to positions in the full ensemble. Energy validity, ownership, relative energies, and units follow `analyze_energies`.
+* The implementation records the Boltzmann constant as `boltzmann_constant_kcal_mol_K = 0.00198720425864083` and reports energy units as `kcal/mol`.
+
+### Definitions and statistical convention
+
+Weights use the minimum-shifted energy to improve numerical stability:
+
+$$w_i = \exp\left(-\frac{E_i-E_{\min}}{k_B T}\right), \qquad p_i = \frac{w_i}{\sum_{j \in V} w_j}$$
+
+Here $V$ is the set of valid-energy conformers in the analyzed selection. The denominator excludes invalid energies. Entropy uses natural logarithms and is reported in nats; effective ensemble size is its exponential:
+
+$$H = -\sum_{i \in V,\ p_i>0} p_i \ln(p_i), \qquad N_{\mathrm{eff}} = \exp(H)$$
+
+Zero weights from floating-point underflow are retained as valid zero populations and omitted from the $p_i\ln(p_i)$ sum. The minimum-energy conformer retains weight 1, so normalization remains defined whenever at least one valid energy exists. Equal statistical degeneracy is assumed; no degeneracy factor is represented in the current model.
+
+### Output schema and invalid-energy policy
+
+The result is a mapping with `conformers` and `summary`:
+
+* Each ordered conformer record carries the energy-analysis fields `conformer_id`, `conformer_index`, `energy`, `relative_energy`, and `energy_valid`, plus `boltzmann_weight`, `population`, and `population_valid`.
+* The summary contains `temperature_K`, `n_conformers`, `n_valid_energies`, `n_invalid_energies`, `population_sum`, `max_population`, `effective_ensemble_size`, `population_entropy`, `population_entropy_units`, `energy_units`, and `boltzmann_constant_kcal_mol_K`.
+* `None`, nonnumeric, and non-finite energies follow the energy-analysis invalid-value policy: they remain traceable in the records, have `population_valid=False` and missing (`None`) weights/populations, are excluded from normalization, and contribute to `n_invalid_energies`. Finite energies with missing or unsupported units raise `ValueError`; units are not converted.
+* For empty selections or selections with no valid energies, counts and temperature are returned, while population statistics are `None`. For one valid conformer, population and weight are 1, entropy is 0, and effective size is 1.
+* Conformer records are CSV-compatible; invalid weights/populations serialize as blank fields and are disambiguated from valid zero populations by `population_valid`.
+
+### Assumptions and limitations
+
+Ordinary Boltzmann weighting of optimized conformer energies assumes equal degeneracy and does not automatically account for conformational entropy, vibrational contributions, solvent effects, sampling incompleteness, or duplicate representations of a physical state. Cluster-level populations and entropy are a separate analysis; do not interpret conformer-level effective size as a count of distinct states. Population stability alone does not establish adequate sampling.
