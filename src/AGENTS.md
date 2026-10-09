@@ -16,7 +16,7 @@ This is an exploratory investigation. Do not assume the hypothesis is correct or
 
 ### Phase A — Implement Ensemble Metrics
 
-Build and validate reusable analysis modules under `src/ensemblelab/convergence/`, reusing existing RMSD and clustering functionality where appropriate.
+Build convergence-facing APIs under `src/ensemblelab/convergence/`, reusing general-purpose metric calculations and existing RMSD/clustering functionality where appropriate.
 
 1. **Energies:** Relative energies and energy distributions.
 2. **Populations:** Boltzmann weights, conformer and cluster populations, Shannon entropy, effective ensemble size.
@@ -118,6 +118,13 @@ Inspect the actual repository before assuming filenames, schemas, or APIs. Prese
 
 ## 5. Agent Workflow and Persistent Context
 
+### Convergence API and implementation placement
+
+* Keep public convergence entry points simple and ensemble-facing: accept the existing `Ensemble` API and return structured, dataset-friendly results rather than printed output or plots.
+* Put general-purpose metric calculations in `src/ensemblelab/analysis/` when they are useful independently of convergence. A small function in `convergence/` may re-export that implementation to provide a clear, stable convergence-facing API; `convergence/energies.py` is the current example.
+* Put logic in the convergence module when it is inherently about sampling size, selecting or comparing prefixes/subsets, calculating successive-sample curves, or applying convergence-specific criteria. That logic may compose functions from `analysis/`; do not duplicate their metric calculations.
+* Keep the boundary pragmatic. Avoid wrappers that add no useful public API, but do not force convergence-specific orchestration into general analysis modules. Document parameter semantics, result fields, units/assumptions, and missing-data behavior, and add focused tests at the public entry point.
+
 Before each task, read this file and inspect relevant code, tests, and interfaces. Implement one module or well-defined pipeline component at a time.
 
 Use focused tests, verify scientific calculations, and run relevant tests after changes. Avoid unrelated refactors, unnecessary dependencies, and large rewrites.
@@ -125,3 +132,10 @@ Use focused tests, verify scientific calculations, and run relevant tests after 
 **Update this file whenever a significant research decision, metric definition, convergence criterion, data schema, interface, completed phase, or limitation changes.** Keep it concise and factual. Reflect actual code and verified results; mark unfinished work clearly. Remove superseded plans rather than accumulating contradictory instructions.
 
 At the end of each task, report changes made, tests and outcomes, unresolved issues, and the next recommended step. Ask before making major scientific or architectural changes.
+
+## Verified Implementation Status
+
+* **Energy metrics:** Implemented in `ensemblelab.analysis.energies.analyze_energies` and re-exported from `ensemblelab.convergence.energies`. Accepts an `Ensemble` and optional ordered subset of its owned conformers; returns ordered conformer records and one summary mapping. Source IDs and full-ensemble indices are retained.
+* **Scientific contract:** Uses kcal/mol, matching the optimizer interfaces. Finite numeric energies must explicitly declare kcal/mol; unsupported or missing units raise `ValueError`. Missing, nonnumeric, and non-finite energies are retained, marked invalid, and excluded from statistics. Standard deviation is population standard deviation (`ddof=0`). No values are rounded or mutated.
+* **Validation:** `tests/convergence/test_energies.py` covers hand-verifiable values, invalid/missing data, empty/equal/single cases, stable ordering/subsets, non-mutation, units, schema, and CSV serialization. Focused result: 11 passed.
+* **Limitations / next step:** Unit conversion is intentionally unsupported. The energy module does not implement populations, geometry, torsions, properties, clustering, or the convergence pipeline; implement and validate the population metrics as the next independent component.
