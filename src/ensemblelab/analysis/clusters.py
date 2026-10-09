@@ -9,6 +9,7 @@ import numpy as np
 from rdkit import Chem
 from rdkit.Chem import rdMolAlign
 
+from ensemblelab.analysis.entropy import entropy_statistics
 from ensemblelab.analysis.populations import (
 	BOLTZMANN_CONSTANT_KCAL_MOL_K,
 	_boltzmann_weights,
@@ -192,11 +193,8 @@ def basin_entropy(basins: Sequence[Basin]) -> float | None:
 	if total_population <= 0:
 		raise ValueError("basin populations must sum to a positive value.")
 
-	return -sum(
-		probability * math.log(probability)
-		for population in populations
-		if (probability := population / total_population) > 0
-	)
+	normalized_populations = [population / total_population for population in populations]
+	return entropy_statistics(normalized_populations)["entropy"]
 
 
 def plot_basin_analysis(
