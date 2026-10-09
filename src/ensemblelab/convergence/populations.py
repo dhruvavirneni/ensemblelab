@@ -1,0 +1,1 @@
+# bolzmann weights, conformer and cluster populations, entropy, effective ensemble size

@@ -1,0 +1,1 @@
+# radius of gyration, solvent accessible surface area
