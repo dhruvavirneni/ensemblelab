@@ -84,7 +84,7 @@ The lists and mappings are DataFrame/CSV-compatible. Missing values remain `None
 
 Only explicitly declared kcal/mol energies are analyzed. Other units require a deliberate, documented conversion layer before calling this function. This module makes no claim that the minimum energy, or any other single metric, demonstrates sufficient sampling.
 
-## Reusable Metric Specification: Boltzmann Conformer Populations
+## Boltzmann Conformer Populations
 
 ### Metric identity and scope
 
@@ -125,3 +125,43 @@ The result is a mapping with `conformers` and `summary`:
 ### Assumptions and limitations
 
 Ordinary Boltzmann weighting of optimized conformer energies assumes equal degeneracy and does not automatically account for conformational entropy, vibrational contributions, solvent effects, sampling incompleteness, or duplicate representations of a physical state. Cluster-level populations and entropy are a separate analysis; do not interpret conformer-level effective size as a count of distinct states. Population stability alone does not establish adequate sampling.
+
+## Conformer and Cluster Entropy
+
+### Metric identity and scope
+
+* **Metric:** Shannon entropy and effective ensemble size from conformer populations, compared with entropy and effective size after aggregating populations by structural cluster.
+* **Implementation:** `ensemblelab.convergence.entropy.analyze_entropy`, using the reusable `ensemblelab.analysis.entropy.entropy_statistics` function.
+* **Population source:** Boltzmann populations from `ensemblelab.analysis.populations.analyze_populations`; no separate entropy-specific weighting implementation is used.
+* **Scope:** One `Ensemble` or an ordered conformer subset. This analysis does not generate a new clustering algorithm, population model, or convergence curve.
+
+### Inputs and clustering provenance
+
+* `ensemble` (required): Existing EnsembleLab ensemble.
+* `temperature` (optional): Positive finite kelvin temperature passed to Boltzmann population analysis; defaults to 298.15 K and is returned in the summary.
+* `conformers` (optional keyword): Ordered subset of ensemble-owned conformers. Existing energy/population selection and full-ensemble conformer indices are preserved.
+* `basins` (optional): Existing `Basin` assignments from `analysis.clusters`. If omitted, `cluster_basins` is called using the configured `rmsd_threshold` (default 0.75 Å) and temperature. Supplied assignments are not changed or regenerated.
+* Automatically generated assignments report method `greedy_best_fit_rmsd`, distance `RDKit best-fit RMSD`, and `rmsd_threshold_A`. Supplied basins report `provided_basin_assignments`; the `Basin` API does not retain the generating method or cutoff, so these are reported as unavailable rather than inferred.
+
+### Definitions and normalization
+
+For normalized probabilities $p_i$, entropy uses natural logarithms and is measured in nats. Effective size is the exponential of entropy:
+
+$$H = -\sum_{i:p_i>0} p_i\ln(p_i), \qquad N_{\mathrm{eff}}=\exp(H)$$
+
+Terms at exactly zero probability contribute zero (`0 ln 0 = 0`). `analysis.entropy.entropy_statistics` accepts only finite, nonnegative, already-normalized probabilities (sum within numerical tolerance); it rejects invalid or unnormalized input. Empty input produces missing entropy and effective size. Boltzmann conformer populations are already normalized over valid-energy conformers by the population API.
+
+Cluster probability is the sum of the populations of valid member conformers. Cluster entropy is calculated from those aggregated values only when basin membership is a complete, non-overlapping partition of all selected conformers. Invalid conformer populations remain missing and are not treated as zero; clusters with no valid population have `cluster_population=None`. A valid cluster with an underflowed population of zero is retained and has zero entropy contribution. If assignments omit, overlap, or include a conformer outside the analyzed selection, cluster entropy and contributions are unavailable; conformer entropy remains calculable from valid populations.
+
+### Output schema
+
+The result has `conformers`, `clusters`, and `summary` records:
+
+* Per-conformer records preserve energy-analysis and population-analysis fields, add `cluster_id` when uniquely assigned, and retain `None` for unassigned or ambiguous IDs.
+* Per-cluster records contain `cluster_id`, `n_conformers`, `n_valid_populations`, `cluster_population`, and `cluster_entropy_contribution`. Join members through `cluster_id` in the per-conformer records. Per-cluster effective-size contribution is intentionally omitted: effective size is nonlinear and has no additive cluster contribution.
+* The summary includes conformer/cluster counts and valid-population counts; conformer and cluster entropy/effective size; `population_source`; `temperature_K`; energy/entropy units; clustering method, distance, and cutoff metadata; assignment completeness/availability; and invalid/unassigned conformer counts.
+* `conformer_entropy` can be calculated even if cluster assignments are incomplete. `cluster_entropy` and `cluster_effective_size` are `None` if assignment is incomplete or no valid populations exist. For an empty ensemble, records are empty and entropy values are `None`.
+
+### Interpretation and limitations
+
+Conformer-level entropy can be inflated by redundant near-duplicate structures. Cluster entropy is conditional on the clustering algorithm, distance metric, cutoff, and population model; it is not an absolute measure independent of those choices. Neither quantity alone establishes sampling completeness or should be interpreted as physical thermodynamic conformational entropy without the necessary statistical-mechanical assumptions. Boltzmann populations inherit the limitations documented above.
