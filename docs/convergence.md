@@ -4,7 +4,7 @@
 ## Central question: How does increasing conformer sampling affect the structural and energetic characterization of a molecule, and how can those changes help determine optimized conformer sampling sizes in ensemble analysis?
  * other stuff i'm wondering: in a given Ensemble with n conformer sample size, will all metrics converge relatively at the same n?
 
-## goals and stuff
+## Raw goals
 Investigate how many conformers are needed to adequately characterize a molecule's conformational ensemble, and whether that number can be predicted from the molecule's properties. The first stage is to study how ensemble-level metrics change as the number of generated conformers increases. Starting with a set of molecules spanning different sizes and levels of structural complexity, I will generate conformational ensembles at progressively larger sampling sizes, optimize their geometries, and standardize the resulting structures and energies for consistent comparison.
 
 Ensemble wide metrics worth calculating/investing convergence on:
@@ -36,7 +36,7 @@ For each sampling size, I will calculate metrics such as minimum energy, pairwis
     * measure metric changes between sample sizes (metrics to look at listed above)
  6. train ML model with generated dataset of multiple molecules, having run this analysis
  7. test ML model, using molecule input and other quick molecular metrics like logP, etc. etc. as parameters and outputting optimal n (sample size) for effectively using this molecule for ensemble analysis
- 8. maybe build a web app interface or something that maintains records of ML analyses conducted and runs new ones to output n if an inputted molecule hasn't been analyzed by anyone yet (much later)
+ 8. possibly build a web app interface that maintains records of ML analyses conducted and runs new ones to output n if an inputted molecule hasn't been analyzed by anyone yet (much later)
 
 # Ensemble-wide analysis modules (to be tracked by convergenced analysis)
 ## Conformer Energies
