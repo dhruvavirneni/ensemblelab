@@ -9,9 +9,14 @@ import numpy as np
 from rdkit import Chem
 from rdkit.Chem import rdMolAlign
 
+from ensemblelab.analysis.entropy import entropy_statistics
+from ensemblelab.analysis.populations import (
+	BOLTZMANN_CONSTANT_KCAL_MOL_K,
+	_boltzmann_weights,
+)
 from ensemblelab.generators import Conformer, Ensemble
 
-R_KCAL = 0.00198720425864083
+R_KCAL = BOLTZMANN_CONSTANT_KCAL_MOL_K
 
 
 @dataclass(frozen=True, slots=True)
@@ -72,10 +77,9 @@ def _boltzmann_populations(
 		raise ValueError("conformer energies must be finite.")
 
 	minimum_energy = min(energies)
-	weights = [
-		math.exp(-(energy - minimum_energy) / (R_KCAL * temperature))
-		for energy in energies
-	]
+	weights = _boltzmann_weights(
+		[energy - minimum_energy for energy in energies], temperature
+	)
 	partition_function = sum(weights)
 	return {
 		conformer.id: weight / partition_function
@@ -189,11 +193,8 @@ def basin_entropy(basins: Sequence[Basin]) -> float | None:
 	if total_population <= 0:
 		raise ValueError("basin populations must sum to a positive value.")
 
-	return -sum(
-		probability * math.log(probability)
-		for population in populations
-		if (probability := population / total_population) > 0
-	)
+	normalized_populations = [population / total_population for population in populations]
+	return entropy_statistics(normalized_populations)["entropy"]
 
 
 def plot_basin_analysis(
