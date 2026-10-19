@@ -165,3 +165,24 @@ The result has `conformers`, `clusters`, and `summary` records:
 ### Interpretation and limitations
 
 Conformer-level entropy can be inflated by redundant near-duplicate structures. Cluster entropy is conditional on the clustering algorithm, distance metric, cutoff, and population model; it is not an absolute measure independent of those choices. Neither quantity alone establishes sampling completeness or should be interpreted as physical thermodynamic conformational entropy without the necessary statistical-mechanical assumptions. Boltzmann populations inherit the limitations documented above.
+
+## Structural Geometry
+
+### Metric identity and definitions
+
+* **Metrics:** Mass-weighted radius of gyration and solvent-accessible surface area (SASA), calculated independently for each conformer.
+* **Implementation:** `ensemblelab.convergence.geometry.analyze_geometry`.
+* **Radius of gyration:** RDKit `Descriptors3D.RadiusOfGyration` with atomic-mass weighting (`useAtomicMasses=True`). It is reported in angstroms and uses every atom in the molecular graph; explicit hydrogens are included. The value describes mass distribution about the center of mass, not a complete measure of shape or conformational diversity.
+* **SASA:** RDKit FreeSASA with Lee-Richards surface calculation, a 1.4 angstrom probe, and RDKit periodic-table van der Waals radii (`GetRvdw`) supplied as the atomic radii. Results are reported in square angstroms. All atoms represented in the molecular graph are included, including explicit hydrogens. Radii are element-based and are not adjusted for charge, bonding state, or solvent-specific chemistry.
+
+### Inputs, records, and missing values
+
+The function accepts an `Ensemble` and an optional ordered subset of the identical conformer objects owned by it. Default order is the ensemble's order; each output `conformer_index` is the position in the full source ensemble. Coordinates are read from each conformer's ASE `Atoms` object and copied into a private RDKit molecule for calculation. Atom count and atomic-number order must agree with the ensemble molecule. The analysis does not mutate either input coordinate representation.
+
+Per-conformer rows include `conformer_id`, `conformer_index`, metric value (`radius_of_gyration_A` or `sasa_A2`), a metric-specific validity flag and status, and an error field. A missing, non-finite, or topology-incompatible coordinate set invalidates both calculations for that conformer. A failure or non-finite result for one metric does not invalidate the other metric. If the RDKit installation does not provide FreeSASA, SASA values are `None`, `sasa_valid` is false, and `sasa_status` is `unavailable`; no approximation is substituted. Summary counts still include those SASA records as invalid, and `sasa_available` distinguishes the unavailable implementation from calculation failures.
+
+The summary reports total and metric-specific valid/invalid conformer counts, mean, median, population standard deviation, minimum, maximum, range, units, and method settings. Statistics exclude invalid values and are `None` if no valid result exists. Standard deviation uses denominator *n* (`ddof=0`) and is zero for a single valid conformer. Empty ensembles return empty conformer records, zero counts, and missing (`None`) statistics. Per-conformer records are CSV-compatible; missing values remain blank rather than being replaced by zero.
+
+### Additional descriptors and limitations
+
+RDKit also exposes geometric anisotropy descriptors such as asphericity. Such a descriptor could complement the size and solvent-exposure measurements, but is not included until its specific research use and comparison with these metrics are established. Radius of gyration and SASA are not convergence criteria and neither independently establishes ensemble diversity or adequate sampling.
