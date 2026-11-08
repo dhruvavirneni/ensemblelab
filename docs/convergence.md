@@ -186,3 +186,24 @@ The summary reports total and metric-specific valid/invalid conformer counts, me
 ### Additional descriptors and limitations
 
 RDKit also exposes geometric anisotropy descriptors such as asphericity. Such a descriptor could complement the size and solvent-exposure measurements, but is not included until its specific research use and comparison with these metrics are established. Radius of gyration and SASA are not convergence criteria and neither independently establishes ensemble diversity or adequate sampling.
+
+## Torsional Diversity
+
+### Eligible torsions and angles
+
+* **Implementation:** `ensemblelab.convergence.torsions.analyze_torsions`.
+* A torsion is defined around an acyclic single bond between two heavy atoms, where each central atom has at least one other heavy-atom neighbor. Bonds within rings and terminal heavy-atom bonds are excluded. Amide/ester C–N and C–O single bonds are excluded when the carbon is double-bonded to oxygen. Acyclic single-bond linkages between ring systems remain eligible.
+* The outer atom on either side is the lowest-index heavy-atom neighbor other than the opposite central atom. The four indices are from `ensemble.molecule`; IDs are `torsion_<lower-central-index>_<higher-central-index>`. Thus each central bond has one deterministic representative dihedral even where more than one outer atom could be chosen.
+* RDKit `rdMolTransforms.GetDihedralDeg` calculates angles in degrees from each conformer’s ASE coordinates copied into a private RDKit molecule. Angles are normalized to `[-180, 180)`. Atom count and atomic-number order must match the ensemble molecular graph. The input ASE and RDKit coordinates are not changed.
+
+### Circular statistics and state bins
+
+The circular mean is `atan2(mean(sin(angle)), mean(cos(angle)))`, normalized to `[-180, 180)`. Circular resultant length is the magnitude of the mean unit vector (bounded to `[0, 1]`), and circular variance is `1 - resultant_length`. The mean is undefined (`None`) when resultant length is at most `1e-12`; the resultant and variance remain available when observations exist.
+
+Torsional-state coverage uses configurable `state_bin_edges_deg`, which must be strictly increasing and span exactly -180 through 180. The default is twelve equal-width 30-degree angular bins. Bins are left-closed/right-open; an exact interior boundary belongs to the bin beginning at that boundary, and +180° normalizes to -180°. Bin IDs, boundaries, and convention are returned in the result. These generic bins are descriptors of observed angular coverage, not chemically equivalent states or equal-energy basins.
+
+### Output and missing observations
+
+The result contains `conformers` (one row for each selected conformer/torsion pair), `torsions` (one record per eligible central bond), and `summary`. Observation rows include source conformer ID/index, torsion ID, central bond, four atom indices, `angle_deg`, validity/status/error, and state-bin ID. Torsion summaries provide valid-observation count, circular mean/resultant/variance, occupied-state count and IDs, state coverage, and bin definitions. Aggregate state counts sum over torsions with at least one valid observation; mean occupied states and mean state coverage likewise exclude torsions without observations. For an empty ensemble, eligible torsions remain represented but their observation counts are zero and statistics/coverage are `None`. Molecules with no eligible torsions return empty torsion and observation lists, zero total occupied states, and `None` aggregate means.
+
+Missing or non-finite coordinates, atom-mapping mismatch, and individual RDKit dihedral failures produce `None` angles and explicit error/status fields; successful observations are retained. A valid 0° angle is distinct from a missing angle. Circular means may be undefined for widely distributed angles. State-bin counts are only one view of torsional sampling and do not imply thermodynamic populations, equal-energy states, conformational diversity completeness, or convergence.
