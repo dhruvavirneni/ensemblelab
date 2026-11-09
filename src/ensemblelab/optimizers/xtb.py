@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import Any
 
 from ase import Atoms
@@ -24,6 +24,8 @@ class GFN2xTBOptimizer(BaseOptimizer):
     charge: int | None = None
     multiplicity: int | None = None
     solvent: str | None = None
+    _resolved_charge: int = field(init=False, repr=False, compare=False)
+    _resolved_multiplicity: int = field(init=False, repr=False, compare=False)
 
     def __post_init__(self) -> None:
         self._validate_fmax(self.fmax)
@@ -40,13 +42,15 @@ class GFN2xTBOptimizer(BaseOptimizer):
 
     def optimize(self, ensemble: Ensemble) -> Ensemble:
         """Optimize all conformers after resolving the ensemble's electronic state."""
-        self._resolved_charge = self._resolve_charge(ensemble, self.charge)
-        self._resolved_multiplicity = self._resolve_multiplicity(ensemble, self.multiplicity)
+        resolved_charge = self._resolve_charge(ensemble, self.charge)
+        resolved_multiplicity = self._resolve_multiplicity(ensemble, self.multiplicity)
+        object.__setattr__(self, "_resolved_charge", resolved_charge)
+        object.__setattr__(self, "_resolved_multiplicity", resolved_multiplicity)
         try:
-            return super().optimize(ensemble)
+            return BaseOptimizer.optimize(self, ensemble)
         finally:
-            del self._resolved_charge
-            del self._resolved_multiplicity
+            object.__delattr__(self, "_resolved_charge")
+            object.__delattr__(self, "_resolved_multiplicity")
 
     def _optimize_conformer(
         self, molecule: Chem.Mol, conformer_id: int, atoms: Atoms
