@@ -34,7 +34,11 @@ Optimizes conformers using the GFN2-xTB semiempirical quantum chemical method th
 using `GFN2xTBOptimizer`.
 
 Because TBLite contains compiled native code, installation availability
-depends on the user's Python version and operating system.
+depends on the user's Python version and operating system. On Linux, use
+`pip install ensemblelab[xtb]`. On macOS/Windows, use
+`conda install -c conda-forge tblite-python`. Constructing a
+`GFN2xTBOptimizer` without TBLite raises an `ImportError` with these
+instructions, before any conformers are processed.
 
 Metadata recorded: `fmax`, `max_steps`, `solvent`, `charge`, `multiplicity`
 
@@ -58,7 +62,21 @@ optimized = optimizer.optimize(ensemble)
 **Overview:** 
 Optimizes conformers using ORCA through ASE's ORCA calculator. ORCA performs the underlying quantum chemical calculation while ASE manages the optimization workflow. Each conformer receives an optimized geometry, an energy in kcal/mol, and a convergence status.
 
-Metadata recorded: `fmax`, `max_steps`, `charge`, `multiplicity`, `orca_simple_input`, `orca_blocks`
+Metadata recorded: `fmax`, `max_steps`, `charge`, `multiplicity`, `orca_simple_input`, `orca_blocks`, `orca_command` (resolved absolute path)
+
+ORCA is an external program and is not installed with EnsembleLab. Pass the
+full path to the executable as `orca_command`, or leave it unset and configure
+ASE's config file (`~/.config/ase/config.ini` or `$ASE_CONFIG_FILE`):
+
+```ini
+[orca]
+command = /opt/orca/orca
+```
+
+The executable is located when `optimize()` is called, not at import or
+construction. If it can't be found, `optimize()` raises `FileNotFoundError`
+with setup instructions. A bare `orca` on `PATH` is never assumed, because on
+Linux it is often the GNOME screen reader.
 
 
 **Usage**

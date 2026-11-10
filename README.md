@@ -11,12 +11,44 @@ Computational conformer generation often requires choosing a sampling size in ad
 
 EnsembleLab currently provides tools for conformer generation, optimization, filtering, RMSD analysis, torsional analysis, clustering, and molecular descriptors. These components form the foundation for studying convergence of conformational ensembles as sampling size increases.
 
-## Install for development
+## Installation
+
+EnsembleLab requires Python 3.10 or newer. It isn't published on PyPI yet, so install it from a clone of this repository.
+
+### pip
 
 ```bash
-pip install -e ".[dev]"
+pip install -e .              # core: generation, MMFF/UFF optimization, filtering, analysis
+pip install -e ".[dev]"       # core + pytest, for development
+pip install -e ".[xtb]"       # core + GFN2-xTB backend (Linux only, see below)
 pytest
 ```
+
+`tblite`, which provides GFN2-xTB, publishes PyPI wheels for Linux only. On macOS and Windows, install it from conda-forge (`conda install -c conda-forge tblite-python`) or use the conda environment below.
+
+### conda
+
+From the repository root:
+
+```bash
+conda env create -f environment.yml
+conda activate ensemblelab
+pytest
+```
+
+This environment installs every backend available from conda-forge, including tblite, and installs EnsembleLab in editable mode.
+
+### Optimizer requirements
+
+| Optimizer | Needs | Install |
+| --- | --- | --- |
+| `MMFFOptimizer`, MMFF/UFF in `optimize()` | RDKit (core) | included in `pip install -e .` |
+| `GFN2xTBOptimizer` | `tblite` (optional) | `pip install -e ".[xtb]"` on Linux; `conda install -c conda-forge tblite-python` on macOS/Windows |
+| `ORCAOptimizer` | ORCA executable (external) | download from the [ORCA forum](https://orcaforum.kofo.mpg.de), then pass `orca_command="/full/path/to/orca"` or set `command` under `[orca]` in ASE's config file (`~/.config/ase/config.ini`) |
+
+Optional backends are only imported when you use them. `import ensemblelab` works without tblite or ORCA. Constructing a `GFN2xTBOptimizer` without tblite raises an `ImportError` that tells you how to install it. Running an `ORCAOptimizer` that can't find ORCA raises a `FileNotFoundError`.
+
+> Note: `generators.setup()` uses MMFF → GFN2-xTB by default, so it needs tblite unless you pass your own `optimizers=`.
 
 ## Datatypes
 
