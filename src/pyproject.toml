@@ -1,0 +1,14 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "ensemblelab"
+version = "0.1.0"
+description = "Workflows for conformational ensembles of molecules"
+requires-python = ">=3.10"
+dependencies = ["numpy", "ase", "rdkit", "pandas"]
+
+[project.optional-dependencies]
+xtb = ["tblite"]
+dev = ["pytest"]
