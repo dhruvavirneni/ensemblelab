@@ -60,7 +60,9 @@ def optimize(
         Electronic state for GFN2-xTB and ORCA. Charge defaults to the RDKit
         formal charge. Multiplicity defaults to one plus radical electrons.
     orca_command
-        Path or command for the ORCA executable. Required for ``"ORCA"``.
+        Full path to the ORCA executable. If omitted for ``"ORCA"``, ASE's
+        ``[orca] command`` config entry is used; ORCA itself must be
+        installed separately.
     orca_simple_input, orca_blocks
         ORCA input settings. Use these to select a method, basis, parallelism,
         and any backend-specific solvent treatment.
@@ -77,7 +79,9 @@ def optimize(
     Raises
     ------
     ImportError
-        If an optional backend dependency is unavailable.
+        If an optional backend dependency (tblite) is unavailable.
+    FileNotFoundError
+        If the ORCA executable cannot be located.
     RuntimeError
         If a backend cannot construct or run a calculation.
     ValueError
@@ -411,13 +415,9 @@ def _optimize_xtb(
     solvent: str | None,
 ) -> tuple[float, bool]:
     """Optimize one conformer with TBLite and return energy in kcal/mol."""
-    try:
-        from tblite.ase import TBLite
-    except ImportError as error:
-        raise ImportError(
-            "GFN2-xTB optimization requires the optional 'tblite' package. "
-            "Install ensemblelab with its xTB extra."
-        ) from error
+    from .optimizers.xtb import _load_tblite_calculator
+
+    TBLite = _load_tblite_calculator()
 
     calculator_options = {"method": "GFN2-xTB", "charge": charge, "multiplicity": multiplicity}
     if solvent is not None:
@@ -442,12 +442,11 @@ def _optimize_orca(
     conformer_id: int,
 ) -> tuple[float, bool]:
     """Optimize one conformer with ASE's optional ORCA calculator."""
-    if not command:
-        raise ValueError("ORCA optimization requires orca_command, such as '/path/to/orca'.")
-    try:
-        from ase.calculators.orca import ORCA, OrcaProfile
-    except ImportError as error:
-        raise ImportError("ORCA optimization requires ASE's ORCA calculator support.") from error
+    from ase.calculators.orca import ORCA, OrcaProfile
+
+    from .optimizers.orca import _resolve_orca_command
+
+    command = _resolve_orca_command(command)
 
     def run(directory: str) -> tuple[float, bool]:
         atoms.calc = ORCA(
