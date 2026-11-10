@@ -20,8 +20,12 @@ dependencies = [
 dev = [
 	"pytest>=8",
 ]
+# GFN2-xTB backend. tblite publishes PyPI wheels for Linux only; on macOS and
+# Windows install it from conda-forge instead: `conda install -c conda-forge tblite-python`.
 xtb = ["tblite>=0.4"]
-# Install the ORCA executable separately and pass its path as `orca_command`.
+# ORCA is an external executable and cannot be pip-installed. Install it
+# separately and pass its full path as `orca_command`, or set `[orca] command`
+# in ASE's config file. This extra is intentionally empty.
 orca = []
 
 [tool.hatch.build.targets.wheel]
