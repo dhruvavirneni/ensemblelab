@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from collections.abc import Sequence
+from collections.abc import Mapping, Sequence
 from copy import deepcopy
 from typing import TYPE_CHECKING, Any
 
@@ -50,6 +50,9 @@ class BaseFilter(ABC):
     @staticmethod
     def _validate_ensemble(ensemble: Ensemble) -> None:
         """Validate that the ensemble is suitable for filtering."""
+        # Runtime import (see _build_filtered_ensemble) to avoid a circular import.
+        from ensemblelab.generators import Ensemble
+
         if not isinstance(ensemble, Ensemble):
             raise TypeError("Input must be an instance of Ensemble.")
         if not ensemble.conformers:
@@ -59,8 +62,17 @@ class BaseFilter(ABC):
     def _build_filtered_ensemble(
     self,
     ensemble: Ensemble,
-    conformers: Sequence[Conformer],) -> Ensemble:
-        """Construct a new Ensemble with filtered conformers and updated metadata."""
+    conformers: Sequence[Conformer],
+    extra_details: Mapping[str, Any] | None = None,) -> Ensemble:
+        """Construct a new Ensemble with filtered conformers and updated metadata.
+
+        ``extra_details`` holds run-specific provenance (e.g. which conformer
+        IDs were removed) that is merged over ``_history_details()``.
+        """
+        # Runtime import: generators imports this package, so a module-level
+        # import would be circular. TYPE_CHECKING alone leaves Ensemble undefined.
+        from ensemblelab.generators import Ensemble
+
         metadata = deepcopy(ensemble.metadata)
 
         self._append_history(
@@ -69,7 +81,7 @@ class BaseFilter(ABC):
             method=self.method,
             n_input_conformers=len(ensemble.conformers),
             n_output_conformers=len(conformers),
-            **self._history_details(),
+            **{**self._history_details(), **(extra_details or {})},
         )
 
         metadata["n_conformers"] = len(conformers)
