@@ -141,6 +141,7 @@ Ordinary Boltzmann weighting of optimized conformer energies assumes equal degen
 * `temperature` (optional): Positive finite kelvin temperature passed to Boltzmann population analysis; defaults to 298.15 K and is returned in the summary.
 * `conformers` (optional keyword): Ordered subset of ensemble-owned conformers. Existing energy/population selection and full-ensemble conformer indices are preserved.
 * `basins` (optional): Existing `Basin` assignments from `analysis.clusters`. If omitted, `cluster_basins` is called using the configured `rmsd_threshold` (default 0.75 Å) and temperature. Supplied assignments are not changed or regenerated.
+* Generated basins use RDKit `GetBestRMS` (symmetry-aware best fit) over **all atoms, including hydrogens**, computed on a copy of the molecule (input coordinates are not moved). A conformer joins a basin when its RMSD to the basin representative is strictly `< rmsd_threshold`. Hydrogen rotations (e.g. OH) can therefore split near-identical heavy-atom geometries into separate basins. This differs from `RMSDFilter(heavy_atoms_only=True)` (see Filtering), which uses `<= cutoff` over heavy atoms.
 * Automatically generated assignments report method `greedy_best_fit_rmsd`, distance `RDKit best-fit RMSD`, and `rmsd_threshold_A`. Supplied basins report `provided_basin_assignments`; the `Basin` API does not retain the generating method or cutoff, so these are reported as unavailable rather than inferred.
 
 ### Definitions and normalization
@@ -164,7 +165,7 @@ The result has `conformers`, `clusters`, and `summary` records:
 
 ### Interpretation and limitations
 
-Conformer-level entropy can be inflated by redundant near-duplicate structures. Cluster entropy is conditional on the clustering algorithm, distance metric, cutoff, and population model; it is not an absolute measure independent of those choices. Neither quantity alone establishes sampling completeness or should be interpreted as physical thermodynamic conformational entropy without the necessary statistical-mechanical assumptions. Boltzmann populations inherit the limitations documented above.
+Conformer-level entropy can be inflated by redundant near-duplicate structures. `RMSDFilter` can remove such duplicates before analysis (lowest-energy representative kept, removed IDs and their matches recorded in history), but deduplication is not yet part of the convergence workflow; whether and how to apply it to sampling-size subsets is an open design decision. Cluster entropy is conditional on the clustering algorithm, distance metric, cutoff, and population model; it is not an absolute measure independent of those choices. Neither quantity alone establishes sampling completeness or should be interpreted as physical thermodynamic conformational entropy without the necessary statistical-mechanical assumptions. Boltzmann populations inherit the limitations documented above.
 
 ## Structural Geometry
 
