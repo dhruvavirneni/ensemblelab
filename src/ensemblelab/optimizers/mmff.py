@@ -5,11 +5,11 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Any, Literal
 
-import numpy as np
 from ase import Atoms
 from rdkit import Chem
 from rdkit.Chem import AllChem
 
+from ..generators import sync_atoms_from_rdkit
 from .base import BaseOptimizer
 
 
@@ -45,9 +45,7 @@ class MMFFOptimizer(BaseOptimizer):
             raise RuntimeError(
                 f"MMFF optimization failed for conformer {conformer_id} (status {status})."
             )
-        atoms.positions[:] = np.asarray(
-            molecule.GetConformer(conformer_id).GetPositions(), dtype=float
-        )
+        sync_atoms_from_rdkit(molecule, conformer_id, atoms)
         return float(force_field.CalcEnergy()), status == 0
 
     def _history_details(self) -> dict[str, Any]:
@@ -76,9 +74,7 @@ class UFFOptimizer(MMFFOptimizer):
             raise RuntimeError(
                 f"UFF optimization failed for conformer {conformer_id} (status {status})."
             )
-        atoms.positions[:] = np.asarray(
-            molecule.GetConformer(conformer_id).GetPositions(), dtype=float
-        )
+        sync_atoms_from_rdkit(molecule, conformer_id, atoms)
         return float(force_field.CalcEnergy()), status == 0
 
     def _history_details(self) -> dict[str, Any]:

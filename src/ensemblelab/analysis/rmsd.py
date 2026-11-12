@@ -3,13 +3,16 @@ from collections.abc import Sequence
 import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib.axes import Axes
+from rdkit import Chem
 from rdkit.Chem import rdMolAlign
 
 from ensemblelab.generators import Conformer, Ensemble
 
 
 def rmsd(conformer1: Conformer, conformer2: Conformer, molecule) -> float:
-    molecule1 = conformer1.get_mol()
+    # GetBestRMS leaves the probe aligned in place; use a copy so the shared
+    # ensemble molecule stays synchronized with Conformer.atoms.
+    molecule1 = Chem.Mol(conformer1.get_mol())
     molecule2 = conformer2.get_mol()
 
     return rdMolAlign.GetBestRMS(
@@ -48,7 +51,8 @@ def rmsd_matrix(ensemble: Ensemble, conformers: Sequence[Conformer] | None = Non
     if not set(selected_ids).issubset(ensemble_ids):
         raise ValueError("conformers must belong to the supplied ensemble.")
 
-    molecule = ensemble.molecule
+    # Copy: GetBestRMS aligns the probe conformer in place.
+    molecule = Chem.Mol(ensemble.molecule)
     conformer_ids = [conformer.id for conformer in selected_conformers]
     n_conformers = len(conformer_ids)
     rmsd = np.zeros((n_conformers, n_conformers), dtype=float)
@@ -113,7 +117,8 @@ def rmsd_heatmap(
         )
         selected_ids.insert(0, selected_ids.pop(selected_ids.index(reference_conformer.id)))
 
-    molecule = ensemble.molecule
+    # Copy: GetBestRMS aligns the probe conformer in place.
+    molecule = Chem.Mol(ensemble.molecule)
     conformer_ids = [conformer.id for conformer in selected_conformers]
     n_conformers = len(conformer_ids)
     rmsd_matrix = np.zeros((n_conformers, n_conformers), dtype=float)

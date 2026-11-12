@@ -3,7 +3,10 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from collections.abc import Mapping, Sequence
 from copy import deepcopy
+from dataclasses import replace
 from typing import TYPE_CHECKING, Any
+
+from rdkit import Chem
 
 if TYPE_CHECKING:
     from ensemblelab.generators import Ensemble
@@ -86,9 +89,19 @@ class BaseFilter(ABC):
 
         metadata["n_conformers"] = len(conformers)
 
+        # The filtered ensemble owns its own RDKit molecule and Atoms so later
+        # edits to either ensemble can never leak into the other. Conformers
+        # are rebound to the copy; coordinates, IDs, and energies are unchanged.
+        # RDKit conformers of removed members stay in the copied molecule.
+        molecule = Chem.Mol(ensemble.molecule)
+        owned_conformers = tuple(
+            replace(conformer, atoms=conformer.atoms.copy(), _molecule=molecule)
+            for conformer in conformers
+        )
+
         return Ensemble(
             smiles=ensemble.smiles,
-            molecule=ensemble.molecule,
-            conformers=tuple(conformers),
+            molecule=molecule,
+            conformers=owned_conformers,
             metadata=metadata,
         )
