@@ -18,11 +18,20 @@ EnsembleLab requires Python 3.10 or newer. It isn't published on PyPI yet, so in
 ### pip
 
 ```bash
-pip install -e .              # core: generation, MMFF/UFF optimization, filtering, analysis
-pip install -e ".[dev]"       # core + pytest, for development
-pip install -e ".[xtb]"       # core + GFN2-xTB backend (Linux only, see below)
+pip install -e .                  # core: generation, MMFF/UFF optimization, filtering, analysis, convergence metrics
+pip install -e ".[plot]"          # core + matplotlib, for rmsd_heatmap and plot_basin_analysis
+pip install -e ".[notebooks]"     # core + matplotlib, pandas, ipykernel, for the repository notebooks
+pip install -e ".[dev]"           # core + pytest, for development
+pip install -e ".[xtb]"           # core + GFN2-xTB backend (Linux only, see below)
+pip install -e ".[notebooks,dev]" # extras combine
 pytest
 ```
+
+The core install is RDKit, ASE, and NumPy. SASA in `convergence.geometry` uses RDKit's FreeSASA module, which ships with the RDKit pip and conda-forge builds; if it is missing, SASA is reported as unavailable rather than approximated.
+
+Plotting is optional: matplotlib is imported only when you call a plotting helper, which raises an `ImportError` with install instructions if it is missing.
+
+To run the notebooks (e.g. `src/experiments/sampling_convergence/convergence_study.ipynb`), install the `notebooks` extra and select that environment as the Jupyter kernel in VS Code or Jupyter.
 
 `tblite`, which provides GFN2-xTB, publishes PyPI wheels for Linux only. On macOS and Windows, install it from conda-forge (`conda install -c conda-forge tblite-python`) or use the conda environment below.
 
@@ -36,7 +45,7 @@ conda activate ensemblelab
 pytest
 ```
 
-This environment installs every backend available from conda-forge, including tblite, and installs EnsembleLab in editable mode.
+This environment installs every backend available from conda-forge (including tblite), plotting and notebook support (matplotlib, pandas, ipykernel), and pytest, and installs EnsembleLab in editable mode. It is the easiest way to get everything, including GFN2-xTB on macOS/Windows.
 
 ### Optimizer requirements
 

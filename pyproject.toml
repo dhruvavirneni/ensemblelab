@@ -20,6 +20,14 @@ dependencies = [
 dev = [
 	"pytest>=8",
 ]
+# Plotting helpers (rmsd_heatmap, plot_basin_analysis). Imported lazily.
+plot = ["matplotlib>=3.8"]
+# Everything needed to run the repository notebooks in Jupyter / VS Code.
+notebooks = [
+	"matplotlib>=3.8",
+	"pandas>=2.0",
+	"ipykernel>=6",
+]
 # GFN2-xTB backend. tblite publishes PyPI wheels for Linux only; on macOS and
 # Windows install it from conda-forge instead: `conda install -c conda-forge tblite-python`.
 xtb = ["tblite>=0.4"]

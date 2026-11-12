@@ -1,5 +1,6 @@
 # Full development environment with every optimizer backend that can be
-# installed from conda (MMFF/UFF via RDKit, GFN2-xTB via tblite).
+# installed from conda (MMFF/UFF via RDKit, GFN2-xTB via tblite), plus
+# plotting and notebook support (matplotlib, pandas, ipykernel).
 # ORCA is an external program and must still be installed separately.
 #
 #   conda env create -f environment.yml
@@ -13,6 +14,8 @@ dependencies:
   - ase
   - numpy
   - pandas
+  - matplotlib
+  - ipykernel
   - tblite-python
   - pytest
   - pip
