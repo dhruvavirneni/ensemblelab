@@ -1,5 +1,7 @@
 # EnsembleLab
 
+[![tests](https://github.com/dhruvavirneni/ensemblelab/actions/workflows/tests.yml/badge.svg)](https://github.com/dhruvavirneni/ensemblelab/actions/workflows/tests.yml)
+
 `ensemblelab` is an open source Python library for quantitative analysis of molecular conformational ensembles. It provides functionality for ensemble analysis (basin visualization, RMSD heatmapping, etc.) with simple object-based workflows.
 
 ## The Focus
