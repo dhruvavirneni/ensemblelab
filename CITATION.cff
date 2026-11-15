@@ -4,8 +4,8 @@ type: software
 title: EnsembleLab
 abstract: "Tools for studying how conformer sampling size affects ensemble-level molecular properties."
 authors:
-  - family-names: Virneni
-    given-names: Dhruva
+  - family-names: Avirneni
+    given-names: Dhruv
 version: 0.1.0
 license: MIT
 repository-code: "https://github.com/dhruvavirneni/ensemblelab"
