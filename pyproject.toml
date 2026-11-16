@@ -9,7 +9,7 @@ description = "Tools for studying how conformer sampling size affects ensemble-l
 readme = "README.md"
 requires-python = ">=3.10"
 license = { text = "MIT" }
-authors = [{ name = "Dhruva Virneni" }]
+authors = [{ name = "Dhruv Avirneni" }]
 classifiers = [
 	"Development Status :: 3 - Alpha",
 	"Intended Audience :: Science/Research",
