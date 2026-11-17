@@ -5,16 +5,36 @@ build-backend = "hatchling.build"
 [project]
 name = "ensemblelab"
 version = "0.1.0"
-description = "Ensemble descriptors for molecular conformational flexibility."
+description = "Tools for studying how conformer sampling size affects ensemble-level molecular properties."
 readme = "README.md"
 requires-python = ">=3.10"
 license = { text = "MIT" }
-authors = [{ name = "ensemblelab contributors" }]
+authors = [{ name = "Dhruv Avirneni" }]
+classifiers = [
+	"Development Status :: 3 - Alpha",
+	"Intended Audience :: Science/Research",
+	"License :: OSI Approved :: MIT License",
+	"Operating System :: OS Independent",
+	"Programming Language :: Python :: 3",
+	"Programming Language :: Python :: 3 :: Only",
+	"Programming Language :: Python :: 3.10",
+	"Programming Language :: Python :: 3.11",
+	"Programming Language :: Python :: 3.12",
+	"Programming Language :: Python :: 3.13",
+	"Programming Language :: Python :: 3.14",
+	"Topic :: Scientific/Engineering :: Chemistry",
+]
 dependencies = [
 	"ase>=3.28",
 	"numpy>=1.26",
 	"rdkit>=2024.3",
 ]
+
+[project.urls]
+Homepage = "https://github.com/dhruvavirneni/ensemblelab"
+Repository = "https://github.com/dhruvavirneni/ensemblelab"
+Documentation = "https://github.com/dhruvavirneni/ensemblelab/wiki"
+Issues = "https://github.com/dhruvavirneni/ensemblelab/issues"
 
 [project.optional-dependencies]
 dev = [

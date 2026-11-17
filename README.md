@@ -1,5 +1,7 @@
 # EnsembleLab
 
+[![tests](https://github.com/dhruvavirneni/ensemblelab/actions/workflows/tests.yml/badge.svg)](https://github.com/dhruvavirneni/ensemblelab/actions/workflows/tests.yml)
+
 `ensemblelab` is an open source Python library for quantitative analysis of molecular conformational ensembles. It provides functionality for ensemble analysis (basin visualization, RMSD heatmapping, etc.) with simple object-based workflows.
 
 ## The Focus
@@ -31,7 +33,7 @@ The core install is RDKit, ASE, and NumPy. SASA in `convergence.geometry` uses R
 
 Plotting is optional: matplotlib is imported only when you call a plotting helper, which raises an `ImportError` with install instructions if it is missing.
 
-To run the notebooks (e.g. `src/experiments/sampling_convergence/convergence_study.ipynb`), install the `notebooks` extra and select that environment as the Jupyter kernel in VS Code or Jupyter.
+To run the notebooks (e.g. `experiments/sampling_convergence/convergence_study.ipynb`), install the `notebooks` extra and select that environment as the Jupyter kernel in VS Code or Jupyter.
 
 `tblite`, which provides GFN2-xTB, publishes PyPI wheels for Linux only. On macOS and Windows, install it from conda-forge (`conda install -c conda-forge tblite-python`) or use the conda environment below.
 
