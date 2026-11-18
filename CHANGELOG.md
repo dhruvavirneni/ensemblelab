@@ -4,7 +4,7 @@ All notable changes to EnsembleLab are recorded here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and the project uses
 [semantic versioning](https://semver.org/).
 
-## [0.1.0] - Unreleased
+## [0.1.0] - 2026-11-17
 
 First tagged release. The API is still pre-1.0 and may change.
 
@@ -36,11 +36,11 @@ First tagged release. The API is still pre-1.0 and may change.
   and metadata tables, and an initial (untested) 3D `view()` helper.
 - **Packaging:** optional extras `xtb`, `plot`, `notebooks`, `dev`, and `orca`;
   a conda `environment.yml`; pytest suite and GitHub Actions CI.
+- **Convergence study:** subsampling experiment (n-octanol, MMFF) with figures and writeup in experiments/sampling_convergence/docs/convergence_results.md
 
 ### Not yet included
 
 - Conformer property metrics (dipole moments, intramolecular hydrogen bonds).
-- Convergence curves, convergence criteria, and sampling-size recommendations.
 - Descriptors and utility modules (in progress).
 
 [0.1.0]: https://github.com/dhruvavirneni/ensemblelab/releases/tag/v0.1.0
