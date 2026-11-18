@@ -254,3 +254,4 @@ def plot_basin_analysis(
 	if show:
 		plt.show()
 	return figure, (occupancy_axes, heatmap_axes)
+

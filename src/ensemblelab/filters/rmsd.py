@@ -76,9 +76,11 @@ class RMSDFilter(BaseFilter):
         # list of Conformer objects sorted by energy (stable: ties keep input order)
         sorted_conformers = [conformer for conformer, energy in sorted(zip(ensemble.conformers, energies), key=lambda item: item[1], reverse=False)]
 
-        # Work on a copy: GetBestRMS moves the probe conformer, and the input
-        # molecule is shared with the input ensemble. RemoveHs also returns a
-        # new molecule and preserves conformer IDs.
+        """
+        Work on a copy: GetBestRMS moves the probe conformer, and the input
+        molecule is shared with the input ensemble. RemoveHs also returns a
+        new molecule and preserves conformer IDs
+        """
         reference = (
             Chem.RemoveHs(ensemble.molecule)
             if self.heavy_atoms_only

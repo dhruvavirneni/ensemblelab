@@ -1,12 +1,30 @@
-from collections.abc import Sequence
+from __future__ import annotations
 
-import matplotlib.pyplot as plt
+from collections.abc import Sequence
+from typing import TYPE_CHECKING
+
 import numpy as np
-from matplotlib.axes import Axes
 from rdkit import Chem
 from rdkit.Chem import rdMolAlign
 
 from ensemblelab.generators import Conformer, Ensemble
+
+if TYPE_CHECKING:
+    from matplotlib.axes import Axes
+
+_MATPLOTLIB_INSTALL_HINT = (
+    "rmsd_heatmap requires matplotlib. Install it with "
+    "`pip install -e \".[plot]\"` or `pip install matplotlib`."
+)
+
+
+def _load_pyplot():
+    """Import matplotlib.pyplot lazily; it is an optional plotting dependency."""
+    try:
+        import matplotlib.pyplot as plt
+    except ImportError as error:
+        raise ImportError(_MATPLOTLIB_INSTALL_HINT) from error
+    return plt
 
 
 def rmsd(conformer1: Conformer, conformer2: Conformer, molecule) -> float:
@@ -133,6 +151,7 @@ def rmsd_heatmap(
             )
             rmsd_matrix[column_index, row_index] = rmsd_matrix[row_index, column_index]
 
+    plt = _load_pyplot()
     figure, axes = plt.subplots(figsize=(10, 8))
     image = axes.imshow(rmsd_matrix, cmap="magma", vmin=0)
     figure.colorbar(image, ax=axes, label="RMSD (Å)")

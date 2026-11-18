@@ -187,3 +187,49 @@ def test_orca_command_falls_back_to_ase_config(monkeypatch):
     # Any real executable stands in for ORCA; it is resolved, not run.
     monkeypatch.setattr(orca_module, "_orca_command_from_ase_config", lambda: sys.executable)
     assert orca_module._resolve_orca_command(None) == os.path.abspath(sys.executable)
+
+
+# --- matplotlib (plotting) ---------------------------------------------------
+
+
+@pytest.fixture
+def fresh_ensemblelab_without_matplotlib(monkeypatch):
+    """Hide matplotlib and re-import ensemblelab from scratch (restored afterwards)."""
+    saved = {
+        name: module
+        for name, module in sys.modules.items()
+        if name == "ensemblelab" or name.startswith("ensemblelab.")
+    }
+    for name in saved:
+        del sys.modules[name]
+    for name in [n for n in sys.modules if n == "matplotlib" or n.startswith("matplotlib.")]:
+        monkeypatch.delitem(sys.modules, name)
+    monkeypatch.setitem(sys.modules, "matplotlib", None)
+    monkeypatch.setitem(sys.modules, "matplotlib.pyplot", None)
+    try:
+        yield importlib.import_module("ensemblelab")
+    finally:
+        for name in [n for n in sys.modules if n == "ensemblelab" or n.startswith("ensemblelab.")]:
+            del sys.modules[name]
+        sys.modules.update(saved)
+
+
+def test_no_module_imports_matplotlib_at_top_level(fresh_ensemblelab_without_matplotlib):
+    for name in _package_module_names():
+        try:
+            importlib.import_module(name)
+        except ImportError as error:
+            assert "matplotlib" not in str(error), f"{name} imports matplotlib at import time"
+            assert not (error.name or "").startswith("matplotlib"), name
+
+
+def test_rmsd_analysis_without_matplotlib(fresh_ensemblelab_without_matplotlib):
+    ens = fresh_ensemblelab_without_matplotlib
+    rmsd_module = importlib.import_module("ensemblelab.analysis.rmsd")
+    ensemble = ens.generate("CCO", n_confs=3)
+
+    matrix, ids = rmsd_module.rmsd_matrix(ensemble)
+    assert matrix.shape == (len(ids), len(ids))
+
+    with pytest.raises(ImportError, match=r"pip install -e \"\.\[plot\]\""):
+        rmsd_module.rmsd_heatmap(ensemble, show=False)

@@ -1,6 +1,5 @@
 /.venv
 /.agents
-/AGENTS.md
 __pycache__/
 .aider*
 .vscode/
