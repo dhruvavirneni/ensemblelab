@@ -1,1 +1,0 @@
-"""Ensemble-descriptor calculations (planned)."""
