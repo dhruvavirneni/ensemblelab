@@ -1,9 +1,5 @@
 /.venv
 /.agents
-/AGENTS.md
 __pycache__/
 .aider*
 .vscode/
-docs\RESEARCH_LOG.md
-.vscode\settings.json
-tests\test_package_imports.py

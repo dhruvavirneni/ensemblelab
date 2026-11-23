@@ -7,11 +7,10 @@ from abc import ABC, abstractmethod
 from copy import deepcopy
 from typing import Any
 
-import numpy as np
 from ase import Atoms
 from rdkit import Chem
 
-from ..generators import Conformer, Ensemble
+from ..generators import Conformer, Ensemble, sync_rdkit_from_atoms
 
 
 class BaseOptimizer(ABC):
@@ -50,11 +49,11 @@ class BaseOptimizer(ABC):
 
         for conformer in ensemble.conformers:
             atoms = conformer.atoms.copy()
-            self._set_rdkit_positions(optimized_molecule, conformer.id, atoms.positions)
+            sync_rdkit_from_atoms(optimized_molecule, conformer.id, atoms)
             energy, converged = self._optimize_conformer(
                 optimized_molecule, conformer.id, atoms
             )
-            self._set_rdkit_positions(optimized_molecule, conformer.id, atoms.positions)
+            sync_rdkit_from_atoms(optimized_molecule, conformer.id, atoms)
 
             optimized_conformers.append(
                 Conformer(
@@ -162,11 +161,3 @@ class BaseOptimizer(ABC):
         ):
             raise ValueError("multiplicity must be a positive integer or None.")
         return multiplicity
-
-    @staticmethod
-    def _set_rdkit_positions(
-        molecule: Chem.Mol, conformer_id: int, positions: np.ndarray
-    ) -> None:
-        rdkit_conformer = molecule.GetConformer(conformer_id)
-        for atom_index, (x, y, z) in enumerate(np.asarray(positions, dtype=float)):
-            rdkit_conformer.SetAtomPosition(atom_index, (float(x), float(y), float(z)))

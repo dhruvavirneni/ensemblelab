@@ -1,9 +1,12 @@
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from collections.abc import Sequence
+from collections.abc import Mapping, Sequence
 from copy import deepcopy
+from dataclasses import replace
 from typing import TYPE_CHECKING, Any
+
+from rdkit import Chem
 
 if TYPE_CHECKING:
     from ensemblelab.generators import Ensemble
@@ -50,6 +53,9 @@ class BaseFilter(ABC):
     @staticmethod
     def _validate_ensemble(ensemble: Ensemble) -> None:
         """Validate that the ensemble is suitable for filtering."""
+        # Runtime import (see _build_filtered_ensemble) to avoid a circular import.
+        from ensemblelab.generators import Ensemble
+
         if not isinstance(ensemble, Ensemble):
             raise TypeError("Input must be an instance of Ensemble.")
         if not ensemble.conformers:
@@ -59,8 +65,17 @@ class BaseFilter(ABC):
     def _build_filtered_ensemble(
     self,
     ensemble: Ensemble,
-    conformers: Sequence[Conformer],) -> Ensemble:
-        """Construct a new Ensemble with filtered conformers and updated metadata."""
+    conformers: Sequence[Conformer],
+    extra_details: Mapping[str, Any] | None = None,) -> Ensemble:
+        """Construct a new Ensemble with filtered conformers and updated metadata.
+
+        ``extra_details`` holds run-specific provenance (e.g. which conformer
+        IDs were removed) that is merged over ``_history_details()``.
+        """
+        # Runtime import: generators imports this package, so a module-level
+        # import would be circular. TYPE_CHECKING alone leaves Ensemble undefined.
+        from ensemblelab.generators import Ensemble
+
         metadata = deepcopy(ensemble.metadata)
 
         self._append_history(
@@ -69,14 +84,24 @@ class BaseFilter(ABC):
             method=self.method,
             n_input_conformers=len(ensemble.conformers),
             n_output_conformers=len(conformers),
-            **self._history_details(),
+            **{**self._history_details(), **(extra_details or {})},
         )
 
         metadata["n_conformers"] = len(conformers)
 
+        # The filtered ensemble owns its own RDKit molecule and Atoms so later
+        # edits to either ensemble can never leak into the other. Conformers
+        # are rebound to the copy; coordinates, IDs, and energies are unchanged.
+        # RDKit conformers of removed members stay in the copied molecule.
+        molecule = Chem.Mol(ensemble.molecule)
+        owned_conformers = tuple(
+            replace(conformer, atoms=conformer.atoms.copy(), _molecule=molecule)
+            for conformer in conformers
+        )
+
         return Ensemble(
             smiles=ensemble.smiles,
-            molecule=ensemble.molecule,
-            conformers=tuple(conformers),
+            molecule=molecule,
+            conformers=owned_conformers,
             metadata=metadata,
         )

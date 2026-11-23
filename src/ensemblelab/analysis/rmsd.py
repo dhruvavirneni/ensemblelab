@@ -1,15 +1,36 @@
-from collections.abc import Sequence
+from __future__ import annotations
 
-import matplotlib.pyplot as plt
+from collections.abc import Sequence
+from typing import TYPE_CHECKING
+
 import numpy as np
-from matplotlib.axes import Axes
+from rdkit import Chem
 from rdkit.Chem import rdMolAlign
 
 from ensemblelab.generators import Conformer, Ensemble
 
+if TYPE_CHECKING:
+    from matplotlib.axes import Axes
+
+_MATPLOTLIB_INSTALL_HINT = (
+    "rmsd_heatmap requires matplotlib. Install it with "
+    "`pip install -e \".[plot]\"` or `pip install matplotlib`."
+)
+
+
+def _load_pyplot():
+    """Import matplotlib.pyplot lazily; it is an optional plotting dependency."""
+    try:
+        import matplotlib.pyplot as plt
+    except ImportError as error:
+        raise ImportError(_MATPLOTLIB_INSTALL_HINT) from error
+    return plt
+
 
 def rmsd(conformer1: Conformer, conformer2: Conformer, molecule) -> float:
-    molecule1 = conformer1.get_mol()
+    # GetBestRMS leaves the probe aligned in place; use a copy so the shared
+    # ensemble molecule stays synchronized with Conformer.atoms.
+    molecule1 = Chem.Mol(conformer1.get_mol())
     molecule2 = conformer2.get_mol()
 
     return rdMolAlign.GetBestRMS(
@@ -48,7 +69,8 @@ def rmsd_matrix(ensemble: Ensemble, conformers: Sequence[Conformer] | None = Non
     if not set(selected_ids).issubset(ensemble_ids):
         raise ValueError("conformers must belong to the supplied ensemble.")
 
-    molecule = ensemble.molecule
+    # Copy: GetBestRMS aligns the probe conformer in place.
+    molecule = Chem.Mol(ensemble.molecule)
     conformer_ids = [conformer.id for conformer in selected_conformers]
     n_conformers = len(conformer_ids)
     rmsd = np.zeros((n_conformers, n_conformers), dtype=float)
@@ -113,7 +135,8 @@ def rmsd_heatmap(
         )
         selected_ids.insert(0, selected_ids.pop(selected_ids.index(reference_conformer.id)))
 
-    molecule = ensemble.molecule
+    # Copy: GetBestRMS aligns the probe conformer in place.
+    molecule = Chem.Mol(ensemble.molecule)
     conformer_ids = [conformer.id for conformer in selected_conformers]
     n_conformers = len(conformer_ids)
     rmsd_matrix = np.zeros((n_conformers, n_conformers), dtype=float)
@@ -128,6 +151,7 @@ def rmsd_heatmap(
             )
             rmsd_matrix[column_index, row_index] = rmsd_matrix[row_index, column_index]
 
+    plt = _load_pyplot()
     figure, axes = plt.subplots(figsize=(10, 8))
     image = axes.imshow(rmsd_matrix, cmap="magma", vmin=0)
     figure.colorbar(image, ax=axes, label="RMSD (Å)")

@@ -1,0 +1,1465 @@
+molecule,N,draw,metric,value
+n-octanol,5,0,radius_of_gyration,2.9620619414977845
+n-octanol,5,0,asphericity,0.6752199318309426
+n-octanol,5,0,eccentricity,0.9912261181597328
+n-octanol,5,0,max_distance,9.199212009450074
+n-octanol,5,0,lowest_energy_rel,1.8270711183980426
+n-octanol,5,0,top_population,0.39507589266965265
+n-octanol,5,0,n_effective,4.376435148206447
+n-octanol,5,0,n_within_3kcal,5.0
+n-octanol,5,1,radius_of_gyration,3.026568911295167
+n-octanol,5,1,asphericity,0.7478140046047779
+n-octanol,5,1,eccentricity,0.9939942186751484
+n-octanol,5,1,max_distance,10.19172670976544
+n-octanol,5,1,lowest_energy_rel,1.8924406673863077
+n-octanol,5,1,top_population,0.49299216494614
+n-octanol,5,1,n_effective,3.9488390591928813
+n-octanol,5,1,n_within_3kcal,5.0
+n-octanol,5,2,radius_of_gyration,3.170014811764677
+n-octanol,5,2,asphericity,0.7986156953276079
+n-octanol,5,2,eccentricity,0.9971458814056067
+n-octanol,5,2,max_distance,10.198500018354906
+n-octanol,5,2,lowest_energy_rel,0.9514553633443876
+n-octanol,5,2,top_population,0.5654012879571632
+n-octanol,5,2,n_effective,2.891886255051376
+n-octanol,5,2,n_within_3kcal,4.0
+n-octanol,5,3,radius_of_gyration,3.1692985684906265
+n-octanol,5,3,asphericity,0.7669060464749523
+n-octanol,5,3,eccentricity,0.9962877822226731
+n-octanol,5,3,max_distance,10.274394434997019
+n-octanol,5,3,lowest_energy_rel,0.8696547508609695
+n-octanol,5,3,top_population,0.5180842624422983
+n-octanol,5,3,n_effective,2.548034374638202
+n-octanol,5,3,n_within_3kcal,3.0
+n-octanol,5,4,radius_of_gyration,3.2735424457591
+n-octanol,5,4,asphericity,0.8331673734974628
+n-octanol,5,4,eccentricity,0.997231139500059
+n-octanol,5,4,max_distance,10.559671569301068
+n-octanol,5,4,lowest_energy_rel,0.1669317967016175
+n-octanol,5,4,top_population,0.6920715055913813
+n-octanol,5,4,n_effective,2.7087379541629737
+n-octanol,5,4,n_within_3kcal,5.0
+n-octanol,5,5,radius_of_gyration,3.200799974669247
+n-octanol,5,5,asphericity,0.8079097586988647
+n-octanol,5,5,eccentricity,0.9967545899800377
+n-octanol,5,5,max_distance,10.573000386489836
+n-octanol,5,5,lowest_energy_rel,0.3211475951217668
+n-octanol,5,5,top_population,0.8546209887874807
+n-octanol,5,5,n_effective,1.810593261818866
+n-octanol,5,5,n_within_3kcal,5.0
+n-octanol,5,6,radius_of_gyration,3.163980846039405
+n-octanol,5,6,asphericity,0.7819230449049305
+n-octanol,5,6,eccentricity,0.9966999893861808
+n-octanol,5,6,max_distance,9.946386856930133
+n-octanol,5,6,lowest_energy_rel,1.0415883843505975
+n-octanol,5,6,top_population,0.7682317620918945
+n-octanol,5,6,n_effective,2.2896510075332053
+n-octanol,5,6,n_within_3kcal,5.0
+n-octanol,5,7,radius_of_gyration,2.9842647256861756
+n-octanol,5,7,asphericity,0.6391332971953273
+n-octanol,5,7,eccentricity,0.9900536750994553
+n-octanol,5,7,max_distance,9.648582019439367
+n-octanol,5,7,lowest_energy_rel,1.192349329516417
+n-octanol,5,7,top_population,0.5360114863234077
+n-octanol,5,7,n_effective,3.3433565238369334
+n-octanol,5,7,n_within_3kcal,5.0
+n-octanol,5,8,radius_of_gyration,3.3009196408561032
+n-octanol,5,8,asphericity,0.8452742024325345
+n-octanol,5,8,eccentricity,0.9973021392356956
+n-octanol,5,8,max_distance,10.640286896511276
+n-octanol,5,8,lowest_energy_rel,0.1669318050965627
+n-octanol,5,8,top_population,0.8188047646974723
+n-octanol,5,8,n_effective,2.049074597662095
+n-octanol,5,8,n_within_3kcal,5.0
+n-octanol,5,9,radius_of_gyration,3.3434794401976875
+n-octanol,5,9,asphericity,0.8789353946079098
+n-octanol,5,9,eccentricity,0.9988521833333253
+n-octanol,5,9,max_distance,10.837751444881915
+n-octanol,5,9,lowest_energy_rel,0.16693179797707192
+n-octanol,5,9,top_population,0.9012313803093043
+n-octanol,5,9,n_effective,1.5047355892533614
+n-octanol,5,9,n_within_3kcal,5.0
+n-octanol,10,0,radius_of_gyration,3.3142776273384382
+n-octanol,10,0,asphericity,0.8583007529443735
+n-octanol,10,0,eccentricity,0.9975651037438733
+n-octanol,10,0,max_distance,11.280571698816647
+n-octanol,10,0,lowest_energy_rel,4.644636675266156e-09
+n-octanol,10,0,top_population,0.8571411859575087
+n-octanol,10,0,n_effective,1.9669891717255301
+n-octanol,10,0,n_within_3kcal,8.0
+n-octanol,10,1,radius_of_gyration,3.157366269558934
+n-octanol,10,1,asphericity,0.774921089594311
+n-octanol,10,1,eccentricity,0.9955784223662045
+n-octanol,10,1,max_distance,10.121014837293137
+n-octanol,10,1,lowest_energy_rel,0.4329287718625272
+n-octanol,10,1,top_population,0.5400927061338809
+n-octanol,10,1,n_effective,4.584424816328274
+n-octanol,10,1,n_within_3kcal,10.0
+n-octanol,10,2,radius_of_gyration,3.1055221993667095
+n-octanol,10,2,asphericity,0.7469834550854916
+n-octanol,10,2,eccentricity,0.9945992276295282
+n-octanol,10,2,max_distance,9.815261042428467
+n-octanol,10,2,lowest_energy_rel,1.0415883845466958
+n-octanol,10,2,top_population,0.41652447693746236
+n-octanol,10,2,n_effective,4.495120458911018
+n-octanol,10,2,n_within_3kcal,9.0
+n-octanol,10,3,radius_of_gyration,3.2404804298528576
+n-octanol,10,3,asphericity,0.8161257704863195
+n-octanol,10,3,eccentricity,0.9960392805004299
+n-octanol,10,3,max_distance,10.466452087129207
+n-octanol,10,3,lowest_energy_rel,0.1669317967016175
+n-octanol,10,3,top_population,0.6476986047442872
+n-octanol,10,3,n_effective,3.9215363939256345
+n-octanol,10,3,n_within_3kcal,10.0
+n-octanol,10,4,radius_of_gyration,2.9771571195149473
+n-octanol,10,4,asphericity,0.6574692697246827
+n-octanol,10,4,eccentricity,0.9903897777931747
+n-octanol,10,4,max_distance,9.483111201720247
+n-octanol,10,4,lowest_energy_rel,1.2980921147978526
+n-octanol,10,4,top_population,0.31954390590622794
+n-octanol,10,4,n_effective,6.444875226534124
+n-octanol,10,4,n_within_3kcal,10.0
+n-octanol,10,5,radius_of_gyration,3.2098035729387333
+n-octanol,10,5,asphericity,0.8131511408559231
+n-octanol,10,5,eccentricity,0.997270967410279
+n-octanol,10,5,max_distance,10.318224726617528
+n-octanol,10,5,lowest_energy_rel,0.4329287405811373
+n-octanol,10,5,top_population,0.5124523545585193
+n-octanol,10,5,n_effective,4.070219309634684
+n-octanol,10,5,n_within_3kcal,10.0
+n-octanol,10,6,radius_of_gyration,3.2733379641626943
+n-octanol,10,6,asphericity,0.8365534403763731
+n-octanol,10,6,eccentricity,0.9975355459894724
+n-octanol,10,6,max_distance,10.952413143538934
+n-octanol,10,6,lowest_energy_rel,4.644636675266156e-09
+n-octanol,10,6,top_population,0.6010291886202609
+n-octanol,10,6,n_effective,4.005590437229244
+n-octanol,10,6,n_within_3kcal,9.0
+n-octanol,10,7,radius_of_gyration,3.1085663210872316
+n-octanol,10,7,asphericity,0.7558462553390415
+n-octanol,10,7,eccentricity,0.9948278514184988
+n-octanol,10,7,max_distance,9.889460189480575
+n-octanol,10,7,lowest_energy_rel,0.9907285322593973
+n-octanol,10,7,top_population,0.48664060715238183
+n-octanol,10,7,n_effective,5.06053906642223
+n-octanol,10,7,n_within_3kcal,9.0
+n-octanol,10,8,radius_of_gyration,3.031599368770101
+n-octanol,10,8,asphericity,0.7115804731629628
+n-octanol,10,8,eccentricity,0.993301754250982
+n-octanol,10,8,max_distance,9.772124684827952
+n-octanol,10,8,lowest_energy_rel,1.057985906246488
+n-octanol,10,8,top_population,0.38632252623447666
+n-octanol,10,8,n_effective,5.419268122907765
+n-octanol,10,8,n_within_3kcal,9.0
+n-octanol,10,9,radius_of_gyration,3.166470117141649
+n-octanol,10,9,asphericity,0.7799961183240102
+n-octanol,10,9,eccentricity,0.996321005428759
+n-octanol,10,9,max_distance,10.36490052516555
+n-octanol,10,9,lowest_energy_rel,0.8110719892512659
+n-octanol,10,9,top_population,0.3850553140526246
+n-octanol,10,9,n_effective,4.674224137012601
+n-octanol,10,9,n_within_3kcal,10.0
+n-octanol,25,0,radius_of_gyration,3.136805983186427
+n-octanol,25,0,asphericity,0.7595749238067881
+n-octanol,25,0,eccentricity,0.9949599021454886
+n-octanol,25,0,max_distance,10.20379668929878
+n-octanol,25,0,lowest_energy_rel,0.32114759761341993
+n-octanol,25,0,top_population,0.4001308002446932
+n-octanol,25,0,n_effective,8.462065613591339
+n-octanol,25,0,n_within_3kcal,19.0
+n-octanol,25,1,radius_of_gyration,3.2376171676269916
+n-octanol,25,1,asphericity,0.8193693291923799
+n-octanol,25,1,eccentricity,0.9967789243194429
+n-octanol,25,1,max_distance,10.797001213936758
+n-octanol,25,1,lowest_energy_rel,0.0
+n-octanol,25,1,top_population,0.5306856707256705
+n-octanol,25,1,n_effective,6.279528692939251
+n-octanol,25,1,n_within_3kcal,19.0
+n-octanol,25,2,radius_of_gyration,3.0997944137855575
+n-octanol,25,2,asphericity,0.7369479688916715
+n-octanol,25,2,eccentricity,0.9940908883799957
+n-octanol,25,2,max_distance,10.046382032534671
+n-octanol,25,2,lowest_energy_rel,0.8747672425193223
+n-octanol,25,2,top_population,0.1451870586969275
+n-octanol,25,2,n_effective,15.156932165256551
+n-octanol,25,2,n_within_3kcal,24.0
+n-octanol,25,3,radius_of_gyration,3.149126519424362
+n-octanol,25,3,asphericity,0.7721314317092329
+n-octanol,25,3,eccentricity,0.9955803047256687
+n-octanol,25,3,max_distance,10.192391764819938
+n-octanol,25,3,lowest_energy_rel,0.32114759761341993
+n-octanol,25,3,top_population,0.35836524055005853
+n-octanol,25,3,n_effective,9.39244119978367
+n-octanol,25,3,n_within_3kcal,21.0
+n-octanol,25,4,radius_of_gyration,3.220277454815989
+n-octanol,25,4,asphericity,0.8094615232043473
+n-octanol,25,4,eccentricity,0.99661928971255
+n-octanol,25,4,max_distance,10.330900717096183
+n-octanol,25,4,lowest_energy_rel,0.1669318050965627
+n-octanol,25,4,top_population,0.39818203012487147
+n-octanol,25,4,n_effective,8.700089932266085
+n-octanol,25,4,n_within_3kcal,21.0
+n-octanol,25,5,radius_of_gyration,3.0304877084074566
+n-octanol,25,5,asphericity,0.6954863026479858
+n-octanol,25,5,eccentricity,0.9916812275508269
+n-octanol,25,5,max_distance,9.680821704639362
+n-octanol,25,5,lowest_energy_rel,1.0416192492345804
+n-octanol,25,5,top_population,0.19049551025438158
+n-octanol,25,5,n_effective,13.667309953706697
+n-octanol,25,5,n_within_3kcal,21.0
+n-octanol,25,6,radius_of_gyration,3.107504383669349
+n-octanol,25,6,asphericity,0.7346369064474563
+n-octanol,25,6,eccentricity,0.9943225123618631
+n-octanol,25,6,max_distance,9.90141649859777
+n-octanol,25,6,lowest_energy_rel,0.7982248761627133
+n-octanol,25,6,top_population,0.1919240278048168
+n-octanol,25,6,n_effective,12.350927849450242
+n-octanol,25,6,n_within_3kcal,20.0
+n-octanol,25,7,radius_of_gyration,3.2176228716989685
+n-octanol,25,7,asphericity,0.8117479607693984
+n-octanol,25,7,eccentricity,0.9968467341514182
+n-octanol,25,7,max_distance,10.427098972819259
+n-octanol,25,7,lowest_energy_rel,0.1669317967016175
+n-octanol,25,7,top_population,0.3201896439603163
+n-octanol,25,7,n_effective,9.4009144285515
+n-octanol,25,7,n_within_3kcal,22.0
+n-octanol,25,8,radius_of_gyration,3.184456831911622
+n-octanol,25,8,asphericity,0.7816850734491123
+n-octanol,25,8,eccentricity,0.9953628146455937
+n-octanol,25,8,max_distance,10.173250795168354
+n-octanol,25,8,lowest_energy_rel,0.16693179946992043
+n-octanol,25,8,top_population,0.3602111813344047
+n-octanol,25,8,n_effective,10.653445649792017
+n-octanol,25,8,n_within_3kcal,19.0
+n-octanol,25,9,radius_of_gyration,3.087966187624594
+n-octanol,25,9,asphericity,0.7285628768773663
+n-octanol,25,9,eccentricity,0.9935928529345537
+n-octanol,25,9,max_distance,9.942815786624722
+n-octanol,25,9,lowest_energy_rel,0.7982248712613558
+n-octanol,25,9,top_population,0.18825462816711597
+n-octanol,25,9,n_effective,13.452714388282784
+n-octanol,25,9,n_within_3kcal,21.0
+n-octanol,50,0,radius_of_gyration,3.0869035127151236
+n-octanol,50,0,asphericity,0.7361679864416708
+n-octanol,50,0,eccentricity,0.9940919099212459
+n-octanol,50,0,max_distance,10.0739028372743
+n-octanol,50,0,lowest_energy_rel,0.8110719892512659
+n-octanol,50,0,top_population,0.11841739995770958
+n-octanol,50,0,n_effective,22.42822569535773
+n-octanol,50,0,n_within_3kcal,37.0
+n-octanol,50,1,radius_of_gyration,3.1729463054666693
+n-octanol,50,1,asphericity,0.7794768224226603
+n-octanol,50,1,eccentricity,0.9955974703380872
+n-octanol,50,1,max_distance,10.273436434069925
+n-octanol,50,1,lowest_energy_rel,0.1669317967016175
+n-octanol,50,1,top_population,0.24136057563278948
+n-octanol,50,1,n_effective,16.002469525170675
+n-octanol,50,1,n_within_3kcal,32.0
+n-octanol,50,2,radius_of_gyration,3.173473466076676
+n-octanol,50,2,asphericity,0.7838160574967065
+n-octanol,50,2,eccentricity,0.9958087883416805
+n-octanol,50,2,max_distance,10.310715923477215
+n-octanol,50,2,lowest_energy_rel,0.16693179946992043
+n-octanol,50,2,top_population,0.21522376521276446
+n-octanol,50,2,n_effective,18.115334583872194
+n-octanol,50,2,n_within_3kcal,41.0
+n-octanol,50,3,radius_of_gyration,3.0833390460977737
+n-octanol,50,3,asphericity,0.7424899495832235
+n-octanol,50,3,eccentricity,0.9947346859725852
+n-octanol,50,3,max_distance,9.838991530801058
+n-octanol,50,3,lowest_energy_rel,0.9907285310844447
+n-octanol,50,3,top_population,0.10378070326909428
+n-octanol,50,3,n_effective,23.51392602746703
+n-octanol,50,3,n_within_3kcal,36.0
+n-octanol,50,4,radius_of_gyration,3.1779882183409596
+n-octanol,50,4,asphericity,0.7861891599318774
+n-octanol,50,4,eccentricity,0.9959183608901372
+n-octanol,50,4,max_distance,10.28683665543735
+n-octanol,50,4,lowest_energy_rel,0.16693179667223657
+n-octanol,50,4,top_population,0.23847836556713062
+n-octanol,50,4,n_effective,15.541413385089818
+n-octanol,50,4,n_within_3kcal,37.0
+n-octanol,50,5,radius_of_gyration,3.176126914788556
+n-octanol,50,5,asphericity,0.7909467161712294
+n-octanol,50,5,eccentricity,0.9962251247541006
+n-octanol,50,5,max_distance,10.229345941285104
+n-octanol,50,5,lowest_energy_rel,0.1669317960787291
+n-octanol,50,5,top_population,0.24929924220284472
+n-octanol,50,5,n_effective,16.375797381281682
+n-octanol,50,5,n_within_3kcal,35.0
+n-octanol,50,6,radius_of_gyration,3.1325159951886903
+n-octanol,50,6,asphericity,0.7745018649337112
+n-octanol,50,6,eccentricity,0.9958937905021412
+n-octanol,50,6,max_distance,10.192087062611591
+n-octanol,50,6,lowest_energy_rel,0.4329287405811373
+n-octanol,50,6,top_population,0.2344377274970706
+n-octanol,50,6,n_effective,18.14337504988667
+n-octanol,50,6,n_within_3kcal,37.0
+n-octanol,50,7,radius_of_gyration,3.1233421321626045
+n-octanol,50,7,asphericity,0.7537545264369974
+n-octanol,50,7,eccentricity,0.9948665659054836
+n-octanol,50,7,max_distance,10.161500399059692
+n-octanol,50,7,lowest_energy_rel,0.3211475951217668
+n-octanol,50,7,top_population,0.20931854440532158
+n-octanol,50,7,n_effective,19.823756840719348
+n-octanol,50,7,n_within_3kcal,35.0
+n-octanol,50,8,radius_of_gyration,3.1932497577523185
+n-octanol,50,8,asphericity,0.7944000814530398
+n-octanol,50,8,eccentricity,0.9961942594449446
+n-octanol,50,8,max_distance,10.583085326327419
+n-octanol,50,8,lowest_energy_rel,0.0
+n-octanol,50,8,top_population,0.3235924731778559
+n-octanol,50,8,n_effective,14.955406321089376
+n-octanol,50,8,n_within_3kcal,36.0
+n-octanol,50,9,radius_of_gyration,3.18558288729242
+n-octanol,50,9,asphericity,0.7914328262711389
+n-octanol,50,9,eccentricity,0.9957646983407981
+n-octanol,50,9,max_distance,10.526372254322137
+n-octanol,50,9,lowest_energy_rel,4.644636675266156e-09
+n-octanol,50,9,top_population,0.3314783029299896
+n-octanol,50,9,n_effective,16.232288966563388
+n-octanol,50,9,n_within_3kcal,38.0
+n-octanol,100,0,radius_of_gyration,3.1455414709033938
+n-octanol,100,0,asphericity,0.7687370180433333
+n-octanol,100,0,eccentricity,0.9949958405036841
+n-octanol,100,0,max_distance,10.183867761314659
+n-octanol,100,0,lowest_energy_rel,0.16693179667223657
+n-octanol,100,0,top_population,0.21026371205751884
+n-octanol,100,0,n_effective,23.488545054506375
+n-octanol,100,0,n_within_3kcal,56.0
+n-octanol,100,1,radius_of_gyration,3.162011184871223
+n-octanol,100,1,asphericity,0.7727531952128891
+n-octanol,100,1,eccentricity,0.9950056884935572
+n-octanol,100,1,max_distance,10.356858467548332
+n-octanol,100,1,lowest_energy_rel,0.0
+n-octanol,100,1,top_population,0.2310818449290973
+n-octanol,100,1,n_effective,22.811461483325225
+n-octanol,100,1,n_within_3kcal,51.0
+n-octanol,100,2,radius_of_gyration,3.1409674529824616
+n-octanol,100,2,asphericity,0.7659509765010295
+n-octanol,100,2,eccentricity,0.9950997659166808
+n-octanol,100,2,max_distance,10.182827135503626
+n-octanol,100,2,lowest_energy_rel,0.16693179782798317
+n-octanol,100,2,top_population,0.16191761149647343
+n-octanol,100,2,n_effective,31.688216498668194
+n-octanol,100,2,n_within_3kcal,61.0
+n-octanol,100,3,radius_of_gyration,3.1250063456934827
+n-octanol,100,3,asphericity,0.7555439246895622
+n-octanol,100,3,eccentricity,0.9943163865905453
+n-octanol,100,3,max_distance,10.02416600611447
+n-octanol,100,3,lowest_energy_rel,0.16693179667223657
+n-octanol,100,3,top_population,0.17192794313687706
+n-octanol,100,3,n_effective,33.13414969666377
+n-octanol,100,3,n_within_3kcal,70.0
+n-octanol,100,4,radius_of_gyration,3.145907081935486
+n-octanol,100,4,asphericity,0.7696432055812059
+n-octanol,100,4,eccentricity,0.9952423019187312
+n-octanol,100,4,max_distance,10.218249971562408
+n-octanol,100,4,lowest_energy_rel,0.1669317967016175
+n-octanol,100,4,top_population,0.1712795490712754
+n-octanol,100,4,n_effective,28.75838647685453
+n-octanol,100,4,n_within_3kcal,65.0
+n-octanol,100,5,radius_of_gyration,3.14543737945956
+n-octanol,100,5,asphericity,0.7701656998439104
+n-octanol,100,5,eccentricity,0.9952474473781006
+n-octanol,100,5,max_distance,10.169191366834996
+n-octanol,100,5,lowest_energy_rel,0.16693179797707192
+n-octanol,100,5,top_population,0.1822437023189754
+n-octanol,100,5,n_effective,29.228260209217336
+n-octanol,100,5,n_within_3kcal,63.0
+n-octanol,100,6,radius_of_gyration,3.142705929180223
+n-octanol,100,6,asphericity,0.7643546873080023
+n-octanol,100,6,eccentricity,0.995007919831949
+n-octanol,100,6,max_distance,10.20147436942813
+n-octanol,100,6,lowest_energy_rel,0.16693179846097728
+n-octanol,100,6,top_population,0.1587089802976982
+n-octanol,100,6,n_effective,30.91146559608714
+n-octanol,100,6,n_within_3kcal,64.0
+n-octanol,100,7,radius_of_gyration,3.166599765487041
+n-octanol,100,7,asphericity,0.7830973371415912
+n-octanol,100,7,eccentricity,0.995937960721273
+n-octanol,100,7,max_distance,10.41649763781847
+n-octanol,100,7,lowest_energy_rel,0.0
+n-octanol,100,7,top_population,0.2063472240690732
+n-octanol,100,7,n_effective,25.810781528252328
+n-octanol,100,7,n_within_3kcal,58.0
+n-octanol,100,8,radius_of_gyration,3.162312212232083
+n-octanol,100,8,asphericity,0.7794545865016868
+n-octanol,100,8,eccentricity,0.9956354045046301
+n-octanol,100,8,max_distance,10.359487438668959
+n-octanol,100,8,lowest_energy_rel,4.644636675266156e-09
+n-octanol,100,8,top_population,0.19977384694972417
+n-octanol,100,8,n_effective,28.60634642032668
+n-octanol,100,8,n_within_3kcal,59.0
+n-octanol,100,9,radius_of_gyration,3.149966061145001
+n-octanol,100,9,asphericity,0.7697621874321687
+n-octanol,100,9,eccentricity,0.9950774657466896
+n-octanol,100,9,max_distance,10.213579768965198
+n-octanol,100,9,lowest_energy_rel,0.16693179594538776
+n-octanol,100,9,top_population,0.18022663620359572
+n-octanol,100,9,n_effective,27.221247874023835
+n-octanol,100,9,n_within_3kcal,60.0
+n-octanol,250,0,radius_of_gyration,3.1092629069573023
+n-octanol,250,0,asphericity,0.743660648665725
+n-octanol,250,0,eccentricity,0.9938985976156657
+n-octanol,250,0,max_distance,10.140803121060648
+n-octanol,250,0,lowest_energy_rel,0.0
+n-octanol,250,0,top_population,0.145447813409337
+n-octanol,250,0,n_effective,52.60680412191517
+n-octanol,250,0,n_within_3kcal,108.0
+n-octanol,250,1,radius_of_gyration,3.0968571536664125
+n-octanol,250,1,asphericity,0.7399647901444627
+n-octanol,250,1,eccentricity,0.9938372912909446
+n-octanol,250,1,max_distance,10.00865413405368
+n-octanol,250,1,lowest_energy_rel,0.16693179667223657
+n-octanol,250,1,top_population,0.11060559689320353
+n-octanol,250,1,n_effective,59.15127133109771
+n-octanol,250,1,n_within_3kcal,120.0
+n-octanol,250,2,radius_of_gyration,3.1095784372186412
+n-octanol,250,2,asphericity,0.7458561505668929
+n-octanol,250,2,eccentricity,0.9939747939989766
+n-octanol,250,2,max_distance,10.192991278742616
+n-octanol,250,2,lowest_energy_rel,4.644636675266156e-09
+n-octanol,250,2,top_population,0.1450044130964745
+n-octanol,250,2,n_effective,53.230397373045655
+n-octanol,250,2,n_within_3kcal,108.0
+n-octanol,250,3,radius_of_gyration,3.1153236799274326
+n-octanol,250,3,asphericity,0.7501256731764133
+n-octanol,250,3,eccentricity,0.994283855784193
+n-octanol,250,3,max_distance,10.190108965427957
+n-octanol,250,3,lowest_energy_rel,4.644636675266156e-09
+n-octanol,250,3,top_population,0.14830989302224734
+n-octanol,250,3,n_effective,52.210155389520295
+n-octanol,250,3,n_within_3kcal,111.0
+n-octanol,250,4,radius_of_gyration,3.104651345145011
+n-octanol,250,4,asphericity,0.7396939072251376
+n-octanol,250,4,eccentricity,0.9936361713782722
+n-octanol,250,4,max_distance,10.14702466530765
+n-octanol,250,4,lowest_energy_rel,0.0
+n-octanol,250,4,top_population,0.14381287355369407
+n-octanol,250,4,n_effective,55.03836935570909
+n-octanol,250,4,n_within_3kcal,111.0
+n-octanol,250,5,radius_of_gyration,3.10347077300667
+n-octanol,250,5,asphericity,0.7400784764970771
+n-octanol,250,5,eccentricity,0.9935931648392361
+n-octanol,250,5,max_distance,10.10411496847569
+n-octanol,250,5,lowest_energy_rel,4.644636675266156e-09
+n-octanol,250,5,top_population,0.14739617150211365
+n-octanol,250,5,n_effective,55.20113979167936
+n-octanol,250,5,n_within_3kcal,114.0
+n-octanol,250,6,radius_of_gyration,3.104938546010467
+n-octanol,250,6,asphericity,0.7415560812519304
+n-octanol,250,6,eccentricity,0.9937892802585031
+n-octanol,250,6,max_distance,10.135624227729682
+n-octanol,250,6,lowest_energy_rel,0.0
+n-octanol,250,6,top_population,0.140646001386551
+n-octanol,250,6,n_effective,57.172848823806724
+n-octanol,250,6,n_within_3kcal,115.0
+n-octanol,250,7,radius_of_gyration,3.108624243244876
+n-octanol,250,7,asphericity,0.7458210458264434
+n-octanol,250,7,eccentricity,0.9941494562801907
+n-octanol,250,7,max_distance,10.158652438053561
+n-octanol,250,7,lowest_energy_rel,0.0
+n-octanol,250,7,top_population,0.14790917323987568
+n-octanol,250,7,n_effective,54.719169301712746
+n-octanol,250,7,n_within_3kcal,111.0
+n-octanol,250,8,radius_of_gyration,3.1024500697546897
+n-octanol,250,8,asphericity,0.7439551379990672
+n-octanol,250,8,eccentricity,0.9940098235533731
+n-octanol,250,8,max_distance,10.002152649891137
+n-octanol,250,8,lowest_energy_rel,0.16693179594538776
+n-octanol,250,8,top_population,0.11929846268573305
+n-octanol,250,8,n_effective,57.08772443745445
+n-octanol,250,8,n_within_3kcal,112.0
+n-octanol,250,9,radius_of_gyration,3.098092964056524
+n-octanol,250,9,asphericity,0.7374376633353679
+n-octanol,250,9,eccentricity,0.9935768687046066
+n-octanol,250,9,max_distance,10.030633183712213
+n-octanol,250,9,lowest_energy_rel,0.16693179594538776
+n-octanol,250,9,top_population,0.12163028417551595
+n-octanol,250,9,n_effective,55.54303492557812
+n-octanol,250,9,n_within_3kcal,119.0
+n-octanol,500,0,radius_of_gyration,3.082140107389926
+n-octanol,500,0,asphericity,0.7292111334857436
+n-octanol,500,0,eccentricity,0.9931552552017572
+n-octanol,500,0,max_distance,10.045871845112416
+n-octanol,500,0,lowest_energy_rel,0.0
+n-octanol,500,0,top_population,0.12007079952565504
+n-octanol,500,0,n_effective,78.04495484728395
+n-octanol,500,0,n_within_3kcal,153.0
+benzoic acid,5,0,radius_of_gyration,2.111208151412326
+benzoic acid,5,0,asphericity,0.4551814946852558
+benzoic acid,5,0,eccentricity,0.9711479351665453
+benzoic acid,5,0,max_distance,6.962432614071108
+benzoic acid,5,0,lowest_energy_rel,1.0263789818054647e-11
+benzoic acid,5,0,top_population,1.0
+benzoic acid,5,0,n_effective,1.0
+benzoic acid,5,0,n_within_3kcal,1.0
+benzoic acid,5,1,radius_of_gyration,2.1112081994480514
+benzoic acid,5,1,asphericity,0.4551815002603835
+benzoic acid,5,1,eccentricity,0.9711479360390277
+benzoic acid,5,1,max_distance,6.962432696203091
+benzoic acid,5,1,lowest_energy_rel,9.027445457832073e-12
+benzoic acid,5,1,top_population,1.0
+benzoic acid,5,1,n_effective,1.0
+benzoic acid,5,1,n_within_3kcal,1.0
+benzoic acid,5,2,radius_of_gyration,2.1112082042553837
+benzoic acid,5,2,asphericity,0.45518154469673994
+benzoic acid,5,2,eccentricity,0.9711479429931416
+benzoic acid,5,2,max_distance,6.962432820378882
+benzoic acid,5,2,lowest_energy_rel,2.1266899352667679e-10
+benzoic acid,5,2,top_population,1.0
+benzoic acid,5,2,n_effective,1.0
+benzoic acid,5,2,n_within_3kcal,1.0
+benzoic acid,5,3,radius_of_gyration,2.1112081815512704
+benzoic acid,5,3,asphericity,0.4551814833559451
+benzoic acid,5,3,eccentricity,0.9711479333935527
+benzoic acid,5,3,max_distance,6.962432721438764
+benzoic acid,5,3,lowest_energy_rel,1.5074164139150525e-11
+benzoic acid,5,3,top_population,1.0
+benzoic acid,5,3,n_effective,1.0
+benzoic acid,5,3,n_within_3kcal,1.0
+benzoic acid,5,4,radius_of_gyration,2.11120817439034
+benzoic acid,5,4,asphericity,0.4551814950709277
+benzoic acid,5,4,eccentricity,0.9711479352269
+benzoic acid,5,4,max_distance,6.962432797393759
+benzoic acid,5,4,lowest_energy_rel,4.1096015479524795e-11
+benzoic acid,5,4,top_population,1.0
+benzoic acid,5,4,n_effective,1.0
+benzoic acid,5,4,n_within_3kcal,1.0
+benzoic acid,5,5,radius_of_gyration,2.1112081651657832
+benzoic acid,5,5,asphericity,0.4551814999839412
+benzoic acid,5,5,eccentricity,0.9711479359957687
+benzoic acid,5,5,max_distance,6.96243260042302
+benzoic acid,5,5,lowest_energy_rel,4.425615429681784e-11
+benzoic acid,5,5,top_population,1.0
+benzoic acid,5,5,n_effective,1.0
+benzoic acid,5,5,n_within_3kcal,1.0
+benzoic acid,5,6,radius_of_gyration,2.1112082029369175
+benzoic acid,5,6,asphericity,0.455181491878913
+benzoic acid,5,6,eccentricity,0.9711479347273656
+benzoic acid,5,6,max_distance,6.962432649728023
+benzoic acid,5,6,lowest_energy_rel,3.5708325185623835e-11
+benzoic acid,5,6,top_population,1.0
+benzoic acid,5,6,n_effective,1.0
+benzoic acid,5,6,n_within_3kcal,1.0
+benzoic acid,5,7,radius_of_gyration,2.111208195970057
+benzoic acid,5,7,asphericity,0.4551814887276086
+benzoic acid,5,7,eccentricity,0.9711479342341968
+benzoic acid,5,7,max_distance,6.962432803482626
+benzoic acid,5,7,lowest_energy_rel,3.158184824769705e-11
+benzoic acid,5,7,top_population,1.0
+benzoic acid,5,7,n_effective,1.0
+benzoic acid,5,7,n_within_3kcal,1.0
+benzoic acid,5,8,radius_of_gyration,2.1112081614818066
+benzoic acid,5,8,asphericity,0.4551814808918846
+benzoic acid,5,8,eccentricity,0.9711479330079392
+benzoic acid,5,8,max_distance,6.962432572627497
+benzoic acid,5,8,lowest_energy_rel,3.6218139598531707e-11
+benzoic acid,5,8,top_population,1.0
+benzoic acid,5,8,n_effective,1.0
+benzoic acid,5,8,n_within_3kcal,1.0
+benzoic acid,5,9,radius_of_gyration,2.111208178194404
+benzoic acid,5,9,asphericity,0.455181493835239
+benzoic acid,5,9,eccentricity,0.971147935033519
+benzoic acid,5,9,max_distance,6.962432692524561
+benzoic acid,5,9,lowest_energy_rel,2.283329081365082e-11
+benzoic acid,5,9,top_population,1.0
+benzoic acid,5,9,n_effective,1.0
+benzoic acid,5,9,n_within_3kcal,1.0
+benzoic acid,10,0,radius_of_gyration,2.1112081947649135
+benzoic acid,10,0,asphericity,0.4551814941960844
+benzoic acid,10,0,eccentricity,0.9711479350899922
+benzoic acid,10,0,max_distance,6.962432730724982
+benzoic acid,10,0,lowest_energy_rel,2.879119165299926e-11
+benzoic acid,10,0,top_population,1.0
+benzoic acid,10,0,n_effective,1.0
+benzoic acid,10,0,n_within_3kcal,1.0
+benzoic acid,10,1,radius_of_gyration,2.111208195474884
+benzoic acid,10,1,asphericity,0.4551814966665152
+benzoic acid,10,1,eccentricity,0.9711479354766037
+benzoic acid,10,1,max_distance,6.962432706866572
+benzoic acid,10,1,lowest_energy_rel,1.816147232602816e-11
+benzoic acid,10,1,top_population,1.0
+benzoic acid,10,1,n_effective,1.0
+benzoic acid,10,1,n_within_3kcal,1.0
+benzoic acid,10,2,radius_of_gyration,2.111208196216813
+benzoic acid,10,2,asphericity,0.455181501150495
+benzoic acid,10,2,eccentricity,0.9711479361783267
+benzoic acid,10,2,max_distance,6.962432760917388
+benzoic acid,10,2,lowest_energy_rel,9.908518450174597e-12
+benzoic acid,10,2,top_population,1.0
+benzoic acid,10,2,n_effective,1.0
+benzoic acid,10,2,n_within_3kcal,1.0
+benzoic acid,10,3,radius_of_gyration,2.1112081875541193
+benzoic acid,10,3,asphericity,0.45518148518699525
+benzoic acid,10,3,eccentricity,0.9711479336801049
+benzoic acid,10,3,max_distance,6.962432696785223
+benzoic acid,10,3,lowest_energy_rel,1.028688245696685e-11
+benzoic acid,10,3,top_population,1.0
+benzoic acid,10,3,n_effective,1.0
+benzoic acid,10,3,n_within_3kcal,1.0
+benzoic acid,10,4,radius_of_gyration,2.111208201153641
+benzoic acid,10,4,asphericity,0.4551814961460352
+benzoic acid,10,4,eccentricity,0.971147935395152
+benzoic acid,10,4,max_distance,6.962432718313458
+benzoic acid,10,4,lowest_energy_rel,2.211741900737252e-11
+benzoic acid,10,4,top_population,1.0
+benzoic acid,10,4,n_effective,1.0
+benzoic acid,10,4,n_within_3kcal,1.0
+benzoic acid,10,5,radius_of_gyration,2.1112081919299146
+benzoic acid,10,5,asphericity,0.4551814900748414
+benzoic acid,10,5,eccentricity,0.9711479344450321
+benzoic acid,10,5,max_distance,6.962432741208042
+benzoic acid,10,5,lowest_energy_rel,8.547829111194005e-12
+benzoic acid,10,5,top_population,1.0
+benzoic acid,10,5,n_effective,1.0
+benzoic acid,10,5,n_within_3kcal,1.0
+benzoic acid,10,6,radius_of_gyration,2.111208182379601
+benzoic acid,10,6,asphericity,0.4551814962526165
+benzoic acid,10,6,eccentricity,0.9711479354118284
+benzoic acid,10,6,max_distance,6.962432738558172
+benzoic acid,10,6,lowest_energy_rel,9.093170660889882e-12
+benzoic acid,10,6,top_population,1.0
+benzoic acid,10,6,n_effective,1.0
+benzoic acid,10,6,n_within_3kcal,1.0
+benzoic acid,10,7,radius_of_gyration,2.111208201153641
+benzoic acid,10,7,asphericity,0.4551814961460352
+benzoic acid,10,7,eccentricity,0.971147935395152
+benzoic acid,10,7,max_distance,6.962432718313458
+benzoic acid,10,7,lowest_energy_rel,2.211741900737252e-11
+benzoic acid,10,7,top_population,1.0
+benzoic acid,10,7,n_effective,1.0
+benzoic acid,10,7,n_within_3kcal,1.0
+benzoic acid,10,8,radius_of_gyration,2.111208183350115
+benzoic acid,10,8,asphericity,0.4551814912753167
+benzoic acid,10,8,eccentricity,0.9711479346329012
+benzoic acid,10,8,max_distance,6.962432697011935
+benzoic acid,10,8,lowest_energy_rel,0.0
+benzoic acid,10,8,top_population,1.0
+benzoic acid,10,8,n_effective,1.0
+benzoic acid,10,8,n_within_3kcal,1.0
+benzoic acid,10,9,radius_of_gyration,2.1112081927166204
+benzoic acid,10,9,asphericity,0.4551814890603163
+benzoic acid,10,9,eccentricity,0.9711479342862633
+benzoic acid,10,9,max_distance,6.96243273487683
+benzoic acid,10,9,lowest_energy_rel,8.670397733112623e-12
+benzoic acid,10,9,top_population,1.0
+benzoic acid,10,9,n_effective,1.0
+benzoic acid,10,9,n_within_3kcal,1.0
+benzoic acid,25,0,radius_of_gyration,2.1112081778717156
+benzoic acid,25,0,asphericity,0.45518148944681164
+benzoic acid,25,0,eccentricity,0.9711479343467477
+benzoic acid,25,0,max_distance,6.962432672272627
+benzoic acid,25,0,lowest_energy_rel,3.952393967665557e-12
+benzoic acid,25,0,top_population,1.0
+benzoic acid,25,0,n_effective,1.0
+benzoic acid,25,0,n_within_3kcal,1.0
+benzoic acid,25,1,radius_of_gyration,2.111208190904646
+benzoic acid,25,1,asphericity,0.45518149657982315
+benzoic acid,25,1,eccentricity,0.9711479354630346
+benzoic acid,25,1,max_distance,6.962432785702877
+benzoic acid,25,1,lowest_energy_rel,2.639666263348772e-12
+benzoic acid,25,1,top_population,1.0
+benzoic acid,25,1,n_effective,1.0
+benzoic acid,25,1,n_within_3kcal,1.0
+benzoic acid,25,2,radius_of_gyration,2.1112081897899557
+benzoic acid,25,2,asphericity,0.45518149073156056
+benzoic acid,25,2,eccentricity,0.971147934547806
+benzoic acid,25,2,max_distance,6.962432735961416
+benzoic acid,25,2,lowest_energy_rel,1.2992273923373432e-11
+benzoic acid,25,2,top_population,1.0
+benzoic acid,25,2,n_effective,1.0
+benzoic acid,25,2,n_within_3kcal,1.0
+benzoic acid,25,3,radius_of_gyration,2.1112081634905073
+benzoic acid,25,3,asphericity,0.45518148218496884
+benzoic acid,25,3,eccentricity,0.9711479332102992
+benzoic acid,25,3,max_distance,6.962432697926392
+benzoic acid,25,3,lowest_energy_rel,4.5492498657040414e-12
+benzoic acid,25,3,top_population,1.0
+benzoic acid,25,3,n_effective,1.0
+benzoic acid,25,3,n_within_3kcal,1.0
+benzoic acid,25,4,radius_of_gyration,2.111208183633423
+benzoic acid,25,4,asphericity,0.4551814915507659
+benzoic acid,25,4,eccentricity,0.971147934676008
+benzoic acid,25,4,max_distance,6.962432712403752
+benzoic acid,25,4,lowest_energy_rel,2.433608869978343e-13
+benzoic acid,25,4,top_population,1.0
+benzoic acid,25,4,n_effective,1.0
+benzoic acid,25,4,n_within_3kcal,1.0
+benzoic acid,25,5,radius_of_gyration,2.111208186947453
+benzoic acid,25,5,asphericity,0.45518149458073365
+benzoic acid,25,5,eccentricity,0.9711479351501857
+benzoic acid,25,5,max_distance,6.962432727753997
+benzoic acid,25,5,lowest_energy_rel,2.0037305148434825e-12
+benzoic acid,25,5,top_population,1.0
+benzoic acid,25,5,n_effective,1.0
+benzoic acid,25,5,n_within_3kcal,1.0
+benzoic acid,25,6,radius_of_gyration,2.1112081968037573
+benzoic acid,25,6,asphericity,0.45518149396552104
+benzoic acid,25,6,eccentricity,0.971147935053908
+benzoic acid,25,6,max_distance,6.962432796889294
+benzoic acid,25,6,lowest_energy_rel,5.950795411990839e-12
+benzoic acid,25,6,top_population,1.0
+benzoic acid,25,6,n_effective,1.0
+benzoic acid,25,6,n_within_3kcal,1.0
+benzoic acid,25,7,radius_of_gyration,2.1112081919670227
+benzoic acid,25,7,asphericity,0.4551814925777405
+benzoic acid,25,7,eccentricity,0.9711479348367256
+benzoic acid,25,7,max_distance,6.962432769294832
+benzoic acid,25,7,lowest_energy_rel,1.8314239014216582e-12
+benzoic acid,25,7,top_population,1.0
+benzoic acid,25,7,n_effective,1.0
+benzoic acid,25,7,n_within_3kcal,1.0
+benzoic acid,25,8,radius_of_gyration,2.111208191403183
+benzoic acid,25,8,asphericity,0.45518148772222977
+benzoic acid,25,8,eccentricity,0.971147934076858
+benzoic acid,25,8,max_distance,6.962432741345861
+benzoic acid,25,8,lowest_energy_rel,1.7408297026122455e-12
+benzoic acid,25,8,top_population,1.0
+benzoic acid,25,8,n_effective,1.0
+benzoic acid,25,8,n_within_3kcal,1.0
+benzoic acid,25,9,radius_of_gyration,2.111208183633423
+benzoic acid,25,9,asphericity,0.4551814915507659
+benzoic acid,25,9,eccentricity,0.971147934676008
+benzoic acid,25,9,max_distance,6.962432712403752
+benzoic acid,25,9,lowest_energy_rel,2.433608869978343e-13
+benzoic acid,25,9,top_population,1.0
+benzoic acid,25,9,n_effective,1.0
+benzoic acid,25,9,n_within_3kcal,1.0
+benzoic acid,50,0,radius_of_gyration,2.111208186424474
+benzoic acid,50,0,asphericity,0.4551814846483144
+benzoic acid,50,0,eccentricity,0.9711479335958028
+benzoic acid,50,0,max_distance,6.962432776754702
+benzoic acid,50,0,lowest_energy_rel,6.3842264808045e-12
+benzoic acid,50,0,top_population,1.0
+benzoic acid,50,0,n_effective,1.0
+benzoic acid,50,0,n_within_3kcal,1.0
+benzoic acid,50,1,radius_of_gyration,2.111208183633423
+benzoic acid,50,1,asphericity,0.4551814915507659
+benzoic acid,50,1,eccentricity,0.971147934676008
+benzoic acid,50,1,max_distance,6.962432712403752
+benzoic acid,50,1,lowest_energy_rel,2.433608869978343e-13
+benzoic acid,50,1,top_population,1.0
+benzoic acid,50,1,n_effective,1.0
+benzoic acid,50,1,n_within_3kcal,1.0
+benzoic acid,50,2,radius_of_gyration,2.1112081778717156
+benzoic acid,50,2,asphericity,0.45518148944681164
+benzoic acid,50,2,eccentricity,0.9711479343467477
+benzoic acid,50,2,max_distance,6.962432672272627
+benzoic acid,50,2,lowest_energy_rel,3.952393967665557e-12
+benzoic acid,50,2,top_population,1.0
+benzoic acid,50,2,n_effective,1.0
+benzoic acid,50,2,n_within_3kcal,1.0
+benzoic acid,50,3,radius_of_gyration,2.111208178822239
+benzoic acid,50,3,asphericity,0.4551814879195947
+benzoic acid,50,3,eccentricity,0.9711479341077446
+benzoic acid,50,3,max_distance,6.962432675617255
+benzoic acid,50,3,lowest_energy_rel,4.4710901647704304e-12
+benzoic acid,50,3,top_population,1.0
+benzoic acid,50,3,n_effective,1.0
+benzoic acid,50,3,n_within_3kcal,1.0
+benzoic acid,50,4,radius_of_gyration,2.111208183350115
+benzoic acid,50,4,asphericity,0.4551814912753167
+benzoic acid,50,4,eccentricity,0.9711479346329012
+benzoic acid,50,4,max_distance,6.962432697011935
+benzoic acid,50,4,lowest_energy_rel,0.0
+benzoic acid,50,4,top_population,1.0
+benzoic acid,50,4,n_effective,1.0
+benzoic acid,50,4,n_within_3kcal,1.0
+benzoic acid,50,5,radius_of_gyration,2.1112081964558636
+benzoic acid,50,5,asphericity,0.4551814887180778
+benzoic acid,50,5,eccentricity,0.9711479342327047
+benzoic acid,50,5,max_distance,6.962432747332524
+benzoic acid,50,5,lowest_energy_rel,4.259703700881801e-12
+benzoic acid,50,5,top_population,1.0
+benzoic acid,50,5,n_effective,1.0
+benzoic acid,50,5,n_within_3kcal,1.0
+benzoic acid,50,6,radius_of_gyration,2.111208181435049
+benzoic acid,50,6,asphericity,0.45518149415046527
+benzoic acid,50,6,eccentricity,0.9711479350828505
+benzoic acid,50,6,max_distance,6.962432698098118
+benzoic acid,50,6,lowest_energy_rel,1.7408297026122455e-12
+benzoic acid,50,6,top_population,1.0
+benzoic acid,50,6,n_effective,1.0
+benzoic acid,50,6,n_within_3kcal,1.0
+benzoic acid,50,7,radius_of_gyration,2.111208191403183
+benzoic acid,50,7,asphericity,0.45518148772222977
+benzoic acid,50,7,eccentricity,0.971147934076858
+benzoic acid,50,7,max_distance,6.962432741345861
+benzoic acid,50,7,lowest_energy_rel,1.7408297026122455e-12
+benzoic acid,50,7,top_population,1.0
+benzoic acid,50,7,n_effective,1.0
+benzoic acid,50,7,n_within_3kcal,1.0
+benzoic acid,50,8,radius_of_gyration,2.111208183633423
+benzoic acid,50,8,asphericity,0.4551814915507659
+benzoic acid,50,8,eccentricity,0.971147934676008
+benzoic acid,50,8,max_distance,6.962432712403752
+benzoic acid,50,8,lowest_energy_rel,2.433608869978343e-13
+benzoic acid,50,8,top_population,1.0
+benzoic acid,50,8,n_effective,1.0
+benzoic acid,50,8,n_within_3kcal,1.0
+benzoic acid,50,9,radius_of_gyration,2.1112081920271435
+benzoic acid,50,9,asphericity,0.45518150517360706
+benzoic acid,50,9,eccentricity,0.9711479368079269
+benzoic acid,50,9,max_distance,6.96243275196146
+benzoic acid,50,9,lowest_energy_rel,1.1997514093309292e-11
+benzoic acid,50,9,top_population,1.0
+benzoic acid,50,9,n_effective,1.0
+benzoic acid,50,9,n_within_3kcal,1.0
+benzoic acid,100,0,radius_of_gyration,2.1112081964558636
+benzoic acid,100,0,asphericity,0.4551814887180778
+benzoic acid,100,0,eccentricity,0.9711479342327047
+benzoic acid,100,0,max_distance,6.962432747332524
+benzoic acid,100,0,lowest_energy_rel,4.259703700881801e-12
+benzoic acid,100,0,top_population,1.0
+benzoic acid,100,0,n_effective,1.0
+benzoic acid,100,0,n_within_3kcal,1.0
+benzoic acid,100,1,radius_of_gyration,2.111208183633423
+benzoic acid,100,1,asphericity,0.4551814915507659
+benzoic acid,100,1,eccentricity,0.971147934676008
+benzoic acid,100,1,max_distance,6.962432712403752
+benzoic acid,100,1,lowest_energy_rel,2.433608869978343e-13
+benzoic acid,100,1,top_population,1.0
+benzoic acid,100,1,n_effective,1.0
+benzoic acid,100,1,n_within_3kcal,1.0
+benzoic acid,100,2,radius_of_gyration,2.111208183633423
+benzoic acid,100,2,asphericity,0.4551814915507659
+benzoic acid,100,2,eccentricity,0.971147934676008
+benzoic acid,100,2,max_distance,6.962432712403752
+benzoic acid,100,2,lowest_energy_rel,2.433608869978343e-13
+benzoic acid,100,2,top_population,1.0
+benzoic acid,100,2,n_effective,1.0
+benzoic acid,100,2,n_within_3kcal,1.0
+benzoic acid,100,3,radius_of_gyration,2.111208191403183
+benzoic acid,100,3,asphericity,0.45518148772222977
+benzoic acid,100,3,eccentricity,0.971147934076858
+benzoic acid,100,3,max_distance,6.962432741345861
+benzoic acid,100,3,lowest_energy_rel,1.7408297026122455e-12
+benzoic acid,100,3,top_population,1.0
+benzoic acid,100,3,n_effective,1.0
+benzoic acid,100,3,n_within_3kcal,1.0
+benzoic acid,100,4,radius_of_gyration,2.1112081919670227
+benzoic acid,100,4,asphericity,0.4551814925777405
+benzoic acid,100,4,eccentricity,0.9711479348367256
+benzoic acid,100,4,max_distance,6.962432769294832
+benzoic acid,100,4,lowest_energy_rel,1.8314239014216582e-12
+benzoic acid,100,4,top_population,1.0
+benzoic acid,100,4,n_effective,1.0
+benzoic acid,100,4,n_within_3kcal,1.0
+benzoic acid,100,5,radius_of_gyration,2.1112081758247268
+benzoic acid,100,5,asphericity,0.4551814874832891
+benzoic acid,100,5,eccentricity,0.971147934039465
+benzoic acid,100,5,max_distance,6.962432720208237
+benzoic acid,100,5,lowest_energy_rel,1.737276988933445e-12
+benzoic acid,100,5,top_population,1.0
+benzoic acid,100,5,n_effective,1.0
+benzoic acid,100,5,n_within_3kcal,1.0
+benzoic acid,100,6,radius_of_gyration,2.1112081919670227
+benzoic acid,100,6,asphericity,0.4551814925777405
+benzoic acid,100,6,eccentricity,0.9711479348367256
+benzoic acid,100,6,max_distance,6.962432769294832
+benzoic acid,100,6,lowest_energy_rel,1.8314239014216582e-12
+benzoic acid,100,6,top_population,1.0
+benzoic acid,100,6,n_effective,1.0
+benzoic acid,100,6,n_within_3kcal,1.0
+benzoic acid,100,7,radius_of_gyration,2.111208183350115
+benzoic acid,100,7,asphericity,0.4551814912753167
+benzoic acid,100,7,eccentricity,0.9711479346329012
+benzoic acid,100,7,max_distance,6.962432697011935
+benzoic acid,100,7,lowest_energy_rel,0.0
+benzoic acid,100,7,top_population,1.0
+benzoic acid,100,7,n_effective,1.0
+benzoic acid,100,7,n_within_3kcal,1.0
+benzoic acid,100,8,radius_of_gyration,2.111208186947453
+benzoic acid,100,8,asphericity,0.45518149458073365
+benzoic acid,100,8,eccentricity,0.9711479351501857
+benzoic acid,100,8,max_distance,6.962432727753997
+benzoic acid,100,8,lowest_energy_rel,2.0037305148434825e-12
+benzoic acid,100,8,top_population,1.0
+benzoic acid,100,8,n_effective,1.0
+benzoic acid,100,8,n_within_3kcal,1.0
+benzoic acid,100,9,radius_of_gyration,2.111208190904646
+benzoic acid,100,9,asphericity,0.45518149657982315
+benzoic acid,100,9,eccentricity,0.9711479354630346
+benzoic acid,100,9,max_distance,6.962432785702877
+benzoic acid,100,9,lowest_energy_rel,2.639666263348772e-12
+benzoic acid,100,9,top_population,1.0
+benzoic acid,100,9,n_effective,1.0
+benzoic acid,100,9,n_within_3kcal,1.0
+benzoic acid,250,0,radius_of_gyration,2.111208183350115
+benzoic acid,250,0,asphericity,0.4551814912753167
+benzoic acid,250,0,eccentricity,0.9711479346329012
+benzoic acid,250,0,max_distance,6.962432697011935
+benzoic acid,250,0,lowest_energy_rel,0.0
+benzoic acid,250,0,top_population,1.0
+benzoic acid,250,0,n_effective,1.0
+benzoic acid,250,0,n_within_3kcal,1.0
+benzoic acid,250,1,radius_of_gyration,2.111208191403183
+benzoic acid,250,1,asphericity,0.45518148772222977
+benzoic acid,250,1,eccentricity,0.971147934076858
+benzoic acid,250,1,max_distance,6.962432741345861
+benzoic acid,250,1,lowest_energy_rel,1.7408297026122455e-12
+benzoic acid,250,1,top_population,1.0
+benzoic acid,250,1,n_effective,1.0
+benzoic acid,250,1,n_within_3kcal,1.0
+benzoic acid,250,2,radius_of_gyration,2.111208183350115
+benzoic acid,250,2,asphericity,0.4551814912753167
+benzoic acid,250,2,eccentricity,0.9711479346329012
+benzoic acid,250,2,max_distance,6.962432697011935
+benzoic acid,250,2,lowest_energy_rel,0.0
+benzoic acid,250,2,top_population,1.0
+benzoic acid,250,2,n_effective,1.0
+benzoic acid,250,2,n_within_3kcal,1.0
+benzoic acid,250,3,radius_of_gyration,2.111208183633423
+benzoic acid,250,3,asphericity,0.4551814915507659
+benzoic acid,250,3,eccentricity,0.971147934676008
+benzoic acid,250,3,max_distance,6.962432712403752
+benzoic acid,250,3,lowest_energy_rel,2.433608869978343e-13
+benzoic acid,250,3,top_population,1.0
+benzoic acid,250,3,n_effective,1.0
+benzoic acid,250,3,n_within_3kcal,1.0
+benzoic acid,250,4,radius_of_gyration,2.111208183350115
+benzoic acid,250,4,asphericity,0.4551814912753167
+benzoic acid,250,4,eccentricity,0.9711479346329012
+benzoic acid,250,4,max_distance,6.962432697011935
+benzoic acid,250,4,lowest_energy_rel,0.0
+benzoic acid,250,4,top_population,1.0
+benzoic acid,250,4,n_effective,1.0
+benzoic acid,250,4,n_within_3kcal,1.0
+benzoic acid,250,5,radius_of_gyration,2.111208183350115
+benzoic acid,250,5,asphericity,0.4551814912753167
+benzoic acid,250,5,eccentricity,0.9711479346329012
+benzoic acid,250,5,max_distance,6.962432697011935
+benzoic acid,250,5,lowest_energy_rel,0.0
+benzoic acid,250,5,top_population,1.0
+benzoic acid,250,5,n_effective,1.0
+benzoic acid,250,5,n_within_3kcal,1.0
+benzoic acid,250,6,radius_of_gyration,2.111208191403183
+benzoic acid,250,6,asphericity,0.45518148772222977
+benzoic acid,250,6,eccentricity,0.971147934076858
+benzoic acid,250,6,max_distance,6.962432741345861
+benzoic acid,250,6,lowest_energy_rel,1.7408297026122455e-12
+benzoic acid,250,6,top_population,1.0
+benzoic acid,250,6,n_effective,1.0
+benzoic acid,250,6,n_within_3kcal,1.0
+benzoic acid,250,7,radius_of_gyration,2.111208183633423
+benzoic acid,250,7,asphericity,0.4551814915507659
+benzoic acid,250,7,eccentricity,0.971147934676008
+benzoic acid,250,7,max_distance,6.962432712403752
+benzoic acid,250,7,lowest_energy_rel,2.433608869978343e-13
+benzoic acid,250,7,top_population,1.0
+benzoic acid,250,7,n_effective,1.0
+benzoic acid,250,7,n_within_3kcal,1.0
+benzoic acid,250,8,radius_of_gyration,2.111208183633423
+benzoic acid,250,8,asphericity,0.4551814915507659
+benzoic acid,250,8,eccentricity,0.971147934676008
+benzoic acid,250,8,max_distance,6.962432712403752
+benzoic acid,250,8,lowest_energy_rel,2.433608869978343e-13
+benzoic acid,250,8,top_population,1.0
+benzoic acid,250,8,n_effective,1.0
+benzoic acid,250,8,n_within_3kcal,1.0
+benzoic acid,250,9,radius_of_gyration,2.111208183633423
+benzoic acid,250,9,asphericity,0.4551814915507659
+benzoic acid,250,9,eccentricity,0.971147934676008
+benzoic acid,250,9,max_distance,6.962432712403752
+benzoic acid,250,9,lowest_energy_rel,2.433608869978343e-13
+benzoic acid,250,9,top_population,1.0
+benzoic acid,250,9,n_effective,1.0
+benzoic acid,250,9,n_within_3kcal,1.0
+benzoic acid,500,0,radius_of_gyration,2.111208183350115
+benzoic acid,500,0,asphericity,0.4551814912753167
+benzoic acid,500,0,eccentricity,0.9711479346329012
+benzoic acid,500,0,max_distance,6.962432697011935
+benzoic acid,500,0,lowest_energy_rel,0.0
+benzoic acid,500,0,top_population,1.0
+benzoic acid,500,0,n_effective,1.0
+benzoic acid,500,0,n_within_3kcal,1.0
+decanol,5,0,radius_of_gyration,3.470363255095862
+decanol,5,0,asphericity,0.6421314797146778
+decanol,5,0,eccentricity,0.9881726893662184
+decanol,5,0,max_distance,10.90975016809519
+decanol,5,0,lowest_energy_rel,2.223313792761788
+decanol,5,0,top_population,0.4357168261706174
+decanol,5,0,n_effective,3.637409119866729
+decanol,5,0,n_within_3kcal,4.0
+decanol,5,1,radius_of_gyration,3.800512739044385
+decanol,5,1,asphericity,0.8437131654720122
+decanol,5,1,eccentricity,0.9981863049663754
+decanol,5,1,max_distance,13.025758249757288
+decanol,5,1,lowest_energy_rel,1.6411434766729123
+decanol,5,1,top_population,0.8075269565046937
+decanol,5,1,n_effective,2.0019962938230558
+decanol,5,1,n_within_3kcal,4.0
+decanol,5,2,radius_of_gyration,3.6267632694584746
+decanol,5,2,asphericity,0.7874027137111422
+decanol,5,2,eccentricity,0.9965025782027565
+decanol,5,2,max_distance,11.789603790625794
+decanol,5,2,lowest_energy_rel,2.5367551602058835
+decanol,5,2,top_population,0.4465313090732189
+decanol,5,2,n_effective,3.175397624702967
+decanol,5,2,n_within_3kcal,4.0
+decanol,5,3,radius_of_gyration,3.601634316830768
+decanol,5,3,asphericity,0.6931997889377424
+decanol,5,3,eccentricity,0.9932264318978661
+decanol,5,3,max_distance,11.349169951304553
+decanol,5,3,lowest_energy_rel,1.6869246030464673
+decanol,5,3,top_population,0.5954888714656381
+decanol,5,3,n_effective,2.675664248700034
+decanol,5,3,n_within_3kcal,4.0
+decanol,5,4,radius_of_gyration,3.4908406148522926
+decanol,5,4,asphericity,0.6078403438861453
+decanol,5,4,eccentricity,0.9873829702119936
+decanol,5,4,max_distance,10.9083658886552
+decanol,5,4,lowest_energy_rel,1.3958213816335157
+decanol,5,4,top_population,0.4286108420861024
+decanol,5,4,n_effective,3.3516266930689764
+decanol,5,4,n_within_3kcal,5.0
+decanol,5,5,radius_of_gyration,3.755923805610019
+decanol,5,5,asphericity,0.791793223191222
+decanol,5,5,eccentricity,0.9967920949860528
+decanol,5,5,max_distance,12.308982348013314
+decanol,5,5,lowest_energy_rel,1.5030770230961839
+decanol,5,5,top_population,0.4392064449780788
+decanol,5,5,n_effective,3.455320885781435
+decanol,5,5,n_within_3kcal,5.0
+decanol,5,6,radius_of_gyration,3.5900713491509184
+decanol,5,6,asphericity,0.7402072609896843
+decanol,5,6,eccentricity,0.9949403643804
+decanol,5,6,max_distance,11.555778136505568
+decanol,5,6,lowest_energy_rel,2.5155376184533598
+decanol,5,6,top_population,0.3618230633105138
+decanol,5,6,n_effective,3.58002215733051
+decanol,5,6,n_within_3kcal,5.0
+decanol,5,7,radius_of_gyration,3.6538888093915394
+decanol,5,7,asphericity,0.749298298833038
+decanol,5,7,eccentricity,0.995382172472828
+decanol,5,7,max_distance,12.214609032908553
+decanol,5,7,lowest_energy_rel,1.5738744950881145
+decanol,5,7,top_population,0.5793285130240207
+decanol,5,7,n_effective,3.185608066500503
+decanol,5,7,n_within_3kcal,5.0
+decanol,5,8,radius_of_gyration,3.658450214255737
+decanol,5,8,asphericity,0.7859638122098359
+decanol,5,8,eccentricity,0.9959726441476316
+decanol,5,8,max_distance,11.923643168963734
+decanol,5,8,lowest_energy_rel,2.155729400249694
+decanol,5,8,top_population,0.7123216876341975
+decanol,5,8,n_effective,2.2150073415727665
+decanol,5,8,n_within_3kcal,5.0
+decanol,5,9,radius_of_gyration,3.8478552985817904
+decanol,5,9,asphericity,0.7984580617134531
+decanol,5,9,eccentricity,0.9956862109647713
+decanol,5,9,max_distance,12.198075498455175
+decanol,5,9,lowest_energy_rel,0.8735401569573398
+decanol,5,9,top_population,0.6279231773211523
+decanol,5,9,n_effective,2.555747083246083
+decanol,5,9,n_within_3kcal,3.0
+decanol,10,0,radius_of_gyration,3.5908334989456563
+decanol,10,0,asphericity,0.6991281014061977
+decanol,10,0,eccentricity,0.9923110748290855
+decanol,10,0,max_distance,11.300710617608605
+decanol,10,0,lowest_energy_rel,1.762233883307685
+decanol,10,0,top_population,0.36906566769567817
+decanol,10,0,n_effective,4.974047394631332
+decanol,10,0,n_within_3kcal,8.0
+decanol,10,1,radius_of_gyration,3.613013274503363
+decanol,10,1,asphericity,0.7492695402866744
+decanol,10,1,eccentricity,0.9949043970140458
+decanol,10,1,max_distance,11.4474509895394
+decanol,10,1,lowest_energy_rel,1.9849827703539873
+decanol,10,1,top_population,0.377761035780434
+decanol,10,1,n_effective,6.06180391077933
+decanol,10,1,n_within_3kcal,9.0
+decanol,10,2,radius_of_gyration,3.701343503313727
+decanol,10,2,asphericity,0.7812834220625661
+decanol,10,2,eccentricity,0.9962502397109341
+decanol,10,2,max_distance,12.01423983113975
+decanol,10,2,lowest_energy_rel,1.6411434764468638
+decanol,10,2,top_population,0.34209468858714936
+decanol,10,2,n_effective,5.1803529228381695
+decanol,10,2,n_within_3kcal,9.0
+decanol,10,3,radius_of_gyration,3.812788516518507
+decanol,10,3,asphericity,0.8051787436373875
+decanol,10,3,eccentricity,0.9965597412224512
+decanol,10,3,max_distance,12.376438502792016
+decanol,10,3,lowest_energy_rel,0.6440166310774682
+decanol,10,3,top_population,0.515579764955223
+decanol,10,3,n_effective,4.622462050257062
+decanol,10,3,n_within_3kcal,10.0
+decanol,10,4,radius_of_gyration,3.7871249307707653
+decanol,10,4,asphericity,0.7797609496481308
+decanol,10,4,eccentricity,0.9954025524809351
+decanol,10,4,max_distance,12.22483776404312
+decanol,10,4,lowest_energy_rel,0.8663134681155356
+decanol,10,4,top_population,0.538425480128944
+decanol,10,4,n_effective,3.826357201466987
+decanol,10,4,n_within_3kcal,8.0
+decanol,10,5,radius_of_gyration,3.8771775049536212
+decanol,10,5,asphericity,0.8399347099482111
+decanol,10,5,eccentricity,0.998121369260966
+decanol,10,5,max_distance,12.121742660743264
+decanol,10,5,lowest_energy_rel,0.8735364197507849
+decanol,10,5,top_population,0.648826441771371
+decanol,10,5,n_effective,2.7087850328287453
+decanol,10,5,n_within_3kcal,7.0
+decanol,10,6,radius_of_gyration,3.802690770589499
+decanol,10,6,asphericity,0.7914283898042622
+decanol,10,6,eccentricity,0.9968383340922266
+decanol,10,6,max_distance,12.597616497622012
+decanol,10,6,lowest_energy_rel,0.7007719570476425
+decanol,10,6,top_population,0.6471700247895259
+decanol,10,6,n_effective,3.4159672564682015
+decanol,10,6,n_within_3kcal,9.0
+decanol,10,7,radius_of_gyration,3.7314267189121426
+decanol,10,7,asphericity,0.7930770122850135
+decanol,10,7,eccentricity,0.996230800771231
+decanol,10,7,max_distance,12.038592652921825
+decanol,10,7,lowest_energy_rel,1.4673866471212555
+decanol,10,7,top_population,0.6362405679048694
+decanol,10,7,n_effective,3.8906085630556433
+decanol,10,7,n_within_3kcal,10.0
+decanol,10,8,radius_of_gyration,3.67859746035581
+decanol,10,8,asphericity,0.7418967356511696
+decanol,10,8,eccentricity,0.9945572000181111
+decanol,10,8,max_distance,11.910164884670008
+decanol,10,8,lowest_energy_rel,1.501426751818034
+decanol,10,8,top_population,0.3372521810176241
+decanol,10,8,n_effective,4.995658747871775
+decanol,10,8,n_within_3kcal,9.0
+decanol,10,9,radius_of_gyration,3.7921182632251873
+decanol,10,9,asphericity,0.7840395764237539
+decanol,10,9,eccentricity,0.9964566604486472
+decanol,10,9,max_distance,12.124076775454242
+decanol,10,9,lowest_energy_rel,0.8679566943122428
+decanol,10,9,top_population,0.6044951296409807
+decanol,10,9,n_effective,3.833363155705102
+decanol,10,9,n_within_3kcal,8.0
+decanol,25,0,radius_of_gyration,3.750253077616144
+decanol,25,0,asphericity,0.791173384009124
+decanol,25,0,eccentricity,0.9963722296422778
+decanol,25,0,max_distance,12.13721835430066
+decanol,25,0,lowest_energy_rel,0.8903013755713545
+decanol,25,0,top_population,0.3459231587790042
+decanol,25,0,n_effective,8.455106868460332
+decanol,25,0,n_within_3kcal,16.0
+decanol,25,1,radius_of_gyration,3.6779322789454025
+decanol,25,1,asphericity,0.751662714161457
+decanol,25,1,eccentricity,0.9951384901470669
+decanol,25,1,max_distance,11.924798716131153
+decanol,25,1,lowest_energy_rel,1.0190969639300143
+decanol,25,1,top_population,0.3436439576991061
+decanol,25,1,n_effective,10.34787940814833
+decanol,25,1,n_within_3kcal,23.0
+decanol,25,2,radius_of_gyration,3.7521165201932014
+decanol,25,2,asphericity,0.7724401132659282
+decanol,25,2,eccentricity,0.9959944965234659
+decanol,25,2,max_distance,12.270082083280618
+decanol,25,2,lowest_energy_rel,0.7007719570476425
+decanol,25,2,top_population,0.5428251718018816
+decanol,25,2,n_effective,5.89006821852307
+decanol,25,2,n_within_3kcal,15.0
+decanol,25,3,radius_of_gyration,3.5838434885152197
+decanol,25,3,asphericity,0.7164377713753598
+decanol,25,3,eccentricity,0.9933774796339416
+decanol,25,3,max_distance,11.34701060847883
+decanol,25,3,lowest_energy_rel,1.6522634452752172
+decanol,25,3,top_population,0.19710467238686083
+decanol,25,3,n_effective,13.129036592650381
+decanol,25,3,n_within_3kcal,23.0
+decanol,25,4,radius_of_gyration,3.5929687939614934
+decanol,25,4,asphericity,0.725680752354213
+decanol,25,4,eccentricity,0.9922383661929162
+decanol,25,4,max_distance,11.66210509805546
+decanol,25,4,lowest_energy_rel,1.6411434766729123
+decanol,25,4,top_population,0.19987040396860922
+decanol,25,4,n_effective,14.349949853008821
+decanol,25,4,n_within_3kcal,20.0
+decanol,25,5,radius_of_gyration,3.636532664086244
+decanol,25,5,asphericity,0.7134296288073954
+decanol,25,5,eccentricity,0.9923068722407068
+decanol,25,5,max_distance,11.667786841739288
+decanol,25,5,lowest_energy_rel,1.3958213816335157
+decanol,25,5,top_population,0.19625593015462361
+decanol,25,5,n_effective,11.312534544831678
+decanol,25,5,n_within_3kcal,20.0
+decanol,25,6,radius_of_gyration,3.64231332439031
+decanol,25,6,asphericity,0.7356889637201406
+decanol,25,6,eccentricity,0.9944402767054212
+decanol,25,6,max_distance,11.652586617176565
+decanol,25,6,lowest_energy_rel,1.5113142946478373
+decanol,25,6,top_population,0.19958190170462736
+decanol,25,6,n_effective,13.784901119855364
+decanol,25,6,n_within_3kcal,25.0
+decanol,25,7,radius_of_gyration,3.740035985963356
+decanol,25,7,asphericity,0.7663207241957708
+decanol,25,7,eccentricity,0.9954266568949467
+decanol,25,7,max_distance,11.881623782441686
+decanol,25,7,lowest_energy_rel,0.873536418606351
+decanol,25,7,top_population,0.3818700660699542
+decanol,25,7,n_effective,8.396699312741948
+decanol,25,7,n_within_3kcal,18.0
+decanol,25,8,radius_of_gyration,3.6792157772682237
+decanol,25,8,asphericity,0.7470312724227304
+decanol,25,8,eccentricity,0.9931397366324651
+decanol,25,8,max_distance,11.817855039289531
+decanol,25,8,lowest_energy_rel,1.4673866466463945
+decanol,25,8,top_population,0.1475468249826907
+decanol,25,8,n_effective,13.46594361998856
+decanol,25,8,n_within_3kcal,24.0
+decanol,25,9,radius_of_gyration,3.7964988960167414
+decanol,25,9,asphericity,0.7906386093752953
+decanol,25,9,eccentricity,0.9964222276788732
+decanol,25,9,max_distance,12.258433268792668
+decanol,25,9,lowest_energy_rel,0.6990390752985416
+decanol,25,9,top_population,0.31798142777638516
+decanol,25,9,n_effective,8.135784406590139
+decanol,25,9,n_within_3kcal,18.0
+decanol,50,0,radius_of_gyration,3.6982831079095857
+decanol,50,0,asphericity,0.7758442994719726
+decanol,50,0,eccentricity,0.9956155111732838
+decanol,50,0,max_distance,11.856730622867815
+decanol,50,0,lowest_energy_rel,1.1394420907518032
+decanol,50,0,top_population,0.13068330537248102
+decanol,50,0,n_effective,25.19988205760658
+decanol,50,0,n_within_3kcal,43.0
+decanol,50,1,radius_of_gyration,3.751402988406585
+decanol,50,1,asphericity,0.8019195597878391
+decanol,50,1,eccentricity,0.9963925136027162
+decanol,50,1,max_distance,12.26891612407503
+decanol,50,1,lowest_energy_rel,0.6440166310774682
+decanol,50,1,top_population,0.2689631535860685
+decanol,50,1,n_effective,20.265458789508727
+decanol,50,1,n_within_3kcal,38.0
+decanol,50,2,radius_of_gyration,3.7265049789574434
+decanol,50,2,asphericity,0.7531448655930281
+decanol,50,2,eccentricity,0.9947244108775605
+decanol,50,2,max_distance,12.02565598222698
+decanol,50,2,lowest_energy_rel,0.7007719570476425
+decanol,50,2,top_population,0.18186330701570036
+decanol,50,2,n_effective,18.860089420166442
+decanol,50,2,n_within_3kcal,36.0
+decanol,50,3,radius_of_gyration,3.705313357374098
+decanol,50,3,asphericity,0.7688045331860734
+decanol,50,3,eccentricity,0.9958582368321565
+decanol,50,3,max_distance,11.837292119924244
+decanol,50,3,lowest_energy_rel,1.0190969639300143
+decanol,50,3,top_population,0.157183077443688
+decanol,50,3,n_effective,23.84980971690465
+decanol,50,3,n_within_3kcal,42.0
+decanol,50,4,radius_of_gyration,3.790966597308204
+decanol,50,4,asphericity,0.8047171565679803
+decanol,50,4,eccentricity,0.9965494336509966
+decanol,50,4,max_distance,12.342106784193069
+decanol,50,4,lowest_energy_rel,0.2658836022477651
+decanol,50,4,top_population,0.42894094004884925
+decanol,50,4,n_effective,11.960852551247175
+decanol,50,4,n_within_3kcal,29.0
+decanol,50,5,radius_of_gyration,3.7345147409313073
+decanol,50,5,asphericity,0.761761674663821
+decanol,50,5,eccentricity,0.9954441410847328
+decanol,50,5,max_distance,12.11846452567722
+decanol,50,5,lowest_energy_rel,0.6990390752985416
+decanol,50,5,top_population,0.20826307708401895
+decanol,50,5,n_effective,16.762434553973936
+decanol,50,5,n_within_3kcal,34.0
+decanol,50,6,radius_of_gyration,3.691691844320329
+decanol,50,6,asphericity,0.7563113941823949
+decanol,50,6,eccentricity,0.9949463722481185
+decanol,50,6,max_distance,11.80597458046303
+decanol,50,6,lowest_energy_rel,0.873536418606351
+decanol,50,6,top_population,0.21277108999110594
+decanol,50,6,n_effective,21.07219179705216
+decanol,50,6,n_within_3kcal,40.0
+decanol,50,7,radius_of_gyration,3.755443978947466
+decanol,50,7,asphericity,0.7882833240995336
+decanol,50,7,eccentricity,0.9962950367714157
+decanol,50,7,max_distance,12.0528896107439
+decanol,50,7,lowest_energy_rel,0.8679566958834855
+decanol,50,7,top_population,0.14703460150964903
+decanol,50,7,n_effective,18.579574926212565
+decanol,50,7,n_within_3kcal,39.0
+decanol,50,8,radius_of_gyration,3.868546546465725
+decanol,50,8,asphericity,0.8224680406089294
+decanol,50,8,eccentricity,0.9968500127367885
+decanol,50,8,max_distance,12.436280925543533
+decanol,50,8,lowest_energy_rel,0.0
+decanol,50,8,top_population,0.3919453008671308
+decanol,50,8,n_effective,12.491130337555555
+decanol,50,8,n_within_3kcal,32.0
+decanol,50,9,radius_of_gyration,3.7388610604545467
+decanol,50,9,asphericity,0.7785797816823784
+decanol,50,9,eccentricity,0.9963670514668943
+decanol,50,9,max_distance,12.111119452037652
+decanol,50,9,lowest_energy_rel,0.8663134681155356
+decanol,50,9,top_population,0.14225015206946978
+decanol,50,9,n_effective,19.177385136881913
+decanol,50,9,n_within_3kcal,39.0
+decanol,100,0,radius_of_gyration,3.8353099332230354
+decanol,100,0,asphericity,0.8149745895108731
+decanol,100,0,eccentricity,0.9965510327250491
+decanol,100,0,max_distance,12.422938118886979
+decanol,100,0,lowest_energy_rel,0.0
+decanol,100,0,top_population,0.25551164852368974
+decanol,100,0,n_effective,22.904942381748594
+decanol,100,0,n_within_3kcal,58.0
+decanol,100,1,radius_of_gyration,3.750549841845972
+decanol,100,1,asphericity,0.7811068667034358
+decanol,100,1,eccentricity,0.9954109892210168
+decanol,100,1,max_distance,12.05803701135004
+decanol,100,1,lowest_energy_rel,0.2658836022477651
+decanol,100,1,top_population,0.24333658953100154
+decanol,100,1,n_effective,29.69791091729228
+decanol,100,1,n_within_3kcal,67.0
+decanol,100,2,radius_of_gyration,3.760313837513837
+decanol,100,2,asphericity,0.786971945647874
+decanol,100,2,eccentricity,0.996205558428362
+decanol,100,2,max_distance,12.169023805811532
+decanol,100,2,lowest_energy_rel,0.6440166310774682
+decanol,100,2,top_population,0.11954703117566302
+decanol,100,2,n_effective,34.92787047059043
+decanol,100,2,n_within_3kcal,74.0
+decanol,100,3,radius_of_gyration,3.784239316543601
+decanol,100,3,asphericity,0.7986916659429564
+decanol,100,3,eccentricity,0.9965877991457686
+decanol,100,3,max_distance,12.226475688214322
+decanol,100,3,lowest_energy_rel,0.2658836022477651
+decanol,100,3,top_population,0.2379638121162898
+decanol,100,3,n_effective,27.308300140666418
+decanol,100,3,n_within_3kcal,52.0
+decanol,100,4,radius_of_gyration,3.6672585164848663
+decanol,100,4,asphericity,0.7421340642259624
+decanol,100,4,eccentricity,0.9939851163598269
+decanol,100,4,max_distance,11.839622037273958
+decanol,100,4,lowest_energy_rel,0.6440166310774682
+decanol,100,4,top_population,0.14459117695273996
+decanol,100,4,n_effective,41.954903735413026
+decanol,100,4,n_within_3kcal,78.0
+decanol,100,5,radius_of_gyration,3.6817270266596416
+decanol,100,5,asphericity,0.7562180159123602
+decanol,100,5,eccentricity,0.9951413908092173
+decanol,100,5,max_distance,11.782947772989909
+decanol,100,5,lowest_energy_rel,0.8679566943122428
+decanol,100,5,top_population,0.12652981057256366
+decanol,100,5,n_effective,41.595579329530096
+decanol,100,5,n_within_3kcal,71.0
+decanol,100,6,radius_of_gyration,3.694577227925107
+decanol,100,6,asphericity,0.7496198333508968
+decanol,100,6,eccentricity,0.9950823156555525
+decanol,100,6,max_distance,11.961083201543998
+decanol,100,6,lowest_energy_rel,0.7007719570476425
+decanol,100,6,top_population,0.10933073737267755
+decanol,100,6,n_effective,37.906502898557605
+decanol,100,6,n_within_3kcal,77.0
+decanol,100,7,radius_of_gyration,3.7186289195721685
+decanol,100,7,asphericity,0.7685892611365162
+decanol,100,7,eccentricity,0.995774842822808
+decanol,100,7,max_distance,12.098991895258921
+decanol,100,7,lowest_energy_rel,0.8663134681155356
+decanol,100,7,top_population,0.09660710518734858
+decanol,100,7,n_effective,37.75090460683513
+decanol,100,7,n_within_3kcal,76.0
+decanol,100,8,radius_of_gyration,3.6981845043464228
+decanol,100,8,asphericity,0.7509159166530638
+decanol,100,8,eccentricity,0.9945130965268919
+decanol,100,8,max_distance,11.93046993862514
+decanol,100,8,lowest_energy_rel,0.8679566958834855
+decanol,100,8,top_population,0.08588502495756967
+decanol,100,8,n_effective,41.08141221177991
+decanol,100,8,n_within_3kcal,79.0
+decanol,100,9,radius_of_gyration,3.734927917275735
+decanol,100,9,asphericity,0.7720788451685768
+decanol,100,9,eccentricity,0.9955640407944615
+decanol,100,9,max_distance,12.13625751676705
+decanol,100,9,lowest_energy_rel,0.6440166310774682
+decanol,100,9,top_population,0.12197796201412438
+decanol,100,9,n_effective,33.15763744234535
+decanol,100,9,n_within_3kcal,67.0
+decanol,250,0,radius_of_gyration,3.7714484125535823
+decanol,250,0,asphericity,0.7871805270971656
+decanol,250,0,eccentricity,0.9957512513332792
+decanol,250,0,max_distance,12.192405032703563
+decanol,250,0,lowest_energy_rel,0.0
+decanol,250,0,top_population,0.15682091879475596
+decanol,250,0,n_effective,62.306095373067826
+decanol,250,0,n_within_3kcal,121.0
+decanol,250,1,radius_of_gyration,3.7928420038045236
+decanol,250,1,asphericity,0.7963297520115259
+decanol,250,1,eccentricity,0.9961570951309633
+decanol,250,1,max_distance,12.31429034065472
+decanol,250,1,lowest_energy_rel,0.0
+decanol,250,1,top_population,0.16215956518697036
+decanol,250,1,n_effective,51.88212486208019
+decanol,250,1,n_within_3kcal,116.0
+decanol,250,2,radius_of_gyration,3.6724413713665545
+decanol,250,2,asphericity,0.7442712666405027
+decanol,250,2,eccentricity,0.9942757762844998
+decanol,250,2,max_distance,11.87156727047572
+decanol,250,2,lowest_energy_rel,0.7007719570476425
+decanol,250,2,top_population,0.05974864077408142
+decanol,250,2,n_effective,91.77547775445446
+decanol,250,2,n_within_3kcal,170.0
+decanol,250,3,radius_of_gyration,3.7044087156265566
+decanol,250,3,asphericity,0.7630888508859589
+decanol,250,3,eccentricity,0.9948577786904766
+decanol,250,3,max_distance,11.935955023484999
+decanol,250,3,lowest_energy_rel,0.2658836022477651
+decanol,250,3,top_population,0.11634810711071882
+decanol,250,3,n_effective,84.76665003242938
+decanol,250,3,n_within_3kcal,150.0
+decanol,250,4,radius_of_gyration,3.7526801279254736
+decanol,250,4,asphericity,0.7750999692815226
+decanol,250,4,eccentricity,0.9953671839617251
+decanol,250,4,max_distance,12.139663927064438
+decanol,250,4,lowest_energy_rel,0.0
+decanol,250,4,top_population,0.16595897383887345
+decanol,250,4,n_effective,62.06875250382791
+decanol,250,4,n_within_3kcal,122.0
+decanol,250,5,radius_of_gyration,3.7161924323478326
+decanol,250,5,asphericity,0.7622329293174898
+decanol,250,5,eccentricity,0.994899067890192
+decanol,250,5,max_distance,12.056472422391963
+decanol,250,5,lowest_energy_rel,0.2658836022477651
+decanol,250,5,top_population,0.11808223299807671
+decanol,250,5,n_effective,72.9157942708659
+decanol,250,5,n_within_3kcal,138.0
+decanol,250,6,radius_of_gyration,3.718326091164282
+decanol,250,6,asphericity,0.7645980217201359
+decanol,250,6,eccentricity,0.9952272658689841
+decanol,250,6,max_distance,12.018076318752502
+decanol,250,6,lowest_energy_rel,0.2658836022477651
+decanol,250,6,top_population,0.11290820353019257
+decanol,250,6,n_effective,70.42275784240861
+decanol,250,6,n_within_3kcal,136.0
+decanol,250,7,radius_of_gyration,3.7653687554861204
+decanol,250,7,asphericity,0.7861716475288241
+decanol,250,7,eccentricity,0.9958485205372055
+decanol,250,7,max_distance,12.181874715283172
+decanol,250,7,lowest_energy_rel,0.0
+decanol,250,7,top_population,0.1733939581141509
+decanol,250,7,n_effective,60.760593010868206
+decanol,250,7,n_within_3kcal,117.0
+decanol,250,8,radius_of_gyration,3.736208790617816
+decanol,250,8,asphericity,0.7688720965245284
+decanol,250,8,eccentricity,0.9950065234239799
+decanol,250,8,max_distance,12.09258463496894
+decanol,250,8,lowest_energy_rel,0.0
+decanol,250,8,top_population,0.16770981608804064
+decanol,250,8,n_effective,71.86399366645612
+decanol,250,8,n_within_3kcal,139.0
+decanol,250,9,radius_of_gyration,3.737279670388746
+decanol,250,9,asphericity,0.7737414247594199
+decanol,250,9,eccentricity,0.9955635251173507
+decanol,250,9,max_distance,12.04451595141739
+decanol,250,9,lowest_energy_rel,0.2658836022477651
+decanol,250,9,top_population,0.11928152199247624
+decanol,250,9,n_effective,70.72401940363687
+decanol,250,9,n_within_3kcal,135.0
+decanol,500,0,radius_of_gyration,3.735514928253987
+decanol,500,0,asphericity,0.7703532544497953
+decanol,500,0,eccentricity,0.9951664704965859
+decanol,500,0,max_distance,12.096007232885665
+decanol,500,0,lowest_energy_rel,0.0
+decanol,500,0,top_population,0.09716650969803907
+decanol,500,0,n_effective,115.85126163516938
+decanol,500,0,n_within_3kcal,215.0

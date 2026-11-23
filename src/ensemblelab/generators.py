@@ -46,6 +46,51 @@ class Conformer:
 
         print(conformer_summary(self))
 
+
+def _check_sync_compatible(molecule: Chem.Mol, conformer_id: int, atoms: Atoms) -> Chem.Conformer:
+    """Return the RDKit conformer after checking it can be paired with ``atoms``.
+
+    Pairing requires an existing conformer ID, equal atom counts, and identical
+    element symbols in the same order. Without this check a length mismatch
+    would silently write only part of the coordinates.
+    """
+    try:
+        rdkit_conformer = molecule.GetConformer(conformer_id)
+    except ValueError as exc:
+        raise ValueError(f"RDKit molecule has no conformer with ID {conformer_id}.") from exc
+    n_atoms = molecule.GetNumAtoms()
+    if len(atoms) != n_atoms:
+        raise ValueError(
+            f"Conformer {conformer_id}: ASE Atoms has {len(atoms)} atoms but the "
+            f"RDKit molecule has {n_atoms}."
+        )
+    rdkit_symbols = [atom.GetSymbol() for atom in molecule.GetAtoms()]
+    if atoms.get_chemical_symbols() != rdkit_symbols:
+        raise ValueError(
+            f"Conformer {conformer_id}: ASE Atoms element order does not match the "
+            "RDKit molecule."
+        )
+    return rdkit_conformer
+
+
+def sync_rdkit_from_atoms(molecule: Chem.Mol, conformer_id: int, atoms: Atoms) -> None:
+    """Write ``atoms`` positions (angstrom) into RDKit conformer ``conformer_id``.
+
+    Modifies ``molecule`` in place; callers pass a molecule they own (a copy).
+    """
+    rdkit_conformer = _check_sync_compatible(molecule, conformer_id, atoms)
+    for atom_index, (x, y, z) in enumerate(np.asarray(atoms.positions, dtype=float)):
+        rdkit_conformer.SetAtomPosition(atom_index, (float(x), float(y), float(z)))
+
+
+def sync_atoms_from_rdkit(molecule: Chem.Mol, conformer_id: int, atoms: Atoms) -> None:
+    """Write RDKit conformer ``conformer_id`` coordinates (angstrom) into ``atoms``.
+
+    Modifies ``atoms`` in place; callers pass ``Atoms`` they own (a copy).
+    """
+    rdkit_conformer = _check_sync_compatible(molecule, conformer_id, atoms)
+    atoms.positions[:] = np.asarray(rdkit_conformer.GetPositions(), dtype=float)
+
 # generation history generator helper
 def _generation_history(
     smiles: str,

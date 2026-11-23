@@ -1,9 +1,23 @@
-name: molecular-flexibility
+# Full development environment with every optimizer backend that can be
+# installed from conda (MMFF/UFF via RDKit, GFN2-xTB via tblite), plus
+# plotting and notebook support (matplotlib, pandas, ipykernel).
+# ORCA is an external program and must still be installed separately.
+#
+#   conda env create -f environment.yml
+#   conda activate ensemblelab
+name: ensemblelab
 channels:
   - conda-forge
 dependencies:
-  - python=3.12
+  - python>=3.10
+  - rdkit
+  - ase
+  - numpy
+  - pandas
+  - matplotlib
+  - ipykernel
+  - tblite-python
+  - pytest
   - pip
   - pip:
-      - -r requirements.txt
-
+      - -e .

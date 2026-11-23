@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import Any
 
 from ase import Atoms
@@ -14,6 +14,24 @@ from .base import BaseOptimizer
 
 _EV_TO_KCAL_PER_MOL = 23.0605478306
 
+_TBLITE_INSTALL_HINT = (
+    "GFN2xTBOptimizer requires tblite. Install with `pip install ensemblelab[xtb]` "
+    "(Linux) or `conda install -c conda-forge tblite-python` (macOS/Windows)."
+)
+
+
+def _load_tblite_calculator() -> type:
+    """Import and return TBLite's ASE calculator class.
+
+    tblite is an optional dependency, so it is imported only here and never at
+    module import time.
+    """
+    try:
+        from tblite.ase import TBLite  # type: ignore # noqa: I001
+    except ImportError as error:
+        raise ImportError(_TBLITE_INSTALL_HINT) from error
+    return TBLite
+
 
 @dataclass(frozen=True, slots=True)
 class GFN2xTBOptimizer(BaseOptimizer):
@@ -24,8 +42,13 @@ class GFN2xTBOptimizer(BaseOptimizer):
     charge: int | None = None
     multiplicity: int | None = None
     solvent: str | None = None
+    _resolved_charge: int = field(init=False, repr=False, compare=False)
+    _resolved_multiplicity: int = field(init=False, repr=False, compare=False)
 
     def __post_init__(self) -> None:
+        # Fail fast: surface a missing optional backend before any expensive
+        # upstream work (e.g. an MMFF stage in a hierarchical workflow) runs.
+        _load_tblite_calculator()
         self._validate_fmax(self.fmax)
         self._validate_max_steps(self.max_steps)
         if self.solvent is not None and (
@@ -40,25 +63,21 @@ class GFN2xTBOptimizer(BaseOptimizer):
 
     def optimize(self, ensemble: Ensemble) -> Ensemble:
         """Optimize all conformers after resolving the ensemble's electronic state."""
-        self._resolved_charge = self._resolve_charge(ensemble, self.charge)
-        self._resolved_multiplicity = self._resolve_multiplicity(ensemble, self.multiplicity)
+        resolved_charge = self._resolve_charge(ensemble, self.charge)
+        resolved_multiplicity = self._resolve_multiplicity(ensemble, self.multiplicity)
+        object.__setattr__(self, "_resolved_charge", resolved_charge)
+        object.__setattr__(self, "_resolved_multiplicity", resolved_multiplicity)
         try:
-            return super().optimize(ensemble)
+            return BaseOptimizer.optimize(self, ensemble)
         finally:
-            del self._resolved_charge
-            del self._resolved_multiplicity
+            object.__delattr__(self, "_resolved_charge")
+            object.__delattr__(self, "_resolved_multiplicity")
 
     def _optimize_conformer(
         self, molecule: Chem.Mol, conformer_id: int, atoms: Atoms
     ) -> tuple[float, bool]:
         del molecule, conformer_id
-        try:
-            from tblite.ase import TBLite # type: ignore # noqa: I001
-        except ImportError as error:
-            raise ImportError(
-                "GFN2-xTB optimization requires the optional 'tblite' package. "
-                "Install ensemblelab with its xTB extra (upcoming)."
-            ) from error
+        TBLite = _load_tblite_calculator()
 
         calculator_options: dict[str, Any] = {
             "method": self.method,
