@@ -2,11 +2,11 @@ cff-version: 1.2.0
 message: "If you use EnsembleLab in your research, please cite it as below."
 type: software
 title: EnsembleLab
-abstract: "Tools for studying how conformer sampling size affects ensemble-level molecular properties."
+abstract: "Python library for simplified conformational and ensemble analysis, with studies on sampling convergence and conformer generation."
 authors:
   - family-names: Avirneni
     given-names: Dhruv
-version: 0.1.0
+version: 0.2.0
 license: MIT
 repository-code: "https://github.com/dhruvavirneni/ensemblelab"
 url: "https://github.com/dhruvavirneni/ensemblelab"

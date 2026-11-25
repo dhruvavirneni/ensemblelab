@@ -4,7 +4,7 @@ All notable changes to EnsembleLab are recorded here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and the project uses
 [semantic versioning](https://semver.org/).
 
-## [Unreleased]
+## [0.2.0] - 2026-11-24
 
 ### Added
 
@@ -19,6 +19,8 @@ All notable changes to EnsembleLab are recorded here. The format follows
 - `generate()` raises `ValueError` for multi-fragment SMILES (salts, metal
   adducts such as `CC(=O)O.[Na+]`), whose ETKDG conformers place fragments at
   arbitrary distances.
+
+[0.2.0]: https://github.com/dhruvavirneni/ensemblelab/releases/tag/v0.2.0
 
 ## [0.1.0] - 2026-11-17
 
