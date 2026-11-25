@@ -97,6 +97,8 @@ def _generation_history(
     canonical_smiles: str,
     n_requested: int,
     n_generated: int,
+    charge: int,
+    multiplicity: int,
 ) -> dict[str, Any]:
     """Create the initial provenance record for an ensemble."""
 
@@ -107,6 +109,8 @@ def _generation_history(
         "canonical_smiles": canonical_smiles,
         "n_requested": n_requested,
         "n_generated": n_generated,
+        "charge": charge,
+        "multiplicity": multiplicity,
         "random_seed": 42,
         "rdkit_version": rdBase.rdkitVersion,
     }
@@ -143,6 +147,26 @@ class Ensemble:
     def get_mol(self) -> Chem.Mol:
         """Return the RDKit molecule associated with this ensemble."""
         return self.molecule
+
+    @property
+    def charge(self) -> int:
+        """Net formal charge of ``molecule`` (sum of atomic formal charges).
+
+        Computed from the RDKit molecule on every access rather than stored,
+        so it cannot disagree with the molecule. Write charged species in the
+        SMILES, e.g. ``"CC(=O)[O-]"`` for acetate (charge -1).
+        """
+        return int(Chem.GetFormalCharge(self.molecule))
+
+    @property
+    def multiplicity(self) -> int:
+        """Spin multiplicity implied by ``molecule``: 1 + radical electrons.
+
+        Closed-shell molecules give 1. Radicals are assumed high-spin (every
+        radical electron unpaired). Computed from the RDKit molecule on every
+        access; optimizers accept an explicit ``multiplicity`` to override it.
+        """
+        return 1 + sum(atom.GetNumRadicalElectrons() for atom in self.molecule.GetAtoms())
 
     @property
     def conformer_ids(self) -> tuple[int, ...]:
@@ -189,6 +213,13 @@ def generate(smiles: str, n_confs: int = 25) -> Ensemble:
     Uses the notebook's RDKit ETKDGv3 setup (explicit seed 42) on a
     hydrogenated molecule. Optimization and energies intentionally belong to
     the next module.
+
+    Ions are supported by writing the charge into the SMILES (``"CC(=O)[O-]"``,
+    ``"CCC[NH3+]"``); the net charge and multiplicity are recorded in the
+    metadata and the generation history. The SMILES must describe a single
+    connected molecule: multi-fragment input such as salts or metal adducts
+    (``"CC(=O)O.[Na+]"``) raises ``ValueError``, because ETKDG places separate
+    fragments at arbitrary distances from each other.
     """
     if not isinstance(smiles, str) or not smiles.strip():
         raise ValueError("smiles must be a non-empty SMILES string.")
@@ -198,6 +229,16 @@ def generate(smiles: str, n_confs: int = 25) -> Ensemble:
     molecule = Chem.MolFromSmiles(smiles)
     if molecule is None or molecule.GetNumAtoms() == 0:
         raise ValueError(f"Could not parse SMILES: {smiles!r}")
+    n_fragments = len(Chem.GetMolFrags(molecule))
+    if n_fragments > 1:
+        raise ValueError(
+            f"SMILES {smiles!r} contains {n_fragments} disconnected fragments. "
+            "generate() supports a single connected molecule only: ETKDG places "
+            "separate fragments at arbitrary distances from each other, so "
+            "conformers of salts, metal adducts (e.g. [M+Na]+ written as "
+            "'CC(=O)O.[Na+]'), or complexes would be physically meaningless. "
+            "Supply the charged species on its own, e.g. 'CC(=O)[O-]'."
+        )
     molecule = Chem.AddHs(molecule)
 
     canonical_smiles = Chem.MolToSmiles(Chem.RemoveHs(molecule), canonical=True)
@@ -227,28 +268,33 @@ def generate(smiles: str, n_confs: int = 25) -> Ensemble:
         )
         for conformer_id in conformer_ids
     )
-    metadata = {
-    "n_conformers": len(conformers),
-    "optimization_status": "unoptimized",
-    "energy_status": "uncomputed",
-    "energy_unit": None,
-    "rdkit_version": rdBase.rdkitVersion,
-    "canonical_smiles": canonical_smiles,
-    "history": [
-        _generation_history(
-            smiles,
-            canonical_smiles,
-            n_confs,
-            len(conformers),
-            )
-        ],
-    }
-    return Ensemble(
+    ensemble = Ensemble(
         smiles=smiles,
         molecule=molecule,
         conformers=conformers,
-        metadata=metadata,
+        metadata={},
     )
+    ensemble.metadata.update({
+        "n_conformers": len(conformers),
+        "optimization_status": "unoptimized",
+        "energy_status": "uncomputed",
+        "energy_unit": None,
+        "rdkit_version": rdBase.rdkitVersion,
+        "canonical_smiles": canonical_smiles,
+        "charge": ensemble.charge,
+        "multiplicity": ensemble.multiplicity,
+        "history": [
+            _generation_history(
+                smiles,
+                canonical_smiles,
+                n_confs,
+                len(conformers),
+                ensemble.charge,
+                ensemble.multiplicity,
+            )
+        ],
+    })
+    return ensemble
 
 # later --- ASE to SMILES can be unpredictable
 # if user supplies SMILES and Atoms, interpret Atoms in context of SMILES molecule, with no need for helper function
