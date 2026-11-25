@@ -95,7 +95,10 @@ class BaseOptimizer(ABC):
             converged_conformer_ids=converged_ids,
             unconverged_conformer_ids=unconverged_ids,
             energy_unit="kcal/mol",
-            **self._history_details(),)
+            # Every backend records the charge it ran with. Force fields take it
+            # from the molecule's formal charges; GFN2-xTB and ORCA override
+            # this with their resolved (possibly user-supplied) value.
+            **{"charge": ensemble.charge, **self._history_details()},)
         
         # updated status metadata
         metadata.update({
@@ -142,18 +145,18 @@ class BaseOptimizer(ABC):
 
     @staticmethod
     def _resolve_charge(ensemble: Ensemble, charge: int | None) -> int:
+        """Return an explicit ``charge`` override, or ``ensemble.charge``."""
         if charge is None:
-            return int(Chem.GetFormalCharge(ensemble.molecule))
+            return ensemble.charge
         if isinstance(charge, bool) or not isinstance(charge, int):
             raise TypeError("charge must be an integer or None.")
         return charge
 
     @staticmethod
     def _resolve_multiplicity(ensemble: Ensemble, multiplicity: int | None) -> int:
+        """Return an explicit ``multiplicity`` override, or ``ensemble.multiplicity``."""
         if multiplicity is None:
-            return 1 + sum(
-                atom.GetNumRadicalElectrons() for atom in ensemble.molecule.GetAtoms()
-            )
+            return ensemble.multiplicity
         if (
             isinstance(multiplicity, bool)
             or not isinstance(multiplicity, int)
