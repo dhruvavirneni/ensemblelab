@@ -4,6 +4,22 @@ All notable changes to EnsembleLab are recorded here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and the project uses
 [semantic versioning](https://semver.org/).
 
+## [Unreleased]
+
+### Added
+
+- **Ions:** `Ensemble.charge` and `Ensemble.multiplicity`, computed from the
+  RDKit molecule. Charged SMILES (e.g. `CC(=O)[O-]`, `CCC[NH3+]`) are recorded
+  in generation metadata and history, shown by `Ensemble.show()`, and used as
+  the default charge/multiplicity by GFN2-xTB and ORCA. Every optimizer history
+  entry, including MMFF/UFF, now records `charge`.
+
+### Changed
+
+- `generate()` raises `ValueError` for multi-fragment SMILES (salts, metal
+  adducts such as `CC(=O)O.[Na+]`), whose ETKDG conformers place fragments at
+  arbitrary distances.
+
 ## [0.1.0] - 2026-11-17
 
 First tagged release. The API is still pre-1.0 and may change.
