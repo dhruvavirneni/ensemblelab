@@ -11,6 +11,8 @@ All optimizer classes return a new `Ensemble`. Optimized energies are stored as 
 - `False` only means the step limit was reached. A failed calculation raises an exception and stops the run instead.
 - The criteria differ between backends, so ✓ from MMFF and ✓ from GFN2-xTB are not equivalent statements.
 
+**Charge and multiplicity.** GFN2-xTB and ORCA default to `ensemble.charge` and `ensemble.multiplicity`, both computed from the molecule (see [Ions](generation.md#ions)); pass `charge=` / `multiplicity=` to override. Every optimizer records the charge it used in its history entry. Energies are comparable only within one charge state.
+
 ## Functions
 - **MMFF / UFF:** RDKit force field optimization. 
 - **GFN2-xTB:**  uses [TBLite through ASE](https://tblite.readthedocs.io/en/latest/api/python.html).
@@ -20,9 +22,9 @@ All optimizer classes return a new `Ensemble`. Optimized energies are stored as 
 
 ### `MMFFOptimizer` / `UFFOptimizer`
 **Overview:** 
-`MMFFOptimizer` optimizes all conformers with RDKit's MMFF94 force field. `UFFOptimizer` (in the same module, not re-exported from `ensemblelab.optimizers`) uses RDKit's Universal Force Field (UFF) instead. Each conformer receives an optimized geometry, an energy in kcal/mol, and a convergence status. MMFF raises `RuntimeError` if MMFF parameters are unavailable for the molecule.
+`MMFFOptimizer` optimizes all conformers with RDKit's MMFF94 force field. `UFFOptimizer` (in the same module, not re-exported from `ensemblelab.optimizers`) uses RDKit's Universal Force Field (UFF) instead. Each conformer receives an optimized geometry, an energy in kcal/mol, and a convergence status. MMFF raises `RuntimeError` if MMFF parameters are unavailable for the molecule. Charged molecules are typed from their formal charges.
 
-Metadata recorded: `max_steps`
+Metadata recorded: `max_steps`, `charge`
 
 
 **Usage**

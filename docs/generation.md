@@ -37,7 +37,9 @@ conformer = Conformer(
 **Overview:** 
 An aligned conformational ensemble containing the input SMILES, the RDKit molecule, and a tuple of `Conformer` objects. The ensemble enforces unique conformer IDs and preserves one explicit conformer index for all downstream analyses. The molecular geometry and energies remain synchronized with the conformer-level metadata.
 
-Metadata recorded: `n_conformers`, `optimization_status`, `energy_status`, `energy_unit`, `rdkit_version`, `history`
+`Ensemble.charge` (net formal charge) and `Ensemble.multiplicity` (1 + radical electrons, i.e. radicals are assumed high-spin) are read-only properties computed from `molecule` on every access, so they cannot disagree with it. Optimizers use them as their default charge and multiplicity.
+
+Metadata recorded: `n_conformers`, `optimization_status`, `energy_status`, `energy_unit`, `rdkit_version`, `canonical_smiles`, `charge`, `multiplicity`, `history`
 
 
 **Usage**
@@ -58,9 +60,9 @@ ensemble = Ensemble(
 
 ### `generate`
 **Overview:** 
-Creates an unoptimized ensemble by parsing a SMILES string, adding explicit hydrogens, and embedding multiple conformers with RDKit ETKDGv3. The default random seed is fixed at 42 for reproducibility, and the ensemble stores the canonicalized molecule and generation provenance in `metadata["history"]`. Validation rejects empty or invalid SMILES strings and requires a positive integer value for `n_confs`.
+Creates an unoptimized ensemble by parsing a SMILES string, adding explicit hydrogens, and embedding multiple conformers with RDKit ETKDGv3. The default random seed is fixed at 42 for reproducibility, and the ensemble stores the canonicalized molecule and generation provenance in `metadata["history"]`. Validation rejects empty or invalid SMILES strings, rejects SMILES with more than one disconnected fragment (see [Ions](#ions)), and requires a positive integer value for `n_confs`. The net charge and multiplicity are recorded in the metadata and in the generation history entry.
 
-Metadata recorded: `n_conformers`, `optimization_status`, `energy_status`, `energy_unit`, `rdkit_version`, `history`
+Metadata recorded: `n_conformers`, `optimization_status`, `energy_status`, `energy_unit`, `rdkit_version`, `canonical_smiles`, `charge`, `multiplicity`, `history`
 
 
 **Usage**
@@ -75,7 +77,7 @@ ensemble = generate("CCO", n_confs=25)
 **Overview:** 
 Class method equivalent to calling `generate()`. It is the object-oriented entry point for creating an unoptimized `Ensemble` from a SMILES string and is intended to fit naturally into the broader `Ensemble` workflow for optimization, filtering, and analysis.
 
-Metadata recorded: `n_conformers`, `optimization_status`, `energy_status`, `energy_unit`, `rdkit_version`, `history`
+Metadata recorded: `n_conformers`, `optimization_status`, `energy_status`, `energy_unit`, `rdkit_version`, `canonical_smiles`, `charge`, `multiplicity`, `history`
 
 
 **Usage**
@@ -84,3 +86,35 @@ from ensemblelab import Ensemble
 
 ensemble = Ensemble.from_smiles("CCO", n_confs=25)
 ```
+
+
+## Ions
+
+Charged molecules are supported. Write the charge directly into the SMILES with bracket atoms:
+
+| Species | SMILES | `ensemble.charge` |
+|---|---|---|
+| Acetate (deprotonated acid, [M-H]-) | `CC(=O)[O-]` | -1 |
+| Perfluorooctanoate (PFOA anion) | `[O-]C(=O)C(F)(F)C(F)(F)C(F)(F)C(F)(F)C(F)(F)C(F)(F)C(F)(F)F` | -1 |
+| Propylammonium (protonated amine, [M+H]+) | `CCC[NH3+]` | +1 |
+
+```python
+from ensemblelab import generate
+from ensemblelab.optimizers import MMFFOptimizer
+
+ensemble = generate("CC(=O)[O-]", n_confs=25)
+ensemble.charge                     # -1, computed from the RDKit molecule
+optimized = MMFFOptimizer().optimize(ensemble)
+optimized.show()                    # summary includes "Charge: -1"
+```
+
+**What is supported**
+- `generate()` / `Ensemble.from_smiles()` record `charge` and `multiplicity` in `metadata` and in the first history entry.
+- `MMFFOptimizer` / `UFFOptimizer` use the molecule's formal charges and record the charge in their history entry. `GFN2xTBOptimizer` and `ORCAOptimizer` pass `ensemble.charge` and `ensemble.multiplicity` to the calculator unless you supply `charge=` / `multiplicity=` explicitly.
+- Filters, RMSD analysis, and geometry metrics work unchanged. Formal charges do not change atomic masses, so mass-weighted quantities (center of mass, radius of gyration) are unaffected. `RMSDFilter` treats the two carboxylate oxygens as equivalent: RDKit's `GetBestRMS` symmetrizes conjugated terminal groups, even though the SMILES writes one oxygen as `=O` and the other as `[O-]`.
+
+**Caveat: compare energies only within one charge state.** An anion and its neutral parent are different chemical species, so the difference between their energies is not a conformational energy. Relative energies, Boltzmann populations, and energy-based filters are meaningful only among conformers of the same charged species. Do not compare anion energies to neutral energies.
+
+**Out of scope for now**
+- *Multi-fragment input, including metal adducts* such as [M+Na]+. In SMILES these are separate fragments (`CC(=O)O.[Na+]`). ETKDG places the fragments at arbitrary distances from each other, so the conformers would be physically meaningless. `generate()` raises `ValueError` for any SMILES with `.`-separated fragments (salts, adducts, solvates). Handling metal adducts properly is a much harder problem.
+- *Automatic ionization.* You supply the charged SMILES yourself. There is no helper that turns a neutral molecule into [M-H]- or [M+H]+, because that requires choosing which proton to remove or add (the protomer question).

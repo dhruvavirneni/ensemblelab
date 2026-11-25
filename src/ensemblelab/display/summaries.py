@@ -41,6 +41,8 @@ def ensemble_summary(ensemble: Any, *, include_conformers: bool = True) -> str:
             "-" * 28,
             f"SMILES: {ensemble.smiles}",
             f"Atoms: {ensemble.molecule.GetNumAtoms()}",
+            f"Charge: {ensemble.charge:+d}" if ensemble.charge else "Charge: 0",
+            f"Multiplicity: {ensemble.multiplicity}",
             f"Conformers: {len(conformers)}",
             f"Energy: {energy_status}",
             f"Optimization: {optimization}",
@@ -93,6 +95,9 @@ def _history_entry(index: int, entry: Mapping[str, Any]) -> str:
         ("cumulative_cutoff", "Cumulative cutoff"),
         ("max_steps", "Max steps"),
         ("fmax_eV_per_angstrom", "fmax (eV/angstrom)"),
+        ("charge", "Charge"),
+        ("multiplicity", "Multiplicity"),
+        ("solvent", "Solvent"),
         ("energy_unit", "Energy unit"),
         ("random_seed", "Random seed"),
     )

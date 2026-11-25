@@ -369,7 +369,7 @@ def _validate_inputs(
 
 def _resolve_charge(ensemble: Ensemble, charge: int | None) -> int:
     if charge is None:
-        return int(Chem.GetFormalCharge(ensemble.molecule))
+        return ensemble.charge
     if isinstance(charge, bool) or not isinstance(charge, int):
         raise ValueError("charge must be an integer or None.")
     return charge
@@ -377,7 +377,7 @@ def _resolve_charge(ensemble: Ensemble, charge: int | None) -> int:
 
 def _resolve_multiplicity(ensemble: Ensemble, multiplicity: int | None) -> int:
     if multiplicity is None:
-        return 1 + sum(atom.GetNumRadicalElectrons() for atom in ensemble.molecule.GetAtoms())
+        return ensemble.multiplicity
     if isinstance(multiplicity, bool) or not isinstance(multiplicity, int) or multiplicity < 1:
         raise ValueError("multiplicity must be a positive integer or None.")
     return multiplicity
