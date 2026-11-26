@@ -96,6 +96,8 @@ The [`docs/`](docs/) folder is updated during development and is the most curren
 
 Worked examples are in the notebooks under [`tests/`](tests/) (for example, [`tests/ions/test_ions.ipynb`](tests/ions/test_ions.ipynb)), and the pilot convergence study is in [`experiments/sampling_convergence/`](experiments/sampling_convergence/).
 
+Find the writeup [here](https://github.com/dhruvavirneni/ensemblelab/blob/main/experiments/sampling_convergence/docs/convergence_results.md)
+
 ## Roadmap
 
 Implemented: generation, optimization, filtering, RMSD analysis and clustering, convergence metrics, and ion support.
