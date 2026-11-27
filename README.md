@@ -1,7 +1,7 @@
 # EnsembleLab
 
 [![tests](https://github.com/dhruvavirneni/ensemblelab/actions/workflows/tests.yml/badge.svg)](https://github.com/dhruvavirneni/ensemblelab/actions/workflows/tests.yml)
-![version](https://img.shields.io/badge/version-0.2.0-blue)
+![version](https://img.shields.io/badge/version-0.3.0-blue)
 ![python](https://img.shields.io/badge/python-3.10%2B-blue)
 [![license](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
